@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
 registerLocaleData(en);
 
 @NgModule({
@@ -29,7 +31,8 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     NzButtonModule,
     NzInputModule,
-    NzFormModule
+    NzFormModule,
+    NzIconModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

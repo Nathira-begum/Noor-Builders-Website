@@ -1,64 +1,133 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: #1c1c1c;
-    color: white;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .nav a {
-    margin: 0 10px;
-    color: white;
-  }
-  
-  .hero {
-    position: relative;
-    height: 80vh;
-    background: url('/assets/your-background-image.jpg') no-repeat center center/cover;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
-    color: white;
-  }
-  
-  .hero .content {
-    max-width: 50%;
-  }
-  
-  .hero h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-  }
-  
-  .hero h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .hero button {
-    background: #FF851B;
-    border-color: #FF851B;
-  }
-  
-  .form {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 300px;
-    width: 100%;
-  }
-  
-  .footer {
-    padding: 20px;
-    background: #1c1c1c;
-    color: white;
-    text-align: center;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #1c1c1c;
+  color: white;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+.logo img {
+  width: 50px; /* Set the width of the logo */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.required {
+  color: red; /* Change the color of the asterisk */
+  margin-left: 2px; /* Add some space between the label text and the asterisk */
+}
+
+
+.nav a {
+  margin: 0 3px;
+  color: white;
+}
+
+label {
+  color: rgb(251, 249, 249); /* Change label color to black */
+}
+
+.hero {
+  position: relative;
+  height: 120vh;
+  background: url("/assets/background1.jpeg") no-repeat center center/cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  color: white;
+}
+
+.hero .content {
+  max-width: 50%;
+}
+
+.hero h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: rgb(254, 251, 251);
+}
+
+.hero h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: rgb(254, 251, 251);
+
+}
+
+.hero button {
+  background: #ff851b;
+  border-color: #ff851b;
+}
+
+.form {
+  background: rgba(0, 0, 0, 0.413);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.footer {
+  padding: 20px;
+  background: #282727;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+
+}
+
+.footer-section p,
+.footer-section ul {
+  margin: 5px 0;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-section a img {
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+}
+
+.footer-section.social-media span {
+  margin-right: 10px;
+}
+
+.footer-section.social-media span:last-child {
+  margin-right: 0;
+}

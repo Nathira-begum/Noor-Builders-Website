@@ -1,5 +1,7 @@
 <div class="header">
-  <div class="logo">[Logo]</div>
+  <div class="logo">
+    <img src="assets/logo.jpeg" alt="Logo">
+  </div>
   <div class="nav">
     <a nz-button nzType="link">Home</a>
     <a nz-button nzType="link">About Us</a>
@@ -21,32 +23,70 @@
   <div class="form">
     <nz-form-item>
       <nz-form-control>
-        <input nz-input placeholder="Name" />
+        <label for="name">Name <span class="required">*</span></label>
+        <input nz-input id="name" placeholder="Name" required />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control>
-        <input nz-input placeholder="Email" />
+        <label for="email">Email <span class="required">*</span></label>
+        <input nz-input id="email" placeholder="Email" required />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control>
-        <input nz-input placeholder="Phone number" />
+        <label for="phoneno">Phone number <span class="required">*</span></label>
+        <input nz-input id="phoneno" placeholder="Phone number" required />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control>
-        <input nz-input placeholder="Location (We are operational only in Chennai as of now)" />
+        <label for="location">Location (We are operational only in Chennai as of now) <span class="required">*</span></label>
+        <input nz-input id="location" required />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control>
-        <input nz-input placeholder="Enter your land area in sq.ft." />
+        <label for="landAreaInput">Enter your land area in sq.ft. <span class="required">*</span></label>
+        <input nz-input id="landAreaInput" required />
+      </nz-form-control>
+    </nz-form-item>
+    
+    <nz-form-item>
+      <nz-form-control>
+        <label for="requirement">Please enter your requirement</label>
+        <input id="requirement" nz-input />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button nz-button nzType="primary" type="submit">Submit</button>
       </nz-form-control>
     </nz-form-item>
   </div>
 </div>
 
 <div class="footer">
-  <p>Contact Info | Social Media Links | Navigation Links</p>
+  <div class="footer-section contact-info">
+    <h3>Contact Info</h3>
+    <p>Address: 123 Main Street, City, Country</p>
+    <p>Phone: +123 456 7890</p>
+    <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+  </div>
+  <div class="footer-section social-media">
+    <h3>Follow Us</h3>
+    <span nz-icon nzType="facebook" nzTheme="outline"></span>
+    <span nz-icon nzType="instagram" nzTheme="outline"></span>
+    <span nz-icon nzType="youtube" nzTheme="outline"></span>
+    <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+  </div>
+  <div class="footer-section navigation-links">
+    <h3>Navigation Links</h3>
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/about-us">About Us</a></li>
+      <li><a href="/career">Career</a></li>
+      <li><a href="/la-cost-calculator">LA Cost Calculator</a></li>
+    </ul>
+  </div>
 </div>

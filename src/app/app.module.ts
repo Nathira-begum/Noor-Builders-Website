@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
@@ -15,13 +17,36 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ServicesComponent } from './services/services.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { CareersComponent } from './careers/careers.component';
+import { BlogComponent } from './blog/blog.component';
+import { ContactComponent } from './contact/contact.component';
 
 registerLocaleData(en);
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about-us', component: AboutusComponent },
+  { path: 'services', component: ServicesComponent },
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'careers', component: CareersComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'contact', component: ContactComponent },
+
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AboutusComponent,
+    ServicesComponent,
+    ProjectsComponent,
+    CareersComponent,
+    BlogComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +57,8 @@ registerLocaleData(en);
     NzButtonModule,
     NzInputModule,
     NzFormModule,
-    NzIconModule
+    NzIconModule,
+    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

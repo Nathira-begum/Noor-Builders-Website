@@ -1,16 +1,16 @@
 <div class="header">
   <div class="logo">
-    <img src="assets/logo.jpeg" alt="Logo">
+    <img src="assets/logo.jpeg" alt="Logo" />
   </div>
   <div class="nav">
-    <a nz-button nzType="link">Home</a>
-    <a nz-button nzType="link">About Us</a>
-    <a nz-button nzType="link">Joint Venture</a>
-    <a nz-button nzType="link">Services</a>
-    <a nz-button nzType="link">Projects</a>
-    <a nz-button nzType="link">Careers</a>
-    <a nz-button nzType="link">Blog</a>
-    <a nz-button nzType="link">Contact</a>
+    <a nz-button nzType="link" routerLink="/" (click)="reloadHomePage($event)">Home</a>
+    <a nz-button nzType="link" routerLink="/about-us">About Us</a>
+    <!-- <a nz-button nzType="link" routerLink="">Joint Venture</a> -->
+    <a nz-button nzType="link" routerLink="/services">Services</a>
+    <a nz-button nzType="link" routerLink="/projects">Projects</a>
+    <a nz-button nzType="link" routerLink="/careers">Careers</a>
+    <a nz-button nzType="link" routerLink="/blog">Blog</a>
+    <a nz-button nzType="link" routerLink="/contact">Contact</a>
   </div>
 </div>
 
@@ -35,23 +35,30 @@
     </nz-form-item>
     <nz-form-item>
       <nz-form-control>
-        <label for="phoneno">Phone number <span class="required">*</span></label>
+        <label for="phoneno"
+          >Phone number <span class="required">*</span></label
+        >
         <input nz-input id="phoneno" placeholder="Phone number" required />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control>
-        <label for="location">Location (We are operational only in Chennai as of now) <span class="required">*</span></label>
+        <label for="location"
+          >Location (We are operational only in Chennai as of now)
+          <span class="required">*</span></label
+        >
         <input nz-input id="location" required />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-control>
-        <label for="landAreaInput">Enter your land area in sq.ft. <span class="required">*</span></label>
+        <label for="landAreaInput"
+          >Enter your land area in sq.ft. <span class="required">*</span></label
+        >
         <input nz-input id="landAreaInput" required />
       </nz-form-control>
     </nz-form-item>
-    
+
     <nz-form-item>
       <nz-form-control>
         <label for="requirement">Please enter your requirement</label>
@@ -90,3 +97,5 @@
     </ul>
   </div>
 </div>
+
+<router-outlet></router-outlet>

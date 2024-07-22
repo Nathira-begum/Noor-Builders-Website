@@ -10,7 +10,18 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   validateForm!: FormGroup;
   locations = ['Pollachi', 'Coimbatore', 'Karur', 'Dindigul'];
-
+  images = [
+    'assets/img1.jpeg',
+    'assets/img2.jpeg',
+    'assets/img3.jpeg',
+    'assets/img4.jpeg',
+    // 'assets/img5.jpeg',
+    // 'assets/img6.jpeg',
+    'assets/img7.jpeg',
+    'assets/img8.jpeg',
+    // 'assets/img9.jpeg',
+  ];
+  currentIndex = 0;
 
   constructor(private fb: FormBuilder, private router: Router) {}
 
@@ -38,8 +49,17 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+
   reloadHomePage(event: Event): void {
     event.preventDefault();
     this.router.navigateByUrl('/');
+  }
+
+  nextImage() {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+  }
+
+  prevImage() {
+    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
   }
 }

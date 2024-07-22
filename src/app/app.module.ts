@@ -17,12 +17,16 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ServicesComponent } from './services/services.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { CareersComponent } from './careers/careers.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzSelectModule } from 'ng-zorro-antd/select'; // Import NzSelectModule
+
 
 registerLocaleData(en);
 
@@ -46,7 +50,7 @@ const routes: Routes = [
     ProjectsComponent,
     CareersComponent,
     BlogComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,10 +58,12 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     NzButtonModule,
     NzInputModule,
     NzFormModule,
     NzIconModule,
+    NzSelectModule,
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
   ],
   providers: [

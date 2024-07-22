@@ -22,9 +22,9 @@
   margin-left: 2px; /* Add some space between the label text and the asterisk */
 }
 
-
 .nav a {
   margin: 0 3px;
+  margin-left: 30px;
   color: white;
 }
 
@@ -35,29 +35,75 @@ label {
 .hero {
   position: relative;
   height: 120vh;
-  background: url("/assets/background1.jpeg") no-repeat center center/cover;
+  background: url("/assets/background.jpeg") no-repeat center center/cover;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 50px;
-  color: white;
+  padding: 0 30px;
+  /* color: rgb(19, 18, 17); */
+}
+
+.items {
+  background-color: rgb(250, 241, 241);
+}
+.metrics-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 30px;
+  /* background-color: rgb(220, 92, 28); */
+}
+
+.metric-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(250, 250, 250);
+  padding: 20px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  text-align: center;
+  flex-direction: column;
+}
+
+.metric-item:hover {
+  transform: scale(1.05); /* Zoom in effect */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.metric-item i {
+  font-size: 40px;
+  color: rgb(233, 138, 97);
+  margin-bottom: 10px;
+}
+
+.metric-item h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.metric-item h4 {
+  margin: 0;
+  color: #000000;
 }
 
 .hero .content {
-  max-width: 50%;
+  max-width: 40%;
 }
 
 .hero h1 {
   font-size: 28px;
   margin-bottom: 10px;
-  color: rgb(254, 251, 251);
+  color: rgb(250, 247, 251);
 }
 
 .hero h2 {
   font-size: 48px;
   margin-bottom: 20px;
   color: rgb(254, 251, 251);
-
 }
 
 .hero button {
@@ -71,6 +117,43 @@ label {
   border-radius: 10px;
   max-width: 300px;
   width: 100%;
+  margin: 20px 0; /* Add margin to the form */
+}
+
+.form label {
+  display: block;
+  margin-bottom: 5px; /* Add space below each label */
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px; /* Add space below each input field */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form .button-container {
+  text-align: center; /* Center the button container */
+}
+
+.form button {
+  background: #ff851b;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px; /* Adjust as necessary */
+  line-height: 1; /* Ensure the line height does not interfere */
+  height: auto; /* Adjust the height to fit the content */
+}
+
+.form button:hover {
+  background: #e07413;
 }
 
 .error {
@@ -78,13 +161,92 @@ label {
   font-size: 12px;
 }
 
-.page{
-  color: aliceblue;
-  padding: 80px;
+/* .image-container {
+  
+  display: flex;
+  flex-direction: row;
+  gap: 50px; 
+  background-color: white;
+  padding-left: 2%;/* Adjust spacing between images 
+}*/
+
+/* img {
+  width: 200px; 
+  height: auto;
+  display: block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(50%);
+    transition: filter 0.3s ease;
+    
 }
+/* img:hover {
+  transform: scale(1.1); 
+  filter: brightness(1.3); 
+  
+}   */
+
+img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+  filter: brightness(1.2); /* Increase brightness */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.carousel {
+  position: relative;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%; /* Ensure the width of the container is 100% */
+  height: 100%;
+}
+
+.carousel-images img {
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  flex-shrink: 0; /* Prevent images from shrinking */
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 24px;
+  transform: translateY(-50%);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
 .footer {
   padding: 20px;
-  background:  #1c1c1c;
+  background: #1c1c1c;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -102,12 +264,6 @@ label {
   font-size: 18px;
   margin-bottom: 10px;
   color: white;
-
-}
-
-.footer-section p,
-.footer-section ul {
-  margin: 5px 0;
 }
 
 .footer-section ul {

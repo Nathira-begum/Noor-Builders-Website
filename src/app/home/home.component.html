@@ -1,15 +1,19 @@
 <div class="header">
-  <div class="logo">
+  <div class="logo" >
     <img src="assets/logo.jpeg" alt="Logo" />
+    <span >NOOR BUILDERS AND ASSOCIATES</span>
   </div>
+  <!-- <div> -->
+    <!-- <h3 style="font-size: 30px; color: white;margin-left: 0px;">NOOR BUILDERS AND ASSOCIATES</h3> -->
+  <!-- </div> -->
   <div class="nav">
     <a nz-button nzType="link" routerLink="/" (click)="reloadHomePage($event)">Home</a>
     <a nz-button nzType="link" routerLink="/about-us">About Us</a>
     <!-- <a nz-button nzType="link" routerLink="">Joint Venture</a> -->
     <a nz-button nzType="link" routerLink="/services">Services</a>
     <a nz-button nzType="link" routerLink="/projects">Projects</a>
-    <a nz-button nzType="link" routerLink="/careers">Careers</a>
-    <a nz-button nzType="link" routerLink="/blog">Blog</a>
+    <!-- <a nz-button nzType="link" routerLink="/careers">Careers</a> -->
+    <!-- <a nz-button nzType="link" routerLink="/blog">Blog</a> -->
     <a nz-button nzType="link" routerLink="/contact">Contact</a>
   </div>
 </div>
@@ -21,56 +25,85 @@
     <button nz-button nzType="primary">Get Free Quote</button>
   </div>
   <div class="form">
-    <nz-form-item>
-      <nz-form-control>
-        <label for="name">Name <span class="required">*</span></label>
-        <input nz-input id="name" placeholder="Name" required />
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control>
-        <label for="email">Email <span class="required">*</span></label>
-        <input nz-input id="email" placeholder="Email" required />
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control>
-        <label for="phoneno"
-          >Phone number <span class="required">*</span></label
-        >
-        <input nz-input id="phoneno" placeholder="Phone number" required />
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control>
-        <label for="location"
-          >Location (We are operational only in Chennai as of now)
-          <span class="required">*</span></label
-        >
-        <input nz-input id="location" required />
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control>
-        <label for="landAreaInput"
-          >Enter your land area in sq.ft. <span class="required">*</span></label
-        >
-        <input nz-input id="landAreaInput" required />
-      </nz-form-control>
-    </nz-form-item>
-
-    <nz-form-item>
-      <nz-form-control>
-        <label for="requirement">Please enter your requirement</label>
-        <input id="requirement" nz-input />
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control>
-        <button nz-button nzType="primary" type="submit">Submit</button>
-      </nz-form-control>
-    </nz-form-item>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control>
+          <label for="name">Name <span class="required">*</span></label>
+          <input nz-input id="name" formControlName="name" placeholder="Name" required />
+          <div *ngIf="validateForm.get('name')?.invalid && (validateForm.get('name')?.dirty || validateForm.get('name')?.touched)" class="error">
+            <div *ngIf="validateForm.get('name')?.errors?.['required']">Name is required.</div>
+            <div *ngIf="validateForm.get('name')?.errors?.['pattern']">Name must contain only letters and spaces.</div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-control>
+          <label for="email">Email <span class="required">*</span></label>
+          <input nz-input id="email" formControlName="email" placeholder="Email" required />
+          <div *ngIf="validateForm.get('email')?.invalid && (validateForm.get('email')?.dirty || validateForm.get('email')?.touched)" class="error">
+            <div *ngIf="validateForm.get('email')?.errors?.['required']">Email is required.</div>
+            <div *ngIf="validateForm.get('email')?.errors?.['email']">Email must be valid.</div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-control>
+          <label for="phoneno">Phone number <span class="required">*</span></label>
+          <input nz-input id="phoneno" formControlName="phoneno" placeholder="Phone number" required />
+          <div *ngIf="validateForm.get('phoneno')?.invalid && (validateForm.get('phoneno')?.dirty || validateForm.get('phoneno')?.touched)" class="error">
+            <div *ngIf="validateForm.get('phoneno')?.errors?.['required']">Phone number is required.</div>
+            <div *ngIf="validateForm.get('phoneno')?.errors?.['pattern']">Phone number must be 10 digits.</div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-control>
+          <label for="location">
+            Location <span class="required">*</span>
+          </label>
+          <nz-select id="location" formControlName="location" placeholder="Select your location">
+            <nz-option *ngFor="let loc of locations" [nzValue]="loc" [nzLabel]="loc"></nz-option>
+          </nz-select>
+          <div *ngIf="validateForm.get('location')?.invalid && (validateForm.get('location')?.dirty || validateForm.get('location')?.touched)" class="error">
+            <div *ngIf="validateForm.get('location')?.errors?.['required']">Location is required.</div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-control>
+          <label for="landAreaInput">Enter your land area in sq.ft. <span class="required">*</span></label>
+          <input nz-input id="landAreaInput" formControlName="landAreaInput" required />
+          <div *ngIf="validateForm.get('landAreaInput')?.invalid && (validateForm.get('landAreaInput')?.dirty || validateForm.get('landAreaInput')?.touched)" class="error">
+            <div *ngIf="validateForm.get('landAreaInput')?.errors?.['required']">Land area is required.</div>
+            <div *ngIf="validateForm.get('landAreaInput')?.errors?.['pattern']">Land area must be a number.</div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-control>
+          <label for="requirement">Please enter your requirement</label>
+          <input nz-input id="requirement" formControlName="requirement" />
+        </nz-form-control>
+      </nz-form-item>
+  
+      <nz-form-item>
+        <nz-form-control>
+          <button nz-button nzType="primary" type="submit">Submit</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    
   </div>
+</div>
+
+<div class="page">
+  <span nz-icon nzType="build" nzTheme="outline" style="color: rgb(93, 95, 95);"></span>
+<h3>687987</h3>
 </div>
 
 <div class="footer">

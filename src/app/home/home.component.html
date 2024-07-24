@@ -1,6 +1,6 @@
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <div class="header">
   <div class="logo">
@@ -237,7 +237,7 @@
     <div class="metric-item">
       <i nz-icon nzType="team" nzTheme="outline"></i>
       <div>
-        <h2>500+</h2>
+        <h2>100+</h2>
         <h4>Labour Force</h4>
       </div>
     </div>
@@ -253,13 +253,14 @@
   <div class="carousel">
     <button class="arrow prev" (click)="prevImage()">&#10094;</button>
     <div class="carousel-images">
-      <img *ngFor="let image of images; let i = index" 
-           [src]="image" 
-           [ngStyle]="{'transform': 'translateX(' + (-currentIndex * 100) + '%)'}">
+      <img
+        *ngFor="let image of images; let i = index"
+        [src]="image"
+        [ngStyle]="{ transform: 'translateX(' + -currentIndex * 100 + '%)' }"
+      />
     </div>
     <button class="arrow next" (click)="nextImage()">&#10095;</button>
   </div>
-  
 
   <div class="footer">
     <div class="footer-section contact-info">

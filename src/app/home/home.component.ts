@@ -5,15 +5,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   validateForm!: FormGroup;
   locations = ['Pollachi', 'Coimbatore', 'Karur', 'Dindigul'];
   images = [
-    'assets/img1.jpeg',
+    // 'assets/img1.jpeg',
     'assets/img2.jpeg',
-    'assets/img3.jpeg',
+    // 'assets/img3.jpeg',
     'assets/img4.jpeg',
     // 'assets/img5.jpeg',
     // 'assets/img6.jpeg',
@@ -31,8 +31,11 @@ export class HomeComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phoneno: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       location: ['', Validators.required],
-      landAreaInput: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      requirement: ['']
+      landAreaInput: [
+        '',
+        [Validators.required, Validators.pattern('^[0-9]*$')],
+      ],
+      requirement: [''],
     });
   }
 
@@ -60,6 +63,7 @@ export class HomeComponent implements OnInit {
   }
 
   prevImage() {
-    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    this.currentIndex =
+      (this.currentIndex - 1 + this.images.length) % this.images.length;
   }
 }

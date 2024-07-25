@@ -1,6 +1,6 @@
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <div class="header">
   <div class="logo">
@@ -191,7 +191,9 @@
 
       <nz-form-item>
         <nz-form-control>
-          <button nz-button nzType="primary" type="submit">Submit</button>
+          <div class="button-container">
+            <button nz-button nzType="primary" type="submit">Submit</button>
+          </div>
         </nz-form-control>
       </nz-form-item>
     </form>
@@ -253,13 +255,14 @@
   <div class="carousel">
     <button class="arrow prev" (click)="prevImage()">&#10094;</button>
     <div class="carousel-images">
-      <img *ngFor="let image of images; let i = index" 
-           [src]="image" 
-           [ngStyle]="{'transform': 'translateX(' + (-currentIndex * 100) + '%)'}">
+      <img
+        *ngFor="let image of images; let i = index"
+        [src]="image"
+        [ngStyle]="{ transform: 'translateX(' + -currentIndex * 100 + '%)' }"
+      />
     </div>
     <button class="arrow next" (click)="nextImage()">&#10095;</button>
   </div>
-  
 
   <div class="footer">
     <div class="footer-section contact-info">

@@ -26,6 +26,11 @@ import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select'; // Import NzSelectModule
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 
 registerLocaleData(en);
@@ -64,7 +69,13 @@ const routes: Routes = [
     NzFormModule,
     NzIconModule,
     NzSelectModule,
-    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
+    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }),
+    NzCardModule,
+    NzAvatarModule,
+    
+    NzGridModule,
+    NzTypographyModule
+  
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

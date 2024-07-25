@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   validateForm!: FormGroup;
   locations = ['Pollachi', 'Coimbatore', 'Karur', 'Dindigul'];
   images = [
-    'assets/img1.jpeg',
+    // 'assets/img1.jpeg',
     'assets/img2.jpeg',
     // 'assets/img3.jpeg',
     'assets/img4.jpeg',

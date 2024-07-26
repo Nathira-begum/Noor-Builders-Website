@@ -29,8 +29,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select'; // Import NzSelectModule
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzGridModule } from 'ng-zorro-antd/grid';
-
-import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzTypographyModule } from 'ng-zorro-antd/typography'
 
 
 registerLocaleData(en);
@@ -72,9 +71,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }),
     NzCardModule,
     NzAvatarModule,
-    
     NzGridModule,
     NzTypographyModule
+    
   
   ],
   providers: [

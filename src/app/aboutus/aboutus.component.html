@@ -114,5 +114,24 @@
       />
     </div>
   </div>
-  
 </div>
+
+<div class="services-container">
+  <div class="service-item">
+    <h1>Our Services</h1>
+  </div>
+  <nz-row [nzGutter]="16" nzjustify="center">
+    <nz-col nzSpan="6" *ngFor="let service of services" @zoomIn>
+      <nz-card>
+        <nz-card-meta [nzTitle]="service.title" >
+          <ng-template #nzCardTitle>
+            <i nz-icon [nzType]="service.icon" nzTheme="outline"></i>
+            {{ service.title }}
+          </ng-template>
+        </nz-card-meta>
+      </nz-card>
+    </nz-col>
+  </nz-row>
+</div>
+
+<router-outlet></router-outlet>

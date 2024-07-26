@@ -42,4 +42,15 @@ import {
   ],
 })
 export class AboutusComponent {
+  
+  services = [
+    { title: 'Architectural Plan', description: '', icon: 'profile' },
+    { title: 'Elevation', description: '', icon: 'check-circle' },
+    { title: 'Blue Print', description: '', icon: 'check-circle' },
+    { title: 'structural Design', description: '', icon: 'solution' },
+    { title: 'Estimation', description: '', icon: 'file-text' },
+    { title: 'Construction', description: '', icon: 'bank' },
+    { title: 'Renovation', description: '', icon: 'home' },
+    { title: 'Interior Work', description: '', icon: 'team' }
+  ];
 }

@@ -62,3 +62,49 @@ h3 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
+.services-container {
+  padding: 24px;
+  background: #92afdb;
+  margin-top: 20px;
+}
+.service-item{
+  padding:20px;
+  color: #1c1c1c;
+  text-align: center;
+  
+}
+
+  
+
+nz-card {
+  text-align: center;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s,box-shadow 0.3s;
+  
+}
+nz-card:hover {
+  transform: scale(1.05);
+}
+nz-card-meta {
+  margin-top: 16px;
+}
+nz-img {
+  font-size: 24px;
+}
+.no-border {
+  border: none !important;
+  box-shadow: none;
+}
+
+.no-border .ant-card {
+  border: none !important;
+  box-shadow: none;
+}
+
+.no-border .ant-card-body {
+  border: none !important;
+  box-shadow: none;
+}

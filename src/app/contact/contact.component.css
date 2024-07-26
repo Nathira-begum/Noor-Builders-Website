@@ -1,0 +1,108 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #1c1c1c;
+    color: white;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .logo img {
+    width: 50px; /* Set the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px;
+  }
+  
+  .required {
+    color: red; /* Change the color of the asterisk */
+    margin-left: 2px; /* Add some space between the label text and the asterisk */
+  }
+  
+  .nav a {
+    margin: 0 3px;
+    margin-left: 30px;
+    color: white;
+  }
+  
+  label {
+    color: rgb(251, 249, 249); /* Change label color to black */
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .map-container {
+    flex: 1 1 45%;
+  }
+  
+  .contact-form {
+    flex: 1 1 45%;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn[disabled] {
+    background-color: #c0c0c0;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+  
+  .contact-info {
+    margin-top: 20px;
+  }
+  

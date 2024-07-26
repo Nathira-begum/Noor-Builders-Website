@@ -108,6 +108,9 @@ label {
 .hero button {
   background: #ff851b;
   border-color: #ff851b;
+  font-size: 15px;
+  padding: 5px 8px;
+  color: white;
 }
 
 .form {

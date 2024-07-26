@@ -41,4 +41,5 @@ import {
     ]),
   ],
 })
-export class AboutusComponent {}
+export class AboutusComponent {
+}

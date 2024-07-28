@@ -53,11 +53,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  reloadHomePage(event: Event): void {
-    event.preventDefault();
-    this.router.navigateByUrl('/');
-  }
-
   nextImage() {
     this.currentIndex = (this.currentIndex + 1) % this.images.length;
   }

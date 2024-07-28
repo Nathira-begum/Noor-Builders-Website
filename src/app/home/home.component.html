@@ -11,9 +11,7 @@
   <!-- <h3 style="font-size: 30px; color: white;margin-left: 0px;">NOOR BUILDERS AND ASSOCIATES</h3> -->
   <!-- </div> -->
   <div class="nav">
-    <a nz-button nzType="link" routerLink="/" (click)="reloadHomePage($event)"
-      >Home</a
-    >
+    <a nz-button nzType="link" href="">Home</a>
     <a nz-button nzType="link" routerLink="/about-us">About Us</a>
     <!-- <a nz-button nzType="link" routerLink="">Joint Venture</a> -->
     <a nz-button nzType="link" routerLink="/services">Services</a>
@@ -29,7 +27,9 @@
     <!-- <h2 style="font-size: 30px;align-content: center;padding:0px;margin-right: 50px;">We are one of the leading constructors</h2> -->
     <h1>Do you believe in magic? Let’s make it happen!</h1>
 
-    <button nz-button nzType="primary">Get Free Quote</button>
+    <button nz-button nzType="link" routerLink="/getfreequote">
+      Get Free Quote
+    </button>
   </div>
   <div class="form">
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
@@ -297,7 +297,7 @@
     <div class="footer-section navigation-links">
       <h3>Navigation Links</h3>
       <ul>
-        <li><a href="/home">Home</a></li>
+        <li><a href="">Home</a></li>
         <li><a href="/about-us">About Us</a></li>
         <li><a href="/career">Career</a></li>
         <li><a href="/la-cost-calculator">LA Cost Calculator</a></li>

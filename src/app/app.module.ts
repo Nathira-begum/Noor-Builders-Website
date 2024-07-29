@@ -25,12 +25,8 @@ import { CareersComponent } from './careers/careers.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzSelectModule } from 'ng-zorro-antd/select'; // Import NzSelectModule
-import { NzCardModule } from 'ng-zorro-antd/card';
-import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { NzGridModule } from 'ng-zorro-antd/grid';
-import { NzTypographyModule } from 'ng-zorro-antd/typography'
-
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { GetFreeQuoteComponent } from './get-free-quote/get-free-quote.component'; // Import NzSelectModule
 
 registerLocaleData(en);
 
@@ -42,7 +38,7 @@ const routes: Routes = [
   { path: 'careers', component: CareersComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
-
+  { path: 'getfreequote', component: GetFreeQuoteComponent },
 ];
 
 @NgModule({
@@ -55,6 +51,7 @@ const routes: Routes = [
     CareersComponent,
     BlogComponent,
     ContactComponent,
+    GetFreeQuoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,16 +66,8 @@ const routes: Routes = [
     NzIconModule,
     NzSelectModule,
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }),
-    NzCardModule,
-    NzAvatarModule,
-    NzGridModule,
-    NzTypographyModule
-    
-  
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: en_US }
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,84 +1,178 @@
-<div class="header">
-    <div class="logo">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
         <img src="assets/logo.jpeg" alt="Logo" />
         <span>NOOR BUILDERS AND ASSOCIATES</span>
       </div>
-  
-  <div class="nav">
-    <a nz-button nzType="link" href="">Home</a>
-    <a nz-button nzType="link" routerLink="/about-us">About Us</a>
-    <!-- <a nz-button nzType="link" routerLink="">Joint Venture</a> -->
-    <a nz-button nzType="link" routerLink="/services">Services</a>
-    <a nz-button nzType="link" routerLink="/projects">Projects</a>
-    <!-- <a nz-button nzType="link" routerLink="/careers">Careers</a> -->
-    <!-- <a nz-button nzType="link" routerLink="/blog">Blog</a> -->
-    <a nz-button nzType="link" routerLink="/contact">Contact</a>
-  </div>
-  
-</div>
+      <div class="nav">
+        <a nz-button nzType="link" href="">Home</a>
+        <a nz-button nzType="link" routerLink="/about-us">About Us</a>
+        <a nz-button nzType="link" routerLink="/services">Services</a>
+        <a nz-button nzType="link" routerLink="/projects">Projects</a>
+        <a nz-button nzType="link" routerLink="/contact">Contact</a>
+      </div>
+    </div>
 
-  
-<div class="contact-container">
+    <div class="header-image">
+      <img src="assets/bg3.jpeg" alt="Header Image" />
+    </div>
+
+    <div class="contact-form">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="firstName"
+            >First Name <span class="required">*</span></label
+          >
+          <input
+            id="firstName"
+            formControlName="firstName"
+            type="text"
+            class="form-control"
+          />
+          <div
+            *ngIf="
+              contactForm.get('firstName')!.invalid &&
+              contactForm.get('firstName')!.touched
+            "
+          >
+            <small class="error">First name is required.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName"
+            >Last Name <span class="required">*</span></label
+          >
+          <input
+            id="lastName"
+            formControlName="lastName"
+            type="text"
+            class="form-control"
+          />
+          <div
+            *ngIf="
+              contactForm.get('lastName')!.invalid &&
+              contactForm.get('lastName')!.touched
+            "
+          >
+            <small class="error">Last name is required.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email"
+            >Email Address <span class="required">*</span></label
+          >
+          <input
+            id="email"
+            formControlName="email"
+            type="email"
+            class="form-control"
+          />
+          <div
+            *ngIf="
+              contactForm.get('email')!.invalid &&
+              contactForm.get('email')!.touched
+            "
+          >
+            <small class="error">Valid email is required.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject <span class="required">*</span></label>
+          <input
+            id="subject"
+            formControlName="subject"
+            type="text"
+            class="form-control"
+          />
+          <div
+            *ngIf="
+              contactForm.get('subject')!.invalid &&
+              contactForm.get('subject')!.touched
+            "
+          >
+            <small class="error">Subject is required.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message <span class="required">*</span></label>
+          <textarea
+            id="message"
+            formControlName="message"
+            class="form-control"
+          ></textarea>
+          <div
+            *ngIf="
+              contactForm.get('message')!.invalid &&
+              contactForm.get('message')!.touched
+            "
+          >
+            <small class="error">Message is required.</small>
+          </div>
+        </div>
+        <button type="submit" class="btn" [disabled]="contactForm.invalid">
+          SUBMIT
+        </button>
+      </form>
+    </div>
+
     <div class="map-container">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.6117875283545!2d-117.16862078480053!3d32.72570068099252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9530a92e4a05f%3A0x5027ff9a1a0ac13c!2sHarper%20Construction%20Company%2C%20Inc.!5e0!3m2!1sen!2sus!4v1594267323171!5m2!1sen!2sus"
         width="600"
         height="450"
-        style="border:0;"
+        style="border: 0"
         allowfullscreen=""
         loading="lazy"
       ></iframe>
     </div>
-    <div class="contact-form">
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="firstName">First Name (required)</label>
-          <input id="firstName" formControlName="firstName" type="text" class="form-control" />
-          <div *ngIf="contactForm.get('firstName')!.invalid && contactForm.get('firstName')!.touched">
-            <small class="error">First name is required.</small>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="lastName">Last Name (required)</label>
-          <input id="lastName" formControlName="lastName" type="text" class="form-control" />
-          <div *ngIf="contactForm.get('lastName')!.invalid && contactForm.get('lastName')!.touched">
-            <small class="error">Last name is required.</small>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address (required)</label>
-          <input id="email" formControlName="email" type="email" class="form-control" />
-          <div *ngIf="contactForm.get('email')!.invalid && contactForm.get('email')!.touched">
-            <small class="error">Valid email is required.</small>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject (required)</label>
-          <input id="subject" formControlName="subject" type="text" class="form-control" />
-          <div *ngIf="contactForm.get('subject')!.invalid && contactForm.get('subject')!.touched">
-            <small class="error">Subject is required.</small>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="message">Message (required)</label>
-          <textarea id="message" formControlName="message" class="form-control"></textarea>
-          <div *ngIf="contactForm.get('message')!.invalid && contactForm.get('message')!.touched">
-            <small class="error">Message is required.</small>
-          </div>
-        </div>
-        <button type="submit" class="btn" [disabled]="contactForm.invalid">SUBMIT</button>
-      </form>
+
+    <div class="footer">
+      <div class="footer-section contact-info">
+        <h3>For Enquiries</h3>
+        <span
+          nz-icon
+          nzType="phone"
+          nzTheme="outline"
+          style="margin-right: 10px"
+        ></span>
+        <span>+91 83441 94892</span>
+        <p>+91 85080 56990</p>
+        <span
+          nz-icon
+          nzType="mail"
+          nzTheme="outline"
+          style="margin-right: 10px"
+        ></span>
+        <span
+          ><a href="mailto:najilabanu2002@gmail.com"
+            >najilabanu2002@gmail.com</a
+          ></span
+        >
+      </div>
+      <div class="footer-section social-media">
+        <h3>Follow Us</h3>
+        <span nz-icon nzType="facebook" nzTheme="outline"></span>
+        <span nz-icon nzType="instagram" nzTheme="outline"></span>
+        <span nz-icon nzType="youtube" nzTheme="outline"></span>
+        <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+      </div>
+      <div class="footer-section navigation-links">
+        <h3>Navigation Links</h3>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/career">Career</a></li>
+          <li><a href="/la-cost-calculator">LA Cost Calculator</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="contact-info">
-      <p>Harper Construction Company, Inc.</p>
-      <p>2241 Kettner Blvd. Suite 300</p>
-      <p>San Diego, CA 92101-1769</p>
-      <p>(619) 233-7900</p>
-    </div>
-  </div>
-  
-  
-  <div class="footer">
-    <p>&copy; 2024 Harper Construction Company, Inc. All rights reserved.</p>
-  </div>
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  </body>
+</html>

@@ -75,7 +75,7 @@ label {
 
 .metric-item i {
   font-size: 40px;
-  color: rgb(233, 138, 97);
+  color: #ff851b;
   margin-bottom: 10px;
 }
 
@@ -155,7 +155,7 @@ label {
 }
 
 .form button:hover {
-  background: #e07413;
+  background: #eca3647e;
 }
 
 .error {
@@ -220,6 +220,35 @@ img:hover {
   right: 10px;
 }
 
+.vendors-section {
+  padding: 40px 20px;
+  background-color: rgb(
+    250,
+    241,
+    241
+  ); /* Light background for the vendors section */
+  text-align: center; /* Center the text and content */
+}
+
+.vendors-section h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #ff851b; /* Dark color for the title */
+}
+
+.vendors-list {
+  display: flex;
+  justify-content: center; /* Center the vendor logos */
+  flex-wrap: wrap; /* Allow the logos to wrap to the next line if necessary */
+  gap: 130px; /* Space between logos */
+}
+
+.vendor-logo {
+  width: 100px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
 .footer {
   padding: 20px;
   background: #1c1c1c;

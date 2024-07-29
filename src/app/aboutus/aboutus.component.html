@@ -1,2 +1,163 @@
-<p>aboutus works!kkkk</p>
-<p>hi najila</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<div class="header">
+  <div class="logo">
+    <img src="assets/logo.jpeg" alt="Logo" />
+    <span>NOOR BUILDERS AND ASSOCIATES</span>
+  </div>
+  <div class="nav">
+    <a nz-button nzType="link" routerLink="/">Home</a>
+    <a nz-button nzType="link" routerLink="/about-us">About Us</a>
+    <!-- <a nz-button nzType="link" routerLink="">Joint Venture</a> -->
+    <a nz-button nzType="link" routerLink="/services">Services</a>
+    <a nz-button nzType="link" routerLink="/projects">Projects</a>
+    <!-- <a nz-button nzType="link" routerLink="/careers">Careers</a> -->
+    <!-- <a nz-button nzType="link" routerLink="/blog">Blog</a> -->
+    <a nz-button nzType="link" routerLink="/contact">Contact</a>
+  </div>
+</div>
+
+<div class="background-section">
+  <div>Are You Excited To Know About Us?</div>
+</div>
+
+<div class="about-us-container">
+  <!-- <nz-card> -->
+  <div @slideIn class="about-us-content">
+    <div nz-row nzJustify="center">
+      <div nz-col nzSpan="14">
+        <!-- <h1>Who We Are?</h1> -->
+        <h2>
+          <strong
+            >Noor Builders is a Civil & Interior Contractors Company since
+            2017.</strong
+          >
+        </h2>
+        <marquee bgcolor="yellow" loop="-1" scrollamount="5" width="100%"
+          ><b
+            >We Committed for Quality. Trust Noor Builders for Reliable and
+            Quality Construction Services!</b
+          ></marquee
+        >
+        <h3>
+          We are a leading construction company since 2017. We have made a
+          significant mark in the industry with our commitment to quality,
+          innovation, and customer satisfaction. Founded with the goal of
+          providing exceptional construction solutions, we grew steadily over
+          the years. We successfully completed numerous high-profile projects
+          across Dindigul and beyond. We built a reputation for delivering
+          projects on time and within budget while maintaining the highest
+          standards of quality and safety. Our extensive experience and
+          expertise in the construction sector earned us a loyal client base and
+          numerous accolades. We prioritized customer satisfaction by providing
+          personalized services and maintaining transparent communication
+          throughout the project lifecycle. Whether it's building a dream home
+          or a commercial landmark, we delivered with precision and care,
+          ensuring every project was a testament to our expertise and
+          dedication.
+        </h3>
+      </div>
+      <div nz-col nzSpan="10">
+        <img
+          src="assets/ab2.jpeg"
+          alt="Construction Image"
+          class="about-us-image"
+        />
+      </div>
+    </div>
+  </div>
+  <!-- </nz-card> -->
+</div>
+
+<!-- 
+    <nz-card> -->
+<div @slideInDown class="mission-content">
+  <div nz-row nzJustify="start" nzAlign="middle">
+    <div nz-col nzSpan="10">
+      <img
+        src="assets/mission2.gif"
+        alt="Construction Image"
+        class="mission-image"
+      />
+    </div>
+    <div nz-col nzSpan="12">
+      <h1 style="text-align: center">Our Mission</h1>
+
+      <h3>
+        At Noor Builders our mission is to deliver outstanding construction
+        solutions by harnessing expertise, technology, and a customer-centric
+        approach. At Noor Builders, our commitment to transparency and open
+        communication drives our approach. We prioritize keeping our clients
+        informed and involved every step of the way, ensuring a seamless and
+        collaborative project experience.
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div @slideInDown class="vision-content">
+  <div nz-row nzJustify="center" nzAlign="middle">
+    <div nz-col nzSpan="10">
+      <h1 style="text-align: center">Our Vision</h1>
+
+      <h3>
+        Our vision at Noor Builders is to be the leading construction company in
+        Tamil Nadu, recognized for our dedication to excellence, sustainability,
+        and customer satisfaction. We strive to set new standards in the
+        industry by embracing cutting-edge technologies and practices, building
+        not just structures but communities that thrive for generations to come.
+        We aspire to be a pioneer in the industry, continually enhancing our
+        services and adopting sustainable practices to build a better, more
+        resilient future for our community.
+      </h3>
+    </div>
+    <div nz-col nzSpan="12">
+      <img
+        src="assets/vision.jpeg"
+        alt="Construction Image"
+        class="mission-image"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="choose-section">
+  <h1>Why Choose Us?</h1>
+  <nz-row [nzGutter]="16" nzJustify="center">
+    <nz-col nzSpan="6" *ngFor="let choose of services">
+      <div class="choose-card">
+        <i
+          nz-icon
+          [nzType]="choose.icon"
+          class="choose-icon"
+          nzTheme="outline"
+        ></i>
+        <div class="choose-title">{{ choose.title }}</div>
+        <div class="choose-description">{{ choose.description }}</div>
+      </div>
+    </nz-col>
+  </nz-row>
+</div>
+
+<div class="background-section">
+  <div class="services-section">
+    <h2 class="section-title">Our Services</h2>
+    <nz-row [nzGutter]="16" nzJustify="center">
+      <nz-col nzSpan="7" *ngFor="let service of ser">
+        <nz-card class="service-card">
+          <img
+            [src]="service.img"
+            alt="{{ service.title }}"
+            class="service-img"
+          />
+          <div class="service-title">{{ service.title }}</div>
+          <div class="service-description">{{ service.description }}</div>
+        </nz-card>
+      </nz-col>
+    </nz-row>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -24,12 +24,13 @@ import { ProjectsComponent } from './projects/projects.component';
 import { CareersComponent } from './careers/careers.component';
 import { BlogComponent } from './blog/blog.component';
 import { ContactComponent } from './contact/contact.component';
-import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+// import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select'; // Import NzSelectModule
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { LaCostCalculatorComponent } from './la-cost-calculator/la-cost-calculator.component';
 
 registerLocaleData(en);
 
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'careers', component: CareersComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'lacostcalculator', component: LaCostCalculatorComponent}
 ];
 
 @NgModule({
@@ -53,6 +55,7 @@ const routes: Routes = [
     CareersComponent,
     BlogComponent,
     ContactComponent,
+    LaCostCalculatorComponent,
   ],
   imports: [
     BrowserModule,

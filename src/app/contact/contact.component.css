@@ -18,7 +18,7 @@
 }
 
 .required {
-  color: #ff851b; /* Change the color of the asterisk */
+  color: #ff2a1b; /* Change the color of the asterisk */
   margin-left: 2px; /* Add some space between the label text and the asterisk */
 }
 
@@ -246,6 +246,18 @@
   background: #ff851b;
 }
 
+input.ng-touched.ng-invalid,
+select.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
 /* Right: Map / Info */
 .map-area {
   flex: 1;
@@ -278,6 +290,37 @@
   margin: 5px 0;
 }
 
+/* ✅ Fix checkbox alignment */
+.terms {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  gap: 8px; /* spacing between checkbox and text */
+}
+
+.terms input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #ff851b; /* matches your theme color */
+  margin: 0; /* remove extra default spacing */
+  position: relative;
+  top: 0.5px; /* subtle visual adjustment for perfect vertical alignment */
+}
+
+.terms a {
+  color: #ff851b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+
+
+
 .footer {
   padding: 20px;
   background: #1c1c1c;
@@ -288,9 +331,34 @@
   text-align: left;
 }
 
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* center horizontally */
+  text-align: center;
+}
+
+.footer-logo-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.footer-logo h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffd700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+
 .footer-section {
   flex: 1;
-  min-width: 200px;
+  min-width: 100px;
   margin: 10px;
 }
 

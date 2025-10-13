@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -7,37 +7,47 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   validateForm!: FormGroup;
   locations = ['Pollachi', 'Coimbatore', 'Karur', 'Dindigul'];
   images = [
-    // 'assets/img1.jpeg',
     'assets/img2.jpeg',
-    // 'assets/img3.jpeg',
     'assets/img4.jpeg',
-    // 'assets/img5.jpeg',
-    // 'assets/img6.jpeg',
     'assets/img7.jpeg',
     'assets/img8.jpeg',
-    // 'assets/img9.jpeg',
   ];
   currentIndex = 0;
 
   constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
+    // ✅ Initialize form
     this.validateForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       email: ['', [Validators.required, Validators.email]],
       phoneno: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       location: ['', Validators.required],
-      landAreaInput: [
-        '',
-        [Validators.required, Validators.pattern('^[0-9]*$')],
-      ],
+      landAreaInput: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       requirement: [''],
     });
   }
+
+  // ✅ Gallery animation logic
+  ngAfterViewInit() {
+  const items = document.querySelectorAll('.gallery-item');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  items.forEach((item) => observer.observe(item));
+}
+
 
   submitForm(): void {
     if (this.validateForm.valid) {

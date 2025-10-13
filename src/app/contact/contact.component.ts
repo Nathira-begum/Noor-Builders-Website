@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
+  isSubmitting = false; // 👈 Track loading state
+  messageStatus: 'success' | 'error' | null = null; // 👈 For showing message
 
   constructor(private fb: FormBuilder) {}
 
@@ -16,16 +18,41 @@ export class ContactComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required]
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      service: ['', Validators.required],
+      message: ['', Validators.required],
+      terms: [false, Validators.requiredTrue]
     });
   }
 
   onSubmit(): void {
     if (this.contactForm.valid) {
-      console.log('Form Submitted', this.contactForm.value);
-      alert('Thank you for contacting us! We will get back to you shortly.');
-      this.contactForm.reset();
+      this.isSubmitting = true;
+
+      fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.contactForm.value)
+      })
+      .then(res => res.json())
+      .then(data => {
+        this.messageStatus = 'success';
+        alert("✅ Message sent successfully!");
+        this.contactForm.reset({
+          service: '' // Reset dropdown to "Select a service"
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        this.messageStatus = 'error';
+        alert("❌ Failed to send message.");
+      })
+      .finally(() => {
+        this.isSubmitting = false;
+      });
+
+    } else {
+      this.contactForm.markAllAsTouched(); // Highlight invalid fields
     }
   }
 }

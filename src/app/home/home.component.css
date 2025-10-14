@@ -43,7 +43,7 @@ label {
 }
 
 .items {
-  background-color: rgb(250, 241, 241);
+  background-color: rgba(235, 90, 43, 0.2);
 }
 .metrics-container {
   display: flex;
@@ -220,6 +220,21 @@ img:hover {
   right: 10px;
 }
 
+.projects-section {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.projects-title {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: 2rem;
+  font-weight: bold; /* semi-bold look */
+  color: #0f0f0f;
+  letter-spacing: 0.3px;
+  margin-bottom: 20px;
+}
+
 .vendors-section {
   padding: 40px 20px;
   background-color: rgb(
@@ -231,9 +246,12 @@ img:hover {
 }
 
 .vendors-section h2 {
-  font-size: 40px;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: 2rem;
+  font-weight: bold; /* semi-bold look */
+  color: #0f0f0f;
+  letter-spacing: 0.3px;
   margin-bottom: 20px;
-  color: #ff851b; /* Dark color for the title */
 }
 
 .vendors-list {
@@ -262,7 +280,7 @@ img:hover {
 .footer-logo {
   display: flex;
   flex-direction: column;
-  align-items: center;       /* center horizontally */
+  align-items: center; /* center horizontally */
   text-align: center;
 }
 
@@ -282,7 +300,6 @@ img:hover {
   letter-spacing: 0.5px;
   line-height: 1.2;
 }
-
 
 .footer-section {
   flex: 1;

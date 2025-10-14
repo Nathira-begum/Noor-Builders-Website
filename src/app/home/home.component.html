@@ -1,4 +1,3 @@
-
 <div class="header">
   <div class="logo">
     <img src="assets/logo.jpeg" alt="Logo" />
@@ -28,7 +27,7 @@
       Get Free Quote
     </button>
   </div>
-  <!-- <div class="form">
+  <div class="form">
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-control>
@@ -194,7 +193,8 @@
         </nz-form-control>
       </nz-form-item>
     </form>
-  </div> -->
+  </div>
+  -->
 </div>
 <!-- Animated Image Section -->
 <div class="animated-gallery">
@@ -220,8 +220,6 @@
     </div>
   </div>
 </div>
-
-
 
 <!-- <div class="page">
   <span nz-icon nzType="build" nzTheme="outline" style="color: rgb(93, 95, 95);"></span>
@@ -268,72 +266,76 @@
     </div>
   </div>
 
-  <div class="carousel">
-    <button class="arrow prev" (click)="prevImage()">&#10094;</button>
-    <div class="carousel-images">
-      <img
-        *ngFor="let image of images; let i = index"
-        [src]="image"
-        [ngStyle]="{ transform: 'translateX(' + -currentIndex * 100 + '%)' }"
-      />
-    </div>
-    <button class="arrow next" (click)="nextImage()">&#10095;</button>
-  </div>
+  <div class="projects-section">
+    <h2 class="projects-title">Our Projects</h2>
 
-  <div class="vendors-section">
-    <h2>Our Vendors</h2>
-    <div class="vendors-list">
-      <img src="assets/parryware.jpeg" alt="Vendor 1" class="vendor-logo" />
-      <img src="assets/nippon.jpeg" alt="Vendor 2" class="vendor-logo" />
-      <img src="assets/kajaria.jpeg" alt="Vendor 3" class="vendor-logo" />
-      <img src="assets/ramco.jpeg" alt="Vendor 4" class="vendor-logo" />
+    <div class="carousel">
+      <button class="arrow prev" (click)="prevImage()">&#10094;</button>
+      <div class="carousel-images">
+        <img
+          *ngFor="let image of images; let i = index"
+          [src]="image"
+          [ngStyle]="{ transform: 'translateX(' + -currentIndex * 100 + '%)' }"
+        />
+      </div>
+      <button class="arrow next" (click)="nextImage()">&#10095;</button>
     </div>
-  </div>
 
-  <div class="footer">
-     <div class="footer-section footer-logo">
-    <img src="assets/logo.jpeg" alt="Noor Builders Logo" class="footer-logo-img" />
-    <h3>NOOR BUILDERS AND ASSOCIATES</h3>
-  </div>
-    <div class="footer-section contact-info">
-      <h3>For Enquiries</h3>
-      <span
-        nz-icon
-        nzType="phone"
-        nzTheme="outline"
-        style="margin-right: 10px"
-      ></span>
-      <span>+91 83441 94892</span>
-      <p>+91 85080 56990</p>
-      <span
-        nz-icon
-        nzType="mail"
-        nzTheme="outline"
-        style="margin-right: 10px"
-      ></span>
-      <span
-        ><a href="mailto:abc@gmail.com"
-          >abc@gmail.com</a
-        ></span
-      >
+    <div class="vendors-section">
+      <h2>Our Vendors</h2>
+      <div class="vendors-list">
+        <img src="assets/parryware.jpeg" alt="Vendor 1" class="vendor-logo" />
+        <img src="assets/nippon.jpeg" alt="Vendor 2" class="vendor-logo" />
+        <img src="assets/kajaria.jpeg" alt="Vendor 3" class="vendor-logo" />
+        <img src="assets/ramco.jpeg" alt="Vendor 4" class="vendor-logo" />
+      </div>
     </div>
-    <div class="footer-section social-media">
-      <h3>Follow Us</h3>
-      <span nz-icon nzType="facebook" nzTheme="outline"></span>
-      <span nz-icon nzType="instagram" nzTheme="outline"></span>
-      <span nz-icon nzType="youtube" nzTheme="outline"></span>
-      <span nz-icon nzType="linkedin" nzTheme="outline"></span>
-    </div>
-    <div class="footer-section navigation-links">
-      <h3>Navigation Links</h3>
-      <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/career">Career</a></li>
-        <li><a href="/lacostcalculator">LA Cost Calculator</a></li>
-      </ul>
-    </div>
-  </div>
 
-  <router-outlet></router-outlet>
+    <div class="footer">
+      <div class="footer-section footer-logo">
+        <img
+          src="assets/logo.jpeg"
+          alt="Noor Builders Logo"
+          class="footer-logo-img"
+        />
+        <h3>NOOR BUILDERS AND ASSOCIATES</h3>
+      </div>
+      <div class="footer-section contact-info">
+        <h3>For Enquiries</h3>
+        <span
+          nz-icon
+          nzType="phone"
+          nzTheme="outline"
+          style="margin-right: 10px"
+        ></span>
+        <span>+91 83441 94892</span>
+        <p>+91 85080 56990</p>
+        <span
+          nz-icon
+          nzType="mail"
+          nzTheme="outline"
+          style="margin-right: 10px"
+        ></span>
+        <span><a href="mailto:abc@gmail.com">abc@gmail.com</a></span>
+      </div>
+      <div class="footer-section social-media">
+        <h3>Follow Us</h3>
+        <span nz-icon nzType="facebook" nzTheme="outline"></span>
+        <span nz-icon nzType="instagram" nzTheme="outline"></span>
+        <span nz-icon nzType="youtube" nzTheme="outline"></span>
+        <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+      </div>
+      <div class="footer-section navigation-links">
+        <h3>Navigation Links</h3>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/career">Career</a></li>
+          <li><a href="/lacostcalculator">LA Cost Calculator</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
 </div>

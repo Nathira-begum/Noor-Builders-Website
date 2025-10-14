@@ -1,95 +1,249 @@
+<!-- Header (sticky so it never disappears) -->
 <div class="header">
   <div class="logo">
     <img src="assets/logo.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
-  <!-- <div> -->
-  <!-- <h3 style="font-size: 30px; color: white;margin-left: 0px;">NOOR BUILDERS AND ASSOCIATES</h3> -->
-  <!-- </div> -->
-  <div class="nav">
+
+  <nav class="nav">
     <a nz-button nzType="link" href="">Home</a>
     <a nz-button nzType="link" routerLink="/about-us">About Us</a>
-    <!-- <a nz-button nzType="link" routerLink="">Joint Venture</a> -->
     <a nz-button nzType="link" routerLink="/services">Services</a>
     <a nz-button nzType="link" routerLink="/projects">Projects</a>
-    <!-- <a nz-button nzType="link" routerLink="/careers">Careers</a> -->
-    <!-- <a nz-button nzType="link" routerLink="/blog">Blog</a> -->
     <a nz-button nzType="link" routerLink="/contact">Contact</a>
+  </nav>
+</div>
+
+<!-- Hero Slideshow Section -->
+<div class="hero-slideshow">
+  <div class="slide" style="background-image: url('assets/h1.jpeg')"></div>
+  <div class="slide" style="background-image: url('assets/h2.jpeg')"></div>
+  <div class="slide" style="background-image: url('assets/h3.jpeg')"></div>
+  <div class="slide" style="background-image: url('assets/h5.jpeg')"></div>
+</div>
+
+<!-- Calculator -->
+<div class="calculator-wrapper">
+  <div class="cost-calculator">
+    <h2>
+      Home Construction Cost Calculator – Total Cost and Phase wise break down
+      of the Home Building Project
+    </h2>
+
+    <div class="input-section">
+      <div class="form-row">
+        <!-- Select State (keeps placeholder) -->
+        <div class="form-group">
+          <label for="stateSelect">Select State</label>
+          <select id="stateSelect" [(ngModel)]="selectedState">
+            <option value="" disabled selected>Select State</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Karnataka">Karnataka</option>
+          </select>
+        </div>
+
+        <!-- Select City (keeps placeholder) -->
+        <div class="form-group">
+          <label for="citySelectCalc">Select City</label>
+          <select id="citySelectCalc" [(ngModel)]="selectedCityCalc">
+            <option value="" disabled selected>Select City</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Dindigul">Dindigul</option>
+            <option value="Delhi NCR">Delhi NCR</option>
+          </select>
+        </div>
+
+        <!-- Area -->
+        <div class="form-group area-group">
+          <label for="areaInput">Area</label>
+          <input
+            id="areaInput"
+            type="number"
+            [(ngModel)]="area"
+            placeholder="Enter Area"
+          />
+        </div>
+
+        <!-- Units (radio) -->
+        <div class="unit-select" role="radiogroup" aria-label="Units">
+          <label class="unit-label">
+            <input type="radio" name="unit" [(ngModel)]="unit" value="sqft" />
+            <span>Sq. Feet</span>
+          </label>
+          <label class="unit-label">
+            <input type="radio" name="unit" [(ngModel)]="unit" value="sqm" />
+            <span>Sq. Meter</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-row-actions">
+        <button class="next-btn" (click)="handleButtonClick()">
+          {{ showResults ? "Reset" : "Next →" }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div *ngIf="showResults" class="results-section">
+      <h3>Total Estimated Cost (INR)</h3>
+      <canvas id="costPieChart"></canvas>
+
+      <h3>Timeline Tracking: Cost per Phase (INR %)</h3>
+      <canvas id="timelineChart"></canvas>
+
+      <h3>Cost by Resource Allocation</h3>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Resource</th>
+            <th>Quantity</th>
+            <th>Quality</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of costData">
+            <td>{{ item.resource }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.quality }}</td>
+            <td>₹{{ item.amount | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
- <div class="calculator-wrapper">
-    <div class="calculator-background"></div>
-<div class="calculator-container">
-  <h2>Loan Amount Cost Calculator</h2>
+<!-- Construction Packages Section -->
+<div class="packages-section">
+  <h2>Our Construction Packages</h2>
 
-  <div class="form-group">
-    <label>Loan Amount (₹):</label>
-    <input type="number" [(ngModel)]="loanAmount" placeholder="Enter Loan Amount">
+  <div class="location">
+    <span class="location-icon">
+      <!-- SVG pin -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="#eb8816"
+      >
+        <path
+          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+        />
+      </svg>
+    </span>
+
+    <!-- Styled select + arrow: default value set in TS to 'chennai' -->
+    <div class="location-dropdown">
+      <select
+        id="citySelect"
+        class="city-select"
+        [(ngModel)]="selectedCity"
+        (change)="updateRates($event)"
+      >
+        <option value="" disabled selected>Select City</option>
+        <option value="chennai">Chennai</option>
+        <option value="bangalore">Bangalore</option>
+        <option value="hyderabad">Hyderabad</option>
+        <option value="coimbatore">Coimbatore</option>
+      </select>
+
+      <!-- Arrow element is visually placed but pointer-events: none so click goes to select -->
+      <span class="dropdown-arrow" aria-hidden="true">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          fill="#eb8816"
+          viewBox="0 0 24 24"
+        >
+          <path d="M7 10l5 5 5-5z" />
+        </svg>
+      </span>
+    </div>
   </div>
 
-  <div class="form-group">
-    <label>Interest Rate (% per annum):</label>
-    <input type="number" [(ngModel)]="interestRate" placeholder="Enter Interest Rate">
-  </div>
+  <div class="packages-table" role="table" aria-label="Packages rates">
+    <div class="package-row header">
+      <span class="package-type">Package</span>
+      <span class="package-rate">Rate (Including GST)</span>
+    </div>
 
-  <div class="form-group">
-    <label>Tenure (months):</label>
-    <input type="number" [(ngModel)]="tenure" placeholder="Enter Tenure in Months">
-  </div>
-
-  <button (click)="calculateEMI()">Calculate</button>
-
-  <div class="results" *ngIf="emi > 0">
-    <h3>Results</h3>
-    <p><strong>Monthly EMI:</strong> ₹{{ emi | number:'1.2-2' }}</p>
-    <p><strong>Total Interest:</strong> ₹{{ totalInterest | number:'1.2-2' }}</p>
-    <p><strong>Total Payment:</strong> ₹{{ totalPayment | number:'1.2-2' }}</p>
-  </div>
-</div>
-</div>
-
- <div class="footer">
-     <div class="footer-section footer-logo">
-    <img src="assets/logo.jpeg" alt="Noor Builders Logo" class="footer-logo-img" />
-    <h3>NOOR BUILDERS AND ASSOCIATES</h3>
-  </div>
-    <div class="footer-section contact-info">
-      <h3>For Enquiries</h3>
-      <span
-        nz-icon
-        nzType="phone"
-        nzTheme="outline"
-        style="margin-right: 10px"
-      ></span>
-      <span>+91 83441 94892</span>
-      <p>+91 85080 56990</p>
-      <span
-        nz-icon
-        nzType="mail"
-        nzTheme="outline"
-        style="margin-right: 10px"
-      ></span>
-      <span
-        ><a href="mailto:abc@gmail.com"
-          >abc@gmail.com</a
-        ></span
+    <div class="package-row">
+      <span class="package-type">Basic</span>
+      <span class="package-rate"
+        >₹ {{ currentRates.basic }} /sqft (Incl. GST)</span
       >
     </div>
-    <div class="footer-section social-media">
-      <h3>Follow Us</h3>
-      <span nz-icon nzType="facebook" nzTheme="outline"></span>
-      <span nz-icon nzType="instagram" nzTheme="outline"></span>
-      <span nz-icon nzType="youtube" nzTheme="outline"></span>
-      <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+
+    <div class="package-row">
+      <span class="package-type">Classic</span>
+      <span class="package-rate"
+        >₹ {{ currentRates.classic }} /sqft (Incl. GST)</span
+      >
     </div>
-    <div class="footer-section navigation-links">
-      <h3>Navigation Links</h3>
-      <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="/about-us">About Us</a></li>
-        <li><a href="/career">Career</a></li>
-        <li><a href="/lacostcalculator">LA Cost Calculator</a></li>
-      </ul>
+
+    <div class="package-row">
+      <span class="package-type">Premium</span>
+      <span class="package-rate"
+        >₹ {{ currentRates.premium }} /sqft (Incl. GST)</span
+      >
+    </div>
+
+    <div class="package-row">
+      <span class="package-type">Royale</span>
+      <span class="package-rate"
+        >₹ {{ currentRates.royale }} /sqft (Incl. GST)</span
+      >
     </div>
   </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-section footer-logo">
+    <img
+      src="assets/logo.jpeg"
+      alt="Noor Builders Logo"
+      class="footer-logo-img"
+    />
+    <h3>NOOR BUILDERS AND ASSOCIATES</h3>
+  </div>
+  <div class="footer-section contact-info">
+    <h3>For Enquiries</h3>
+    <span
+      nz-icon
+      nzType="phone"
+      nzTheme="outline"
+      style="margin-right: 10px"
+    ></span>
+    <span>+91 83441 94892</span>
+    <p>+91 85080 56990</p>
+    <span
+      nz-icon
+      nzType="mail"
+      nzTheme="outline"
+      style="margin-right: 10px"
+    ></span>
+    <span><a href="mailto:abc@gmail.com">abc@gmail.com</a></span>
+  </div>
+  <div class="footer-section social-media">
+    <h3>Follow Us</h3>
+    <span nz-icon nzType="facebook" nzTheme="outline"></span>
+    <span nz-icon nzType="instagram" nzTheme="outline"></span>
+    <span nz-icon nzType="youtube" nzTheme="outline"></span>
+    <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+  </div>
+  <div class="footer-section navigation-links">
+    <h3>Navigation Links</h3>
+    <ul>
+      <li><a href="">Home</a></li>
+      <li><a href="/about-us">About Us</a></li>
+      <li><a href="/career">Career</a></li>
+      <li><a href="/lacostcalculator">LA Cost Calculator</a></li>
+    </ul>
+  </div>
+</div>

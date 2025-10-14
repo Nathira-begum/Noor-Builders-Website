@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       service: ['', Validators.required],
       message: ['', Validators.required],
-      terms: [false, Validators.requiredTrue]
+      terms: [false, Validators.requiredTrue],
     });
   }
 
@@ -29,28 +29,27 @@ export class ContactComponent implements OnInit {
     if (this.contactForm.valid) {
       this.isSubmitting = true;
 
-      fetch("http://localhost:5000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(this.contactForm.value)
+      fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.contactForm.value),
       })
-      .then(res => res.json())
-      .then(data => {
-        this.messageStatus = 'success';
-        alert("✅ Message sent successfully!");
-        this.contactForm.reset({
-          service: '' // Reset dropdown to "Select a service"
+        .then((res) => res.json())
+        .then((data) => {
+          this.messageStatus = 'success';
+          alert('✅ Message sent successfully!');
+          this.contactForm.reset({
+            service: '', // Reset dropdown to "Select a service"
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+          this.messageStatus = 'error';
+          alert('❌ Failed to send message.');
+        })
+        .finally(() => {
+          this.isSubmitting = false;
         });
-      })
-      .catch(err => {
-        console.error(err);
-        this.messageStatus = 'error';
-        alert("❌ Failed to send message.");
-      })
-      .finally(() => {
-        this.isSubmitting = false;
-      });
-
     } else {
       this.contactForm.markAllAsTouched(); // Highlight invalid fields
     }

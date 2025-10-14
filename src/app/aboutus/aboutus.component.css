@@ -39,7 +39,7 @@ label {
 }
 .about-us-content h1 {
   font-size: 50px;
-  color: rgb(228, 224, 4);
+  color: #ff851b;
 }
 .about-us-content h2 {
   font-size: 50px;
@@ -55,7 +55,7 @@ label {
   height: auto;
 }
 .mission-content h1 {
-  color: #e2d40a;
+  color: #ff851b;
   font-size: 40px;
 }
 
@@ -71,7 +71,7 @@ h3 {
 }
 .vision-content h1 {
   font-size: 40px;
-  color: #e2d40a;
+  color: #ff851b;
 }
 
 .background-section {
@@ -90,7 +90,7 @@ h3 {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 40px;
-  color: #eef52f;
+  color: #ff851b;
 }
 
 .service-card {
@@ -155,7 +155,7 @@ h3 {
   text-align: center;
 }
 .choose-section h1 {
-  color: #eef52f;
+  color: #ff851b;
   font-size: 36px;
 }
 .choose-container {
@@ -207,4 +207,82 @@ h3 {
   100% {
     transform: translateX(-100%);
   }
+}
+
+.footer {
+  padding: 20px;
+  background: #1c1c1c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+  text-align: center;
+}
+
+.footer-logo-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.footer-logo h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffd700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 100px;
+  margin: 10px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-section a img {
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+}
+
+.footer-section.social-media span {
+  margin-right: 10px;
+}
+
+.footer-section.social-media span:last-child {
+  margin-right: 0;
 }

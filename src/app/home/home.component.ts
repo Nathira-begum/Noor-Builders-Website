@@ -27,27 +27,29 @@ export class HomeComponent implements OnInit, AfterViewInit {
       email: ['', [Validators.required, Validators.email]],
       phoneno: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       location: ['', Validators.required],
-      landAreaInput: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      landAreaInput: [
+        '',
+        [Validators.required, Validators.pattern('^[0-9]*$')],
+      ],
       requirement: [''],
     });
   }
 
   // ✅ Gallery animation logic
   ngAfterViewInit() {
-  const items = document.querySelectorAll('.gallery-item');
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-  items.forEach((item) => observer.observe(item));
-}
-
+    const items = document.querySelectorAll('.gallery-item');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    items.forEach((item) => observer.observe(item));
+  }
 
   submitForm(): void {
     if (this.validateForm.valid) {

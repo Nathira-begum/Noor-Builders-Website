@@ -23,11 +23,10 @@
 }
 
 .hero {
-  background: linear-gradient(rgba(231, 129, 28, 0.7), rgba(231, 129, 28, 0.7)), 
-              url("/assets/bg6.jpeg") center/cover no-repeat;
+  background: url("/assets/h1.jpeg") center/cover no-repeat;
   color: #fff;
   text-align: center;
-  padding: 120px 20px;
+  padding: 150px 20px;
   border-radius: 0;
   position: relative;
 }
@@ -84,15 +83,15 @@
   color: #ff851b;
 }
 
-
 .nav a {
   /* margin: 0 3px;
   margin-left: 30px; */
   color: white;
 }
 .cta-section {
-  background: linear-gradient(rgba(231, 129, 28, 0.7), rgba(231, 129, 28, 0.7)), 
-              url("/assets/bg4.jpeg") center/cover no-repeat;
+  /* background: 
+    url("/assets/bg4.jpeg") center/cover no-repeat; */
+  background: rgb(182, 179, 179);
   color: #fff;
   text-align: center;
   padding: 80px 20px;
@@ -148,7 +147,6 @@
   background-color: #fff;
   color: #ff851b;
 }
-
 
 /* ---------- CONTACT INFO CARDS ---------- */
 .contact-details {
@@ -318,9 +316,6 @@ textarea.ng-touched.ng-invalid {
   text-decoration: underline;
 }
 
-
-
-
 .footer {
   padding: 20px;
   background: #1c1c1c;
@@ -334,7 +329,7 @@ textarea.ng-touched.ng-invalid {
 .footer-logo {
   display: flex;
   flex-direction: column;
-  align-items: center;       /* center horizontally */
+  align-items: center; /* center horizontally */
   text-align: center;
 }
 
@@ -354,7 +349,6 @@ textarea.ng-touched.ng-invalid {
   letter-spacing: 0.5px;
   line-height: 1.2;
 }
-
 
 .footer-section {
   flex: 1;

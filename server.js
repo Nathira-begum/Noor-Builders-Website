@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -9,67 +8,68 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// 1️⃣ Connect to MongoDB
+// 1️⃣ Connect MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/noorbuilders", {
+  .connect("mongodb://127.0.0.1:27017/noorbuilders", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error(err));
+  .catch((err) => console.error("MongoDB Error:", err));
 
-// 2️⃣ Define schema and model
-const contactSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
+// 2️⃣ Schema
+const formSchema = new mongoose.Schema({
+  name: String,
   email: String,
-  phone: String,
-  service: String,
-  message: String,
+  phoneno: String,
+  location: String,
+  landAreaInput: String,
+  requirement: String,
   date: { type: Date, default: Date.now },
 });
+const Form = mongoose.model("Form", formSchema);
 
-const Contact = mongoose.model("Contact", contactSchema);
-
-// 3️⃣ API endpoint to receive contact form data
+// 3️⃣ API endpoint
 app.post("/api/contact", async (req, res) => {
   try {
-    const newContact = new Contact(req.body);
-    await newContact.save();
+    const formData = new Form(req.body);
+    await formData.save();
 
-    // 4️⃣ Send email
+    // 4️⃣ Configure Gmail (App Password needed)
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "nathirabegum987@gmail.com", // your sender email
-        pass: "ubqq syyv fabr bufk", // use app password (not normal password)
+        user: "nathirabegum987@gmail.com",
+        pass: "ubqq syyv fabr bufk", // ⚠️ Use Gmail App Password
       },
     });
 
     const mailOptions = {
-      from: `${req.body.firstName} ${req.body.lastName} <${req.body.email}>`, // dynamic sender info
-      to: "nathirabegum987@gmail.com", // your recipient email
-      subject: `New Contact Message from ${req.body.firstName} ${req.body.lastName}`,
+      from: "Noor Builders Website <nathirabegum987@gmail.com>",
+      to: "nathirabegum987@gmail.com",
+      subject: "🧱 New Enquiry from Noor Builders Website",
       text: `
-    Name: ${req.body.firstName} ${req.body.lastName}
-    Email: ${req.body.email}
-    Phone: ${req.body.phone}
-    Service: ${req.body.service}
-    Message: ${req.body.message}
-  `,
-      replyTo: req.body.email, // allows you to reply directly to user’s email
+New Enquiry Received:
+
+Name: ${req.body.name}
+Email: ${req.body.email}
+Phone: ${req.body.phoneno}
+Location: ${req.body.location}
+Land Area: ${req.body.landAreaInput} sq.ft
+Requirement: ${req.body.requirement}
+      `,
     };
 
     await transporter.sendMail(mailOptions);
 
     res
       .status(200)
-      .json({ message: "Contact saved and email sent successfully!" });
-  } catch (err) {
-    console.error("Error:", err);
-    res.status(500).json({ message: "Error saving contact or sending email" });
+      .json({ message: "Form saved and email sent successfully!" });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ message: "Error saving data or sending email" });
   }
 });
 
-// 5️⃣ Start server
+// 5️⃣ Run Server
 app.listen(5000, () => console.log("🚀 Server running on port 5000"));

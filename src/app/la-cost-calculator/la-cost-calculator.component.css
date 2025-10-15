@@ -32,282 +32,253 @@
   transition: color 0.2s ease;
 }
 
-.hero-slideshow {
-  position: relative;
-  height: 100vh; /* adjust height as needed */
-  width: 100%;
-  overflow: hidden;
-}
-
-.hero-slideshow .slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover; /* fills container */
-  background-position: center;
-  opacity: 0;
-  transform: scale(1) translateX(-30px); /* initial slight left offset */
-  animation: slideshow 16s infinite ease-in-out;
-}
-
-/* Each slide delay for sequential animation */
-.hero-slideshow .slide:nth-child(1) {
-  animation-delay: 0s;
-}
-.hero-slideshow .slide:nth-child(2) {
-  animation-delay: 4s;
-}
-.hero-slideshow .slide:nth-child(3) {
-  animation-delay: 8s;
-}
-.hero-slideshow .slide:nth-child(4) {
-  animation-delay: 12s;
-}
-
-@keyframes slideshow {
-  0% {
-    opacity: 0;
-    transform: scale(1) translateX(-50px);
-  }
-  10% {
-    opacity: 1;
-    transform: scale(1.05) translateX(0); /* zoom in & slide in */
-  }
-  25% {
-    opacity: 1;
-    transform: scale(1.1) translateX(30px); /* zoom out to right */
-  }
-  35% {
-    opacity: 0;
-    transform: scale(1.1) translateX(50px); /* fade while moving right */
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1) translateX(-50px);
-  }
-}
-
-/* ---------- Calculator ---------- */
-.calculator-wrapper {
-  padding-top: 18px; /* leave space under sticky header */
-}
-
-.cost-calculator {
-  font-family: "Poppins", sans-serif;
+.pricing-section {
   text-align: center;
-  padding: 36px 20px;
+  padding: 60px 20px;
+  background: linear-gradient(to right, #ececec, #f8f8f8);
+}
+
+.pricing-section h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
   color: #222;
-  background: rgba(235, 90, 43, 0.2);
-}
-
-.cost-calculator h2 {
-  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 24px;
-  line-height: 1.6;
 }
 
-/* Layout for inputs: horizontal row */
-.input-section {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.form-row {
+.pricing-cards {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 14px;
   flex-wrap: wrap;
+  gap: 25px;
 }
 
-/* each group contains label + control and stays compact */
-.form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  min-width: 170px;
+.pricing-cards .card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* area slightly wider */
-.area-group {
-  min-width: 210px;
+.pricing-cards .card:hover {
+  transform: scale(1.05);
 }
 
-/* controls */
-.form-group select,
-.form-group input {
-  padding: 8px 10px;
-  border: 1px solid #d3d3d3;
-  border-radius: 6px;
-  width: 100%;
-  font-size: 14px;
-  box-sizing: border-box;
+.card h3 {
+  color: #1c1c1c;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
-/* Unit radio group inline and compact */
-.unit-select {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: 6px;
+.card .price {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff6f00;
+  margin-bottom: 15px;
 }
 
-/* small compact radio label for less gap */
-.unit-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  font-size: 14px;
-}
-.unit-label input[type="radio"] {
-  width: 16px;
-  height: 16px;
+.card ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
 }
 
-/* Next button row on its own */
-.form-row-actions {
-  margin-top: 14px;
-  display: flex;
-  justify-content: center;
+.card ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  color: #555;
 }
 
-/* Keep next-btn styling isolated */
-.next-btn {
-  background-color: #eb8816;
-  color: white;
-  padding: 10px 26px;
-  font-size: 15px;
-  border-radius: 999px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.next-btn:hover {
-  background-color: #d46f0f;
+/* Highlighted cards */
+.card.basic {
+  border-top: 6px solid #ff851b; /* Orange color for basic */
 }
 
-/* ---------- Results & Tables ---------- */
-.results-section {
-  margin-top: 10px;
-  transition: opacity 0.25s ease;
-}
-.results-section canvas {
-  max-width: 1000px; /* ✅ sets max width of graph */
-  width: 35%; /* ✅ responsive width */
-  height: 500px; /* ✅ graph height */
-  margin: 20px auto; /* ✅ center horizontally */
-  display: block; /* ✅ ensures it behaves as block */
+
+.card.standard {
+  border-top: 6px solid #ff851b;
 }
 
-.cost-table {
-  width: 100%;
-  max-width: 900px;
-  margin: 12px auto;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-.cost-table th,
-.cost-table td {
-  border: 1px solid #e6e6e6;
-  padding: 8px 10px;
-  text-align: left;
-}
-.cost-table th {
-  background: #fff176;
-  font-weight: 700;
+.card.premium {
+  border-top: 6px solid #ff851b;
 }
 
-/* ---------- Packages Section ---------- */
-.packages-section {
+/* ================= CALCULATOR SECTION ================= */
+
+.calculator-container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f8f8f8;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
   text-align: center;
-  padding: 72px 20px;
-  background-color: #f9f9f9;
-  font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
 }
 
-.packages-section h2 {
-  font-size: 34px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #1c1c1c;
+.form-group {
+  margin-bottom: 15px;
 }
 
-.location {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #eb8816;
-  font-weight: 600;
-  font-size: 20px;
-  margin-bottom: 28px;
-  gap: 12px;
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-/* location dropdown wrapper */
-.location-dropdown {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
 }
 
-/* styled larger select for packages */
-.city-select {
-  border: none;
-  background: transparent;
-  font-size: 20px;
-  font-weight: 700;
-  color: #eb8816;
-  cursor: pointer;
-  padding: 6px 30px 6px 6px; /* leave room for arrow */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  outline: none;
+small {
+  display: block;
+  margin-top: 3px;
+  color: #555;
 }
 
-/* arrow visually aligned to the right inside wrapper */
-.dropdown-arrow {
-  position: absolute;
-  right: 3px;
-  pointer-events: none; /* don't block clicks - clicks go to select */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(2px);
-}
-
-/* packages table styling */
-.packages-table {
-  max-width: 720px;
-  margin: 0 auto;
-  border-top: 2px solid #1c1c1c;
-  border-radius: 8px;
-  overflow: hidden;
+.summary {
+  margin-top: 30px;
   background: #fff;
-  box-shadow: 0 3px 10px rgba(186, 58, 58, 0.05);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
 }
 
-.package-row {
+.summary h3 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.summary p {
+  margin: 5px 0;
+}
+
+
+.form-section {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  width: 320px;
+  backdrop-filter: blur(6px);
+}
+
+.form-section label {
+  display: block;
+  text-align: left;
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.form-section input,
+.form-section select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+}
+
+.form-section button {
+  background: #ff851b;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 20px;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+.form-section button:hover {
+  background: #e67e22;
+}
+
+.result-section {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px;
+  border-radius: 10px;
+  min-width: 300px;
+  backdrop-filter: blur(6px);
+}
+
+.result-section h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.result-section .result {
+  font-size: 30px;
+  color: #ffae42;
+  font-weight: bold;
+}
+
+.feature-title {
   display: flex;
   justify-content: space-between;
-  padding: 16px 24px;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 0;
   border-bottom: 1px solid #eee;
-  font-size: 18px;
-  color: #1c1c1c;
+  color: #333;
 }
-.package-row.header {
-  background: #1c1c1c;
-  color: #fff;
-  font-weight: 700;
+
+.feature-title span {
+  font-weight: bold;
 }
-.package-row:last-child {
-  border-bottom: none;
+
+.feature-title:hover {
+  color: #ff6f00;
 }
+
+.card ul li {
+  padding: 5px 0 5px 15px;
+  font-weight: 400;
+  color: #555;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the left */
+  gap: 20px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:first-child {
+  background-color: #ff851b;
+  color: white;
+}
+
+button:last-child {
+  background-color: #ff851b;
+  color: white;
+}
+
 
 /* ---------- Footer ---------- */
 .footer {

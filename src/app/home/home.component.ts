@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http'; // 👈 import HttpClient
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,10 +19,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ];
   currentIndex = 0;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient, // 👈 inject HttpClient
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    // ✅ Initialize form
     this.validateForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       email: ['', [Validators.required, Validators.email]],
@@ -35,15 +39,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // ✅ Gallery animation logic
   ngAfterViewInit() {
     const items = document.querySelectorAll('.gallery-item');
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('visible');
         });
       },
       { threshold: 0.2 }
@@ -53,15 +54,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('Form Submitted!', this.validateForm.value);
+      const formData = this.validateForm.value;
+
+      this.http.post('http://localhost:5000/api/contact', formData).subscribe({
+        next: (res: any) => {
+          alert('✅ Your details have been submitted successfully!');
+          this.validateForm.reset();
+        },
+        error: (err) => {
+          console.error(err);
+          alert('❌ Something went wrong. Please try again.');
+        },
+      });
     } else {
-      console.log('Form is not valid!');
-      for (const i in this.validateForm.controls) {
-        if (this.validateForm.controls.hasOwnProperty(i)) {
-          this.validateForm.controls[i].markAsDirty();
-          this.validateForm.controls[i].updateValueAndValidity();
-        }
-      }
+      Object.values(this.validateForm.controls).forEach((control) => {
+        control.markAsDirty();
+        control.updateValueAndValidity();
+      });
     }
   }
 

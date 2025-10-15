@@ -1,4 +1,4 @@
-<!-- Header (sticky so it never disappears) -->
+<!-- Header -->
 <div class="header">
   <div class="logo">
     <img src="assets/logo.jpeg" alt="Logo" />
@@ -14,221 +14,112 @@
   </nav>
 </div>
 
-<!-- Hero Slideshow Section -->
-<div class="hero-slideshow">
-  <div class="slide" style="background-image: url('assets/h1.jpeg')"></div>
-  <div class="slide" style="background-image: url('assets/h2.jpeg')"></div>
-  <div class="slide" style="background-image: url('assets/h3.jpeg')"></div>
-  <div class="slide" style="background-image: url('assets/h5.jpeg')"></div>
-</div>
+<!-- Pricing Packages -->
+<section class="pricing-section">
+  <h2>Our Pricing Package</h2>
+  <div class="pricing-cards">
+    <div class="card" *ngFor="let pkg of packages; let i = index" [ngClass]="pkg.name.toLowerCase()">
+      <h3>{{ pkg.name }}</h3>
+      <p class="price">₹{{ pkg.price }}/sq.ft</p>
 
-<!-- Calculator -->
-<div class="calculator-wrapper">
-  <div class="cost-calculator">
-    <h2>
-      Home Construction Cost Calculator – Total Cost and Phase wise break down
-      of the Home Building Project
-    </h2>
-
-    <div class="input-section">
-      <div class="form-row">
-        <!-- Select State (keeps placeholder) -->
-        <div class="form-group">
-          <label for="stateSelect">Select State</label>
-          <select id="stateSelect" [(ngModel)]="selectedState">
-            <option value="" disabled selected>Select State</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Karnataka">Karnataka</option>
-          </select>
+      <div *ngFor="let feature of pkg.features; let j = index">
+        <div class="feature-title" (click)="toggleFeature(i,j)">
+          {{ feature.title }}
+          <span>{{ feature.expanded ? '-' : '+' }}</span>
         </div>
-
-        <!-- Select City (keeps placeholder) -->
-        <div class="form-group">
-          <label for="citySelectCalc">Select City</label>
-          <select id="citySelectCalc" [(ngModel)]="selectedCityCalc">
-            <option value="" disabled selected>Select City</option>
-            <option value="Chennai">Chennai</option>
-            <option value="Dindigul">Dindigul</option>
-            <option value="Delhi NCR">Delhi NCR</option>
-          </select>
-        </div>
-
-        <!-- Area -->
-        <div class="form-group area-group">
-          <label for="areaInput">Area</label>
-          <input
-            id="areaInput"
-            type="number"
-            [(ngModel)]="area"
-            placeholder="Enter Area"
-          />
-        </div>
-
-        <!-- Units (radio) -->
-        <div class="unit-select" role="radiogroup" aria-label="Units">
-          <label class="unit-label">
-            <input type="radio" name="unit" [(ngModel)]="unit" value="sqft" />
-            <span>Sq. Feet</span>
-          </label>
-          <label class="unit-label">
-            <input type="radio" name="unit" [(ngModel)]="unit" value="sqm" />
-            <span>Sq. Meter</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="form-row-actions">
-        <button class="next-btn" (click)="handleButtonClick()">
-          {{ showResults ? "Reset" : "Next →" }}
-        </button>
+        <ul *ngIf="feature.expanded">
+          <li *ngFor="let item of feature.features">{{ item }}</li>
+        </ul>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Results -->
-    <div *ngIf="showResults" class="results-section">
-      <h3>Total Estimated Cost (INR)</h3>
-      <canvas id="costPieChart"></canvas>
+<!-- Cost Calculator -->
+<div class="calculator-container">
+  <h2>House Construction Cost Calculator</h2>
 
-      <h3>Timeline Tracking: Cost per Phase (INR %)</h3>
-      <canvas id="timelineChart"></canvas>
+  <!-- Construction Area -->
+  <div class="form-group">
+    <label>Construction area in sq.ft</label>
+    <input type="number" [(ngModel)]="constructionArea" min="0" max="10000" />
+  </div>
 
-      <h3>Cost by Resource Allocation</h3>
-      <table class="cost-table">
-        <thead>
-          <tr>
-            <th>Resource</th>
-            <th>Quantity</th>
-            <th>Quality</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of costData">
-            <td>{{ item.resource }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.quality }}</td>
-            <td>₹{{ item.amount | number }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <!-- Construction Package -->
+  <div class="form-group">
+    <label>Select construction Package</label>
+    <select [(ngModel)]="packageCost">
+      <option [ngValue]="0">Select value</option>
+      <option [ngValue]="1500">Standard Package - Rs.1500/sft</option>
+      <option [ngValue]="2000">Premium Package - Rs.2000/sft</option>
+      <option [ngValue]="2500">Luxury Package - Rs.2500/sft</option>
+    </select>
+  </div>
+
+  <!-- Car Parking -->
+  <div class="form-group">
+    <label>Car Parking area in square feet (optional)</label>
+    <input type="number" [(ngModel)]="carParking" min="0" max="10000" />
+    <small>Car parking will be charged @ Rs.1800/sft approximately</small>
+  </div>
+
+  <!-- Underground Sump -->
+  <div class="form-group">
+    <label>How many litres of underground sump required? (optional)</label>
+    <input type="number" [(ngModel)]="sumpLitres" min="0" max="20000" />
+    <small>An average family of 4 will require minimum of 10,000 litres</small>
+  </div>
+
+  <!-- Waste Water Tank -->
+  <div class="form-group">
+    <label>How many person waste water recycling tank required? (optional)</label>
+    <input type="number" [(ngModel)]="wasteWaterTank" min="0" max="10" />
+    <small>Waste water recycling tank is an alternative to septic tank. It's not required if you have a drainage connection.</small>
+  </div>
+
+  <!-- Compound Wall -->
+  <div class="form-group">
+    <label>How much feet length compound wall do you require? (optional)</label>
+    <input type="number" [(ngModel)]="compoundWall" min="0" max="1000" />
+    <small>If plot size is 40x30, compound wall length will be 40+40+30+30 = 140 feet</small>
+  </div>
+
+  <!-- Solar Power -->
+  <div class="form-group">
+    <label>How much solar power do you require? (optional)</label>
+    <input type="number" [(ngModel)]="solarPower" min="0" max="10" />
+    <small>A 3BHK home will require 2KW solar power for daytime usage</small>
+  </div>
+
+  <div class="button-group">
+    <button (click)="submitCalculator()">Submit</button>
+    <button (click)="resetCalculator()" type="button">Reset</button>
+  </div>
+
+  <!-- Total Summary -->
+  <div class="summary" *ngIf="submitted">
+    <h3>Total Summary</h3>
+    <p>Construction Area: {{constructionArea}} x {{packageCost}} = ₹{{constructionArea * packageCost}}</p>
+    <p>Car Parking: {{carParking}} x 1800 = ₹{{carParking * 1800}}</p>
+    <p>Underground Sump: {{sumpLitres}} x 25 = ₹{{sumpLitres * 25}}</p>
+    <p>Waste Water Tank: {{wasteWaterTank}} x 30000 = ₹{{wasteWaterTank * 30000}}</p>
+    <p>Compound Wall: {{compoundWall}} x 2000 = ₹{{compoundWall * 2000}}</p>
+    <p>Solar Power: {{solarPower}} x 75000 = ₹{{solarPower * 75000}}</p>
+    <h3>Total Cost: ₹{{getTotalCost()}}</h3>
   </div>
 </div>
 
-<!-- Construction Packages Section -->
-<div class="packages-section">
-  <h2>Our Construction Packages</h2>
-
-  <div class="location">
-    <span class="location-icon">
-      <!-- SVG pin -->
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="22"
-        height="22"
-        viewBox="0 0 24 24"
-        fill="#eb8816"
-      >
-        <path
-          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
-        />
-      </svg>
-    </span>
-
-    <!-- Styled select + arrow: default value set in TS to 'chennai' -->
-    <div class="location-dropdown">
-      <select
-        id="citySelect"
-        class="city-select"
-        [(ngModel)]="selectedCity"
-        (change)="updateRates($event)"
-      >
-        <option value="" disabled selected>Select City</option>
-        <option value="chennai">Chennai</option>
-        <option value="bangalore">Bangalore</option>
-        <option value="hyderabad">Hyderabad</option>
-        <option value="coimbatore">Coimbatore</option>
-      </select>
-
-      <!-- Arrow element is visually placed but pointer-events: none so click goes to select -->
-      <span class="dropdown-arrow" aria-hidden="true">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          fill="#eb8816"
-          viewBox="0 0 24 24"
-        >
-          <path d="M7 10l5 5 5-5z" />
-        </svg>
-      </span>
-    </div>
-  </div>
-
-  <div class="packages-table" role="table" aria-label="Packages rates">
-    <div class="package-row header">
-      <span class="package-type">Package</span>
-      <span class="package-rate">Rate (Including GST)</span>
-    </div>
-
-    <div class="package-row">
-      <span class="package-type">Basic</span>
-      <span class="package-rate"
-        >₹ {{ currentRates.basic }} /sqft (Incl. GST)</span
-      >
-    </div>
-
-    <div class="package-row">
-      <span class="package-type">Classic</span>
-      <span class="package-rate"
-        >₹ {{ currentRates.classic }} /sqft (Incl. GST)</span
-      >
-    </div>
-
-    <div class="package-row">
-      <span class="package-type">Premium</span>
-      <span class="package-rate"
-        >₹ {{ currentRates.premium }} /sqft (Incl. GST)</span
-      >
-    </div>
-
-    <div class="package-row">
-      <span class="package-type">Royale</span>
-      <span class="package-rate"
-        >₹ {{ currentRates.royale }} /sqft (Incl. GST)</span
-      >
-    </div>
-  </div>
-</div>
 
 <!-- Footer -->
 <div class="footer">
   <div class="footer-section footer-logo">
-    <img
-      src="assets/logo.jpeg"
-      alt="Noor Builders Logo"
-      class="footer-logo-img"
-    />
+    <img src="assets/logo.jpeg" alt="Noor Builders Logo" class="footer-logo-img" />
     <h3>NOOR BUILDERS AND ASSOCIATES</h3>
   </div>
   <div class="footer-section contact-info">
     <h3>For Enquiries</h3>
-    <span
-      nz-icon
-      nzType="phone"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span>+91 83441 94892</span>
-    <p>+91 85080 56990</p>
-    <span
-      nz-icon
-      nzType="mail"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span><a href="mailto:abc@gmail.com">abc@gmail.com</a></span>
+    <p>📞 +91 83441 94892 | +91 85080 56990</p>
+    <p>✉️ <a href="mailto:abc@gmail.com">abc@gmail.com</a></p>
   </div>
   <div class="footer-section social-media">
     <h3>Follow Us</h3>

@@ -23,7 +23,8 @@
 }
 
 .hero {
-  background: url("/assets/h1.jpeg") center/cover no-repeat;
+  background: url("/assets/construct1.jpeg") center/cover no-repeat;
+  /* background-color: #f7f7f9; */
   color: #fff;
   text-align: center;
   padding: 150px 20px;
@@ -35,11 +36,12 @@
   font-size: 2.8rem;
   font-weight: 800;
   margin-bottom: 15px;
+  
 }
 
 .hero p {
   font-size: 1.1rem;
-  color: #f1f1f1;
+  color: #faf9f9;
   margin-bottom: 30px;
   max-width: 700px;
   margin-left: auto;
@@ -73,8 +75,8 @@
 }
 
 .hero .btn-outline {
-  border: 2px solid #fff;
-  color: #fff;
+  background-color: #fff;
+  color: #ff851b;
   font-weight: 600;
 }
 
@@ -88,65 +90,7 @@
   margin-left: 30px; */
   color: white;
 }
-.cta-section {
-  /* background: 
-    url("/assets/bg4.jpeg") center/cover no-repeat; */
-  background: rgb(182, 179, 179);
-  color: #fff;
-  text-align: center;
-  padding: 80px 20px;
-  border-radius: 0;
-  position: relative;
-}
 
-.cta-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-.cta-section p {
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-  color: #f1f1f1;
-}
-
-.cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-.cta-section .btn-primary,
-.cta-section .btn-outline {
-  padding: 12px 25px;
-  font-size: 1rem;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.cta-section .btn-primary {
-  background-color: #fff;
-  color: #ff851b;
-  font-weight: 600;
-}
-
-.cta-section .btn-primary:hover {
-  background-color: #f4f4f4;
-}
-
-.cta-section .btn-outline {
-  border: 2px solid #fff;
-  color: #fff;
-  font-weight: 600;
-}
-
-.cta-section .btn-outline:hover {
-  background-color: #fff;
-  color: #ff851b;
-}
 
 /* ---------- CONTACT INFO CARDS ---------- */
 .contact-details {

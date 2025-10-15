@@ -1,186 +1,132 @@
-import {
-  Component,
-  AfterViewInit,
-  OnDestroy,
-  ChangeDetectorRef,
-} from '@angular/core';
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
+import { Component } from '@angular/core';
+
+interface PackageFeature {
+  title: string;
+  features: string[];
+  expanded: boolean;
+}
 
 @Component({
   selector: 'app-la-cost-calculator',
   templateUrl: './la-cost-calculator.component.html',
-  styleUrls: ['./la-cost-calculator.component.css'],
+  styleUrls: ['./la-cost-calculator.component.css']
 })
-export class CostCalculatorComponent implements AfterViewInit, OnDestroy {
-  constructor(private cdr: ChangeDetectorRef) {}
+export class LaCostCalculatorComponent {
+  area: number = 0;
+  selectedPackage: string = '';
+  totalCost: number | null = null;
+  constructionArea: number = 0;
+  packageCost: number = 0;
+  carParking: number = 0;
+  sumpLitres: number = 0;
+  wasteWaterTank: number = 0;
+  compoundWall: number = 0;
+  solarPower: number = 0;
+    submitted: boolean = false;
 
-  showResults = false;
-
-  selectedState: string = '';
-  selectedCityCalc: string = '';
-  area: number | null = 5000;
-  unit: string = 'sqft';
-  selectedCity: string = '';
-
-  chart1: any = null;
-  chart2: any = null;
-
-  rates: any = {
-    chennai: { basic: 2250, classic: 2470, premium: 2740, royale: 3010 },
-    bangalore: { basic: 2350, classic: 2590, premium: 2860, royale: 3120 },
-    hyderabad: { basic: 2200, classic: 2430, premium: 2700, royale: 2980 },
-    coimbatore: { basic: 2100, classic: 2330, premium: 2600, royale: 2850 },
-  };
-
-  currentRates = this.rates['chennai'];
-
-  costData = [
+  packages: { name: string; price: number; features: PackageFeature[] }[] = [
     {
-      resource: 'Cement',
-      quantity: '225 Bags',
-      quality: 'Medium Grade',
-      amount: 771750,
+      name: 'Basic',
+      price: 1899,
+      features: [
+        {
+          title: 'Design',
+          features: [
+            'Basement height: Up to 2 feet',
+            'Steel: Any ISI brand',
+            'Aggregates: 20mm & 40mm',
+            'Blocks: 6 inch for Exterior Wall & 4 inch for Interior Wall or Bricks: 9 inch for Exterior Wall & 4.5 inch for Interior Wall',
+            'Cement: Any ISI brand',
+            'Sand: Blockwork & P Sand: Plastering',
+            'RCC Design Mix: M20',
+            'Ceiling Height: 10 Feet'
+          ],
+          expanded: false
+        },
+        { title: 'Kitchen', features: ['Basic Kitchen setup'], expanded: false },
+        { title: 'Bathroom', features: ['Basic Bathroom setup'], expanded: false },
+        { title: 'Plumbing', features: ['Basic plumbing'], expanded: false },
+        { title: 'Doors & Windows', features: ['Basic doors and windows'], expanded: false },
+        { title: 'Painting', features: ['Basic painting'], expanded: false },
+        { title: 'Flooring', features: ['Basic flooring'], expanded: false },
+        { title: 'Electrical', features: ['Basic electricals'], expanded: false },
+        { title: 'Other Inclusives', features: ['Other basic inclusives'], expanded: false },
+        { title: 'Extra Charges', features: ['No extra charges'], expanded: false }
+      ]
     },
     {
-      resource: 'Steel',
-      quantity: '17500 Kgs',
-      quality: 'Medium Grade',
-      amount: 805000,
+      name: 'Standard',
+      price: 2099,
+      features: [
+        { title: 'Design', features: ['All features in basic package'], expanded: false },
+        { title: 'Structure', features: ['Standard structure'], expanded: false },
+        { title: 'Kitchen', features: ['Free Smart Home Automation'], expanded: false },
+        { title: 'Bathroom', features: ['Free Organic Terrace Gardening'], expanded: false },
+        { title: 'Plumbing', features: [
+            'Bathroom: 1 wash basin with tap, 1 shower with wall mixer for hot & cold water, 1 floor mount western closet with health faucet',
+            'Dining: 1 wash basin with tap',
+            'Kitchen: Double stainless steel sink with 1 tap & 1 RO point',
+            'Service: 1 tap point & water outlet point for washing machine'
+          ], expanded: false
+        },
+        { title: 'Doors & Windows', features: ['Standard doors & windows'], expanded: false },
+        { title: 'Painting', features: ['Standard painting'], expanded: false },
+        { title: 'Flooring', features: ['Vitrified Tiles'], expanded: false },
+        { title: 'Electrical', features: ['Branded Electricals'], expanded: false },
+        { title: 'Other Inclusives', features: ['Other standard inclusives'], expanded: false },
+        { title: 'Extra Charges', features: ['No extra charges'], expanded: false }
+      ]
     },
     {
-      resource: 'Bricks',
-      quantity: '95000 Pieces',
-      quality: 'Medium Grade',
-      amount: 665000,
-    },
-    {
-      resource: 'Aggregate',
-      quantity: '9500 Cubic Feet',
-      quality: 'Medium Grade',
-      amount: 315000,
-    },
+      name: 'Premium',
+      price: 2449,
+      features: [
+        { title: 'Design', features: ['All features in standard package'], expanded: false },
+        { title: 'Structure', features: ['Premium structure'], expanded: false },
+        { title: 'Kitchen', features: ['Granite flooring', 'Premium quality materials'], expanded: false },
+        { title: 'Bathroom', features: ['Luxury bathrooms'], expanded: false },
+        { title: 'Plumbing', features: ['High-end plumbing fixtures'], expanded: false },
+        { title: 'Doors & Windows', features: ['Designer doors & windows'], expanded: false },
+        { title: 'Painting', features: ['Luxury painting'], expanded: false },
+        { title: 'Flooring', features: ['Granite / Marble flooring'], expanded: false },
+        { title: 'Electrical', features: ['Smart electricals'], expanded: false },
+        { title: 'Other Inclusives', features: ['Luxury inclusives'], expanded: false },
+        { title: 'Extra Charges', features: ['No extra charges'], expanded: false }
+      ]
+    }
   ];
 
-  ngOnInit() {
-    this.currentRates = this.rates['chennai'];
+  toggleFeature(pkgIndex: number, featureIndex: number) {
+    this.packages[pkgIndex].features[featureIndex].expanded = 
+      !this.packages[pkgIndex].features[featureIndex].expanded;
   }
 
-  ngAfterViewInit() {}
+ 
 
-  ngOnDestroy() {
-    if (this.chart1) {
-      this.chart1.destroy();
-      this.chart1 = null;
-    }
-    if (this.chart2) {
-      this.chart2.destroy();
-      this.chart2 = null;
-    }
+  getTotalCost(): number {
+    const constructionTotal = this.constructionArea * this.packageCost;
+    const carParkingTotal = this.carParking * 1800;
+    const sumpTotal = this.sumpLitres * 25;
+    const wasteWaterTotal = this.wasteWaterTank * 30000;
+    const compoundWallTotal = this.compoundWall * 2000;
+    const solarTotal = this.solarPower * 75000;
+
+    return constructionTotal + carParkingTotal + sumpTotal + wasteWaterTotal + compoundWallTotal + solarTotal;
   }
 
-  handleButtonClick() {
-    if (this.showResults) {
-      this.resetCalculator();
-    } else {
-      this.calculateCost();
-    }
-  }
-
-  calculateCost() {
-    if (!this.selectedState || !this.selectedCityCalc || !this.area) {
-      alert('Please fill State, City and Area before proceeding.');
-      return;
-    }
-
-    this.showResults = true;
-
-    // Wait for Angular to render the canvas, then draw the charts
-    setTimeout(() => {
-      this.renderCharts();
-    }, 200);
+  submitCalculator() {
+    this.submitted = true;
+    alert('Total Cost: ₹' + this.getTotalCost());
   }
 
   resetCalculator() {
-    this.selectedState = '';
-    this.selectedCityCalc = '';
-    this.area = 5000;
-    this.unit = 'sqft';
-    this.showResults = false;
-
-    if (this.chart1) {
-      this.chart1.destroy();
-      this.chart1 = null;
-    }
-    if (this.chart2) {
-      this.chart2.destroy();
-      this.chart2 = null;
-    }
-  }
-
-  updateRates(event: any) {
-    const newVal = event?.target ? event.target.value : this.selectedCity;
-    this.selectedCity = newVal;
-
-    if (this.rates[this.selectedCity]) {
-      this.currentRates = this.rates[this.selectedCity];
-    }
-  }
-  renderCharts() {
-    const pieCanvas = document.getElementById(
-      'costPieChart'
-    ) as HTMLCanvasElement;
-    const barCanvas = document.getElementById(
-      'timelineChart'
-    ) as HTMLCanvasElement;
-
-    if (!pieCanvas || !barCanvas) {
-      console.error('Canvas not ready');
-      return;
-    }
-
-    this.chart1 = new Chart(pieCanvas, {
-      type: 'pie',
-      data: {
-        labels: ['Design', 'Excavation', 'Foundation', 'Roof', 'Plastering'],
-        datasets: [
-          {
-            data: [10, 15, 20, 25, 30],
-            backgroundColor: [
-              '#ffeb3b',
-              '#fbc02d',
-              '#ffc107',
-              '#f57f17',
-              '#ff9800',
-            ],
-          },
-        ],
-      },
-    });
-
-    this.chart2 = new Chart(barCanvas, {
-      type: 'bar',
-      data: {
-        labels: ['Design', 'Excavation', 'Foundation', 'Roof', 'Finishing'],
-        datasets: [
-          {
-            label: 'Cost (INR)',
-            data: [200000, 350000, 450000, 300000, 250000],
-            backgroundColor: [
-              '#ffeb3b',
-              '#fbc02d',
-              '#ffc107',
-              '#f57f17',
-              '#ff9800',
-            ],
-          },
-        ],
-      },
-      options: {
-        scales: {
-          y: { beginAtZero: true },
-        },
-      },
-    });
+    this.constructionArea = 0;
+    this.packageCost = 0;
+    this.carParking = 0;
+    this.sumpLitres = 0;
+    this.wasteWaterTank = 0;
+    this.compoundWall = 0;
+    this.solarPower = 0;
+    this.submitted = false;
   }
 }

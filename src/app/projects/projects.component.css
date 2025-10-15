@@ -1,0 +1,362 @@
+/* ---------- HEADER ---------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #1c1c1c;
+  color: white;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+.logo img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.required {
+  color: red;
+  margin-left: 2px;
+}
+
+.nav a {
+  margin: 0 3px;
+  /* margin-left: 30px; */
+  color: white;
+}
+
+label {
+  color: rgb(251, 249, 249);
+}
+
+/* General Section Spacing */
+section {
+  padding: 60px 100px;
+}
+
+/* HERO SECTION */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 80px 100px;
+}
+
+
+
+.hero {
+  flex: 1;
+  font-size: large;
+  /* background-color:#f0f6ff; */
+  padding:100px 60px
+}
+
+.hero-right h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.hero-right p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.quote-btn {
+  background-color: #d34f0c;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+   margin-right: auto;       /* pushes it to the right */
+
+}
+
+.quote-btn:hover {
+  background-color: #f56c0a;
+}
+
+/* PROJECTS SECTION */
+.projects-section {
+  text-align: center;
+}
+
+.projects-section h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ---------- GALLERY ---------- */
+
+.projects-grid-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease-out;
+}
+
+.projects-grid-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- PROJECTS SCROLL SECTION ---------- */
+.projects-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa transparent;
+  padding: 10px 0;
+}
+
+.projects-scroll {
+  display: inline-flex;
+  gap: 20px;
+  padding-left: 10px;
+}
+
+.projects-scroll img {
+  width: 380px;
+  height: 220px;
+  border-radius: 10px;
+  object-fit: contain; /* ensures full image fits without cropping */
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.projects-scroll img:hover {
+  transform: scale(1.07);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: smooth horizontal scroll */
+.projects-scroll-wrapper {
+  scroll-behavior: smooth;
+}
+
+/* Animation to auto-scroll images */
+@keyframes scrollProjects {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.projects-scroll-wrapper:hover .projects-scroll {
+  animation-play-state: paused;
+}
+
+/* BUILDERS SECTION */
+.builders-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.8;
+  background-color: #f0f6ff; /* soft light blue background */
+  padding: 60px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.builders-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 40px; /* increased heading size */
+  font-weight: 700;
+  color: #f06407; /* dark blue heading */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.builders-section p {
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 20px; /* increased paragraph font size */
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.builders-section ul {
+  list-style-type: disc;
+  margin-left: 60px;
+  color: #222;
+  font-size: 18px; /* increased list font size */
+}
+
+.builders-section li {
+  margin-bottom: 12px;
+}
+
+/* Optional hover effect for list items */
+.builders-section li:hover {
+  color: #d69410;
+  transform: translateX(5px);
+  transition: all 0.3s ease;
+}
+
+
+/* FOLLOW US SECTION */
+.follow-us {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.follow-us h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icons img {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  padding: 20px;
+  background: #1c1c1c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logo-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.footer-logo h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffd700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 100px;
+  margin: 10px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-section a img {
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+}
+
+.footer-section.social-media span {
+  margin-right: 10px;
+}
+
+.footer-section.social-media span:last-child {
+  margin-right: 0;
+}
+
+
+/* ---------- HERO BANNER ---------- */
+/* ---------- HERO BANNER ---------- */
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: opacity 1s ease-in-out, transform 5s ease-in-out;
+  opacity: 1;
+}
+
+.hero-banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero-banner-text h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hero-banner-text p {
+  font-size: 22px;
+  font-weight: 400;
+}

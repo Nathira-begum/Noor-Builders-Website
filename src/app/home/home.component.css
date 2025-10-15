@@ -1,3 +1,4 @@
+/* ---------- HEADER ---------- */
 .header {
   display: flex;
   justify-content: space-between;
@@ -12,14 +13,14 @@
   font-weight: bold;
 }
 .logo img {
-  width: 50px; /* Set the width of the logo */
-  height: auto; /* Maintain aspect ratio */
+  width: 50px;
+  height: auto;
   margin-right: 10px;
 }
 
 .required {
-  color: red; /* Change the color of the asterisk */
-  margin-left: 2px; /* Add some space between the label text and the asterisk */
+  color: red;
+  margin-left: 2px;
 }
 
 .nav a {
@@ -29,28 +30,135 @@
 }
 
 label {
-  color: rgb(251, 249, 249); /* Change label color to black */
+  color: rgb(251, 249, 249);
 }
 
+/* ---------- HERO SECTION ---------- */
 .hero {
   position: relative;
   height: 120vh;
   background: url("/assets/bg6.jpeg") no-repeat center center/cover;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* content left, form right */
   align-items: center;
-  padding: 0 30px;
+  padding: 0 60px;
 }
 
+/* Left Content */
+.hero .content {
+  max-width: 40%;
+  color: white;
+  padding: 10px 18px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* .hero h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #ea0c0c;
+} */
+
+.quote-btn {
+  background: #ff851b;
+  border: none;
+  padding: 6px 12px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  align-items: center;
+}
+
+.hero button:hover {
+  background: #e67e22;
+}
+
+/* ---------- FORM (Moved to Right Side) ---------- */
+.form {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 320px;
+  width: 100%;
+  margin-left: auto; /* ✅ pushes form to the right side */
+  margin-right: 40px; /* space from edge */
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form .button-container {
+  text-align: center;
+}
+
+.form button {
+  background: #ff851b;
+  border: none;
+  padding: 4px 12px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form button:hover {
+  background: #eca3647e;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+/* ---------- COMMON STYLES ---------- */
+img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- METRICS SECTION ---------- */
 .items {
   background-color: rgba(235, 90, 43, 0.2);
 }
+
 .metrics-container {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding: 30px;
-  /* background-color: rgb(220, 92, 28); */
 }
 
 .metric-item {
@@ -69,7 +177,7 @@ label {
 }
 
 .metric-item:hover {
-  transform: scale(1.05); /* Zoom in effect */
+  transform: scale(1.05);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -89,95 +197,7 @@ label {
   color: #000000;
 }
 
-.hero .content {
-  max-width: 40%;
-}
-
-.hero h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-  color: rgb(250, 247, 251);
-}
-
-.hero h2 {
-  font-size: 48px;
-  margin-bottom: 20px;
-  color: rgb(254, 251, 251);
-}
-
-.hero button {
-  background: #ff851b;
-  border-color: #ff851b;
-  font-size: 15px;
-  padding: 5px 8px;
-  color: white;
-}
-
-.form {
-  background: rgba(0, 0, 0, 0.413);
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 300px;
-  width: 100%;
-  margin: 20px 0; /* Add margin to the form */
-}
-
-.form label {
-  display: block;
-  margin-bottom: 5px; /* Add space below each label */
-}
-
-.form input,
-.form select,
-.form textarea {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px; /* Add space below each input field */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.form .button-container {
-  text-align: center; /* Center the button container */
-}
-
-.form button {
-  background: #ff851b;
-  border: none;
-  padding: 10px 20px;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px; /* Adjust as necessary */
-  line-height: 1; /* Ensure the line height does not interfere */
-  height: auto; /* Adjust the height to fit the content */
-}
-
-.form button:hover {
-  background: #eca3647e;
-}
-
-.error {
-  color: red;
-  font-size: 12px;
-}
-
-img {
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-img:hover {
-  transform: scale(1.1); /* Slight zoom effect */
-  filter: brightness(1.2); /* Increase brightness */
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* ---------- CAROUSEL SECTION ---------- */
 .carousel {
   position: relative;
   width: 100%;
@@ -191,12 +211,12 @@ img:hover {
 }
 
 .carousel-images img {
-  width: calc((100% / 3) - 20px); /* Adjusted width to include margins */
-  margin: 0 10px; /* Adding margin between images */
-  height: auto; /* Adjust the height as needed */
-  max-height: 70vh; /* Max height to ensure images don't get too tall */
+  width: calc((100% / 3) - 20px);
+  margin: 0 10px;
+  height: auto;
+  max-height: 70vh;
   flex-shrink: 0;
-  object-fit: contain; /* Ensure images cover the container without distortion */
+  object-fit: contain;
 }
 
 .arrow {
@@ -220,6 +240,7 @@ img:hover {
   right: 10px;
 }
 
+/* ---------- PROJECTS SECTION ---------- */
 .projects-section {
   text-align: center;
   margin-top: 40px;
@@ -229,26 +250,23 @@ img:hover {
 .projects-title {
   font-family: "Poppins", "Segoe UI", sans-serif;
   font-size: 2rem;
-  font-weight: bold; /* semi-bold look */
+  font-weight: bold;
   color: #0f0f0f;
   letter-spacing: 0.3px;
   margin-bottom: 20px;
 }
 
+/* ---------- VENDORS SECTION ---------- */
 .vendors-section {
   padding: 40px 20px;
-  background-color: rgb(
-    250,
-    241,
-    241
-  ); /* Light background for the vendors section */
-  text-align: center; /* Center the text and content */
+  background-color: rgb(250, 241, 241);
+  text-align: center;
 }
 
 .vendors-section h2 {
   font-family: "Poppins", "Segoe UI", sans-serif;
   font-size: 2rem;
-  font-weight: bold; /* semi-bold look */
+  font-weight: bold;
   color: #0f0f0f;
   letter-spacing: 0.3px;
   margin-bottom: 20px;
@@ -256,9 +274,9 @@ img:hover {
 
 .vendors-list {
   display: flex;
-  justify-content: center; /* Center the vendor logos */
-  flex-wrap: wrap; /* Allow the logos to wrap to the next line if necessary */
-  gap: 130px; /* Space between logos */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 130px;
 }
 
 .vendor-logo {
@@ -267,6 +285,8 @@ img:hover {
   max-width: 100%;
   object-fit: contain;
 }
+
+/* ---------- FOOTER ---------- */
 .footer {
   padding: 20px;
   background: #1c1c1c;
@@ -280,7 +300,7 @@ img:hover {
 .footer-logo {
   display: flex;
   flex-direction: column;
-  align-items: center; /* center horizontally */
+  align-items: center;
   text-align: center;
 }
 
@@ -345,7 +365,7 @@ img:hover {
   margin-right: 0;
 }
 
-/* GALLERY SECTION */
+/* ---------- GALLERY ---------- */
 .animated-gallery {
   text-align: center;
   padding: 80px 20px;
@@ -372,7 +392,6 @@ img:hover {
   padding: 0 30px;
 }
 
-/* Each item */
 .gallery-item {
   position: relative;
   overflow: hidden;
@@ -392,7 +411,6 @@ img:hover {
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
 }
 
-/* Image styling */
 .gallery-item img {
   width: 100%;
   height: 100%;
@@ -405,7 +423,7 @@ img:hover {
   opacity: 0.9;
 }
 
-/* ====== ANIMATIONS ====== */
+/* ---------- ANIMATIONS ---------- */
 @keyframes fadeInDown {
   0% {
     opacity: 0;
@@ -426,7 +444,6 @@ img:hover {
   }
 }
 
-/* Fade-in effect on scroll */
 .gallery-item {
   opacity: 0;
   transform: translateY(40px);

@@ -31,7 +31,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
-import { CostCalculatorComponent } from './la-cost-calculator/la-cost-calculator.component';
+import { LaCostCalculatorComponent } from './la-cost-calculator/la-cost-calculator.component';
 
 registerLocaleData(en);
 
@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'careers', component: CareersComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'lacostcalculator', component: CostCalculatorComponent },
+  { path: 'lacostcalculator', component: LaCostCalculatorComponent },
 ];
 
 @NgModule({
@@ -56,7 +56,7 @@ const routes: Routes = [
     CareersComponent,
     BlogComponent,
     ContactComponent,
-    CostCalculatorComponent,
+    LaCostCalculatorComponent,
   ],
   imports: [
     BrowserModule,

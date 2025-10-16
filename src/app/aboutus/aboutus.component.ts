@@ -47,19 +47,19 @@ export class AboutusComponent {
       title: 'Construction Management',
       description:
         'Efficiently overseeing and coordinating construction projects from inception to completion. Our rigorous quality control processes ensure that every aspect of the construction meets industry standards. We deliver projects on time, leveraging our expertise and efficient project management techniques.',
-      img: 'assets/vi.jpeg',
+      img: 'assets/constructionmanagement.jpeg',
     },
     {
       title: 'Renovation',
       description:
         'Transforming spaces to meet your evolving needs while enhancing functionality and aesthetics. We use high-quality materials to ensure the longevity and durability of your renovations. Our commitment to customer satisfaction ensures that your renovation project exceeds your expectations.',
-      img: 'assets/renovation.jpeg',
+      img: 'assets/archetecture.jpeg',
     },
     {
       title: 'Architecture',
       description:
         'Designing innovative and sustainable buildings that stand out in both form and function. From conceptualization to execution, we provide comprehensive architectural services. We work closely with clients to ensure that the final design aligns with their vision and requirements.',
-      img: 'assets/archit.jpeg',
+      img: 'assets/renovations.jpeg',
     },
     {
       title: 'Interior Design',
@@ -71,13 +71,13 @@ export class AboutusComponent {
       title: 'Structural Design',
       description:
         'We provide cutting-edge structural design solutions that ensure the safety, durability, and efficiency of your building projects. We utilize the latest design software and technology to create precise and optimized structural plans that meet your specific requirements.',
-      img: 'assets/structural.jpeg',
+      img: 'assets/structuraldesign.jpeg',
     },
     {
       title: 'Elevation',
       description:
         'We integrates cutting-edge architectural designs that enhance the aesthetic appeal and functionality of structures, ensuring that every elevation not only meets but exceeds modern standards. We offer tailored elevation solutions based on the client preferences, architectural style, and the specific needs of the building, ensuring a unique and personalized touch.',
-      img: 'assets/elevation.jpeg',
+      img: 'assets/h9.jpeg',
     },
     {
       title: 'Building Approval',
@@ -89,13 +89,13 @@ export class AboutusComponent {
       title: 'Estimation',
       description:
         'Accurate cost estimation to ensure your project stays within budget. We provide accurate cost estimates to help you plan your budget effectively. We provide a detailed estimate of material costs to help you understand the financial aspects.',
-      img: 'assets/estimation.jpeg',
+      img: 'assets/estimations.jpeg',
     },
     {
       title: 'Planning & Consultancy',
       description:
         'Detailed planning and scheduling to ensure timely and within-budget project completion. Providing expert advice and solutions to optimize your construction projects.',
-      img: 'assets/project-plan.jpeg',
+      img: 'assets/planning.jpeg',
     },
   ];
 

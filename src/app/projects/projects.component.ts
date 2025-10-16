@@ -12,21 +12,20 @@ export class ProjectsComponent implements AfterViewInit {
     const text = document.querySelector('.hero-banner-text') as HTMLElement;
     let currentIndex = 0;
 
-    setInterval(() => {
-      // Fade out text
-      text.classList.add('fade');
+    if (images.length > 0) {
+      images[0].classList.add('active');
+    }
 
-      // Fade out current image
+    setInterval(() => {
+      if (images.length === 0) return;
+
+      text.classList.add('fade');
       images[currentIndex].classList.remove('active');
 
-      // Move to next image
       currentIndex = (currentIndex + 1) % images.length;
-
-      // Fade in next image
       images[currentIndex].classList.add('active');
 
-      // Fade text back in
       setTimeout(() => text.classList.remove('fade'), 500);
-    }, 2000); // changes every 2 seconds
+    }, 2000); // every 2 seconds
   }
 }

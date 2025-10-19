@@ -4,20 +4,25 @@
     <img src="assets/logo.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
-  <div class="nav">
-    <a nz-button nzType="link" href="">Home</a>
+
+  <nav class="nav">
+    <a nz-button nzType="link" routerLink="/">Home</a>
     <a nz-button nzType="link" routerLink="/about-us">About Us</a>
- <div class="dropdown">
-    <a nz-button nzType="link" class="dropbtn">Services ▾</a>
-    <div class="dropdown-content">
-      <a routerLink="/services/commercial">Commercial Construction</a>
-      <a routerLink="/services/architectural">Architectural Designing</a>
-      <a routerLink="/services/structural">Structural Designing</a>
-      <a routerLink="/services/plan-approval">Building Plan Approval</a>
+
+    <!-- Dropdown -->
+    <div class="dropdown">
+      <button class="dropbtn">Services ▾</button>
+      <div class="dropdown-content">
+        <a routerLink="/services/commercial">Commercial Construction</a>
+        <a routerLink="/services/architectural">Architectural Designing</a>
+        <a routerLink="/services/structural">Structural Designing</a>
+        <a routerLink="/services/plan-approval">Building Plan Approval</a>
+      </div>
     </div>
-  </div>    <a nz-button nzType="link" routerLink="/projects">Projects</a>
+
+    <a nz-button nzType="link" routerLink="/projects">Projects</a>
     <a nz-button nzType="link" routerLink="/contact">Contact</a>
-  </div>
+  </nav>
 </div>
 
 <!-- Pricing Packages -->

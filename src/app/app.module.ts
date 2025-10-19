@@ -33,6 +33,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 import { LaCostCalculatorComponent } from './la-cost-calculator/la-cost-calculator.component';
 import { CommercialComponent } from './services/commercial/commercial.component';
+import { ArchitecturalComponent } from './services/architectural/architectural.component';
 
 registerLocaleData(en);
 
@@ -61,6 +62,7 @@ const routes: Routes = [
     ContactComponent,
     LaCostCalculatorComponent,
     CommercialComponent,
+    ArchitecturalComponent,
   ],
   imports: [
     BrowserModule,

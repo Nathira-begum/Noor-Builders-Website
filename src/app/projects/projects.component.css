@@ -1,36 +1,85 @@
-/* ---------- HEADER ---------- */
+/* HEADER */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 15px 5%;
   background: #1c1c1c;
   color: white;
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
 }
+
 .logo img {
   width: 50px;
   height: auto;
   margin-right: 10px;
 }
 
-.required {
-  color: red;
-  margin-left: 2px;
+/* NAVIGATION */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .nav a {
-  margin: 0 3px;
-  /* margin-left: 30px; */
   color: white;
+  text-decoration: none;
+  padding: 10px;
+  transition: color 0.3s;
 }
 
-label {
-  color: rgb(251, 249, 249);
+.nav a:hover {
+  color: #f06407;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  background: white;
+  min-width: 220px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  z-index: 999;
+}
+
+.dropdown-content a {
+  color: #222;
+  padding: 10px 16px;
+  display: block;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.dropdown-content a:hover {
+  background: #f5f5f5;
+  color: #f06407;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /* General Section Spacing */
@@ -47,13 +96,11 @@ section {
   padding: 80px 100px;
 }
 
-
-
 .hero {
   flex: 1;
   font-size: large;
   /* background-color:#f0f6ff; */
-  padding:100px 60px
+  padding: 100px 60px;
 }
 
 .hero-right h2 {
@@ -76,9 +123,8 @@ section {
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
-   margin-right: auto;       /* pushes it to the right */
+  margin-right: auto; /* pushes it to the right */
   font-size: 18px; /* 🔥 button text bigger */
-
 }
 
 .quote-btn:hover {
@@ -181,7 +227,7 @@ section {
   margin-bottom: 30px;
   font-size: 40px; /* increased heading size */
   font-weight: 700;
-  color: #f06407; /* dark blue heading */
+  color: #f06407;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -213,7 +259,6 @@ section {
   transform: translateX(5px);
   transition: all 0.3s ease;
 }
-
 
 /* FOLLOW US SECTION */
 .follow-us {
@@ -321,7 +366,6 @@ section {
   margin-right: 0;
 }
 
-
 /* ---------- HERO BANNER ---------- */
 .hero-banner {
   position: relative;
@@ -349,30 +393,39 @@ section {
   opacity: 1;
 }
 
-.hero-banner-text {
-  position: absolute;
-    bottom: 15%; /* 🔥 moves text down on the image */
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* ===== Hero Caption Below Image ===== */
+.hero-caption {
   text-align: center;
-  color: white;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-  transition: opacity 0.5s ease-in-out;
-  z-index: 10; /* keeps text on top of images */
+  background-color: #f0f6ff; /* soft light blue background */
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.8;
+  padding: 60px 40px;
+  margin-top: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.hero-banner-text p {
-  font-size: 32px; /* 🔥 increased from 22px to 32px */
-  font-weight: 600;
-  max-width: 900px;
-  margin: 0 auto 20px;
-  line-height: 1.4;
+.hero-caption p {
+  font-size: 38px;
+  color: #333;
+  margin-bottom: 25px;
+  font-weight: 500;
   letter-spacing: 0.5px;
 }
 
-.hero-banner-text.fade {
-  opacity: 0;
+.hero-caption .quote-btn {
+  background-color: #f06407;
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+.hero-caption .quote-btn:hover {
+  background-color: #e6ae54;
+  transform: translateY(-2px);
+}

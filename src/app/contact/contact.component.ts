@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -8,50 +9,41 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
-  isSubmitting = false; // 👈 Track loading state
-  messageStatus: 'success' | 'error' | null = null; // 👈 For showing message
+  isSubmitting = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      service: ['', Validators.required],
-      message: ['', Validators.required],
-      terms: [false, Validators.requiredTrue],
+      phoneno: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      location: ['', Validators.required],
+      landAreaInput: ['', Validators.required],
+      requirement: ['', Validators.required],
     });
   }
 
   onSubmit(): void {
-    if (this.contactForm.valid) {
-      this.isSubmitting = true;
-
-      fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.contactForm.value),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          this.messageStatus = 'success';
-          alert('✅ Message sent successfully!');
-          this.contactForm.reset({
-            service: '', // Reset dropdown to "Select a service"
-          });
-        })
-        .catch((err) => {
-          console.error(err);
-          this.messageStatus = 'error';
-          alert('❌ Failed to send message.');
-        })
-        .finally(() => {
-          this.isSubmitting = false;
-        });
-    } else {
-      this.contactForm.markAllAsTouched(); // Highlight invalid fields
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+      return;
     }
+
+    this.isSubmitting = true;
+
+    this.http.post('http://localhost:5000/api/contact', this.contactForm.value)
+      .subscribe({
+        next: (res: any) => {
+          alert('✅ Form submitted successfully!');
+          this.contactForm.reset();
+          this.isSubmitting = false;
+        },
+        error: (err) => {
+          console.error('❌ Submission error:', err);
+          alert('❌ Failed to send form. Please try again.');
+          this.isSubmitting = false;
+        }
+      });
   }
 }

@@ -4,32 +4,35 @@
     <img src="assets/logo.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
-  <!-- <div> -->
-  <!-- <h3 style="font-size: 30px; color: white;margin-left: 0px;">NOOR BUILDERS AND ASSOCIATES</h3> -->
-  <!-- </div> -->
-  <div class="nav">
-    <a nz-button nzType="link" href="">Home</a>
-    <a nz-button nzType="link" routerLink="/about-us">About Us</a>
-    <!-- <a nz-button nzType="link" routerLink="">Joint Venture</a> -->
-    <a nz-button nzType="link" routerLink="/services">Services</a>
-    <a nz-button nzType="link" routerLink="/projects">Projects</a>
-    <!-- <a nz-button nzType="link" routerLink="/careers">Careers</a> -->
-    <!-- <a nz-button nzType="link" routerLink="/blog">Blog</a> -->
-    <a nz-button nzType="link" routerLink="/contact">Contact</a>
-  </div>
-</div>
 
+  <nav class="nav">
+    <a nz-button nzType="link" routerLink="/">Home</a>
+    <a nz-button nzType="link" routerLink="/about-us">About Us</a>
+
+    <!-- Dropdown -->
+    <div class="dropdown">
+      <button class="dropbtn">Services ▾</button>
+      <div class="dropdown-content">
+        <a routerLink="/services/commercial">Commercial Construction</a>
+        <a routerLink="/services/architectural">Architectural Designing</a>
+        <a routerLink="/services/structural">Structural Designing</a>
+        <a routerLink="/services/plan-approval">Building Plan Approval</a>
+      </div>
+    </div>
+
+    <a nz-button nzType="link" routerLink="/projects">Projects</a>
+    <a nz-button nzType="link" routerLink="/contact">Contact</a>
+  </nav>
+</div>
 <!-- ===== HERO SECTION ===== -->
-<section class="hero">
+<section class="hero"></section>
+<!-- ===== INTRO SECTION (Below Header) ===== -->
+<section class="intro-section">
   <h1>Get In Touch With Us</h1>
   <p>
     Ready to start your dream project? Our expert team is here to help you every
     step of the way. Contact us today for a free consultation.
   </p>
-  <div class="hero-buttons">
-    <a href="tel:+918344194892" class="btn-primary">📞 Call Now</a>
-    <a href="mailto:abc@gmail.com" class="btn-outline">✉️ Email Us</a>
-  </div>
 </section>
 
 <!-- ===== CONTACT DETAILS ===== -->
@@ -66,118 +69,36 @@
     </p>
 
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-      <div class="form-row">
-        <div
-          *ngIf="
-            contactForm.get('firstName')?.touched &&
-            contactForm.get('firstName')?.invalid
-          "
-          class="error"
-        >
-          First Name is required.
-        </div>
-        <input
-          type="text"
-          placeholder="First Name *"
-          formControlName="firstName"
-        />
-
-        <div
-          *ngIf="
-            contactForm.get('lastName')?.touched &&
-            contactForm.get('lastName')?.invalid
-          "
-          class="error"
-        >
-          Last Name is required.
-        </div>
-        <input
-          type="text"
-          placeholder="Last Name *"
-          formControlName="lastName"
-        />
-      </div>
-      <div
-        *ngIf="
-          contactForm.get('email')?.touched && contactForm.get('email')?.invalid
-        "
-        class="error"
-      >
-        <div *ngIf="contactForm.get('email')?.errors?.['required']">
-          Email is required.
-        </div>
-        <div *ngIf="contactForm.get('email')?.errors?.['email']">
-          Enter a valid email.
-        </div>
-      </div>
+      <input type="text" placeholder="Name *" formControlName="name" />
+      <input type="email" placeholder="Email *" formControlName="email" />
       <input
-        type="email"
-        placeholder="Email Address *"
-        formControlName="email"
+        type="tel"
+        placeholder="Phone number *"
+        formControlName="phoneno"
       />
 
-      <div
-        *ngIf="
-          contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid
-        "
-        class="error"
-      >
-        <div *ngIf="contactForm.get('phone')?.errors?.['required']">
-          Phone number is required.
-        </div>
-        <div *ngIf="contactForm.get('phone')?.errors?.['pattern']">
-          Enter a valid 10-digit phone number.
-        </div>
-      </div>
-      <input type="tel" placeholder="Phone Number *" formControlName="phone" />
-
-      <div
-        *ngIf="
-          contactForm.get('service')?.touched &&
-          contactForm.get('service')?.invalid
-        "
-        class="error"
-      >
-        Please select a service.
-      </div>
-      <select formControlName="service">
-        <option value="">Select a service</option>
-        <option>Residential Construction</option>
-        <option>Commercial Projects</option>
-        <option>Interior Design</option>
-        <option>Renovation</option>
+      <select formControlName="location">
+        <option value="">Location *</option>
+        <option>Pollachi</option>
+        <option>Coimbatore</option>
+        <option>Karur</option>
+        <option>Dindigul</option>
       </select>
 
-      <div
-        *ngIf="
-          contactForm.get('message')?.touched &&
-          contactForm.get('message')?.invalid
-        "
-        class="error"
-      >
-        Message is required.
-      </div>
+      <input
+        type="text"
+        placeholder="Enter your land area in sq.ft. *"
+        formControlName="landAreaInput"
+      />
+
       <textarea
-        rows="5"
-        placeholder="Message *"
-        formControlName="message"
+        rows="4"
+        placeholder="Please enter your requirement *"
+        formControlName="requirement"
       ></textarea>
 
-      <label class="terms">
-        <input type="checkbox" formControlName="terms" /> I agree to the
-        <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
-      </label>
-      <div
-        *ngIf="
-          contactForm.get('terms')?.touched && contactForm.get('terms')?.invalid
-        "
-        class="error"
-      >
-        You must accept the terms.
-      </div>
-
       <button type="submit" class="btn-primary" [disabled]="isSubmitting">
-        {{ isSubmitting ? "Sending..." : "Send Message" }}
+        {{ isSubmitting ? "Sending..." : "Submit" }}
       </button>
     </form>
   </div>
@@ -198,8 +119,6 @@
     </div>
   </div>
 </section>
-
-
 
 <!-- ===== FOOTER ===== -->
 <div class="footer">

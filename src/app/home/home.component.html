@@ -1,30 +1,37 @@
+<!-- ===== HEADER ===== -->
 <div class="header">
   <div class="logo">
     <img src="assets/logo.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
-  <!-- <div> -->
-  <!-- <h3 style="font-size: 30px; color: white;margin-left: 0px;">NOOR BUILDERS AND ASSOCIATES</h3> -->
-  <!-- </div> -->
-  <div class="nav">
-    <a nz-button nzType="link" href="">Home</a>
-    <a nz-button nzType="link" routerLink="/about-us">About Us</a>
-    <!-- <a nz-button nzType="link" routerLink="">Joint Venture</a> -->
-    <a nz-button nzType="link" routerLink="/services">Services</a>
-    <a nz-button nzType="link" routerLink="/projects">Projects</a>
-    <!-- <a nz-button nzType="link" routerLink="/careers">Careers</a> -->
-    <!-- <a nz-button nzType="link" routerLink="/blog">Blog</a> -->
-    <a nz-button nzType="link" routerLink="/contact">Contact</a>
-  </div>
-</div>
 
+  <nav class="nav">
+    <a nz-button nzType="link" routerLink="/">Home</a>
+    <a nz-button nzType="link" routerLink="/about-us">About Us</a>
+
+    <!-- Dropdown -->
+    <div class="dropdown">
+      <button class="dropbtn">Services ▾</button>
+      <div class="dropdown-content">
+        <a routerLink="/services/commercial">Commercial Construction</a>
+        <a routerLink="/services/architectural">Architectural Designing</a>
+        <a routerLink="/services/structural">Structural Designing</a>
+        <a routerLink="/services/plan-approval">Building Plan Approval</a>
+      </div>
+    </div>
+
+    <a nz-button nzType="link" routerLink="/projects">Projects</a>
+    <a nz-button nzType="link" routerLink="/contact">Contact</a>
+  </nav>
+</div>
 <div class="hero">
   <div class="content">
     <!-- <h2 style="font-size: 30px;align-content: center;padding:0px;margin-right: 50px;">We are one of the leading constructors</h2> -->
     <h1>Do you believe in magic? Let’s make it happen!</h1>
 
-            <a nz-button nzType="link" class="quote-btn" routerLink="/lacostcalculator">Get Free Quote</a>
-
+    <a nz-button nzType="link" class="quote-btn" routerLink="/lacostcalculator"
+      >Get Free Quote</a
+    >
   </div>
   <div class="form">
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
@@ -200,7 +207,7 @@
   <h2 class="gallery-title">Building Dreams with Precision</h2>
   <div class="gallery-grid">
     <div class="gallery-item">
-      <img src="assets/bg3.jpeg" alt="Construction animation 1" />
+      <img src="assets/background8.jpeg" alt="Construction animation 1" />
     </div>
     <div class="gallery-item">
       <img src="assets/elevation.jpeg" alt="Construction animation 2" />
@@ -209,13 +216,22 @@
       <img src="assets/background.jpeg" alt="Construction animation 2" />
     </div>
     <div class="gallery-item">
+      <img src="assets/bg3.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/background7.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
       <img src="assets/background1.jpeg" alt="Construction animation 2" />
     </div>
     <div class="gallery-item">
-      <img src="assets/img3.jpeg" alt="Construction animation 2" />
+      <img src="assets/background3.jpeg" alt="Construction animation 2" />
     </div>
     <div class="gallery-item">
-      <img src="assets/bg4.jpeg" alt="Construction animation 2" />
+      <img src="assets/background4.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/background6.jpeg" alt="Construction animation 2" />
     </div>
   </div>
 </div>

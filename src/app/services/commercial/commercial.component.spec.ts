@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GetFreeQuoteComponent } from './get-free-quote.component';
+import { CommercialComponent } from './commercial.component';
 
-describe('GetFreeQuoteComponent', () => {
-  let component: GetFreeQuoteComponent;
-  let fixture: ComponentFixture<GetFreeQuoteComponent>;
+describe('CommercialComponent', () => {
+  let component: CommercialComponent;
+  let fixture: ComponentFixture<CommercialComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GetFreeQuoteComponent ]
+      declarations: [ CommercialComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GetFreeQuoteComponent);
+    fixture = TestBed.createComponent(CommercialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

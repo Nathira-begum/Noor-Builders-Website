@@ -1,22 +1,28 @@
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
+<!-- ===== HEADER ===== -->
 <div class="header">
   <div class="logo">
     <img src="assets/logo.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
-  <div class="nav">
+
+  <nav class="nav">
     <a nz-button nzType="link" routerLink="/">Home</a>
     <a nz-button nzType="link" routerLink="/about-us">About Us</a>
-    <!-- <a nz-button nzType="link" routerLink="">Joint Venture</a> -->
-    <a nz-button nzType="link" routerLink="/services">Services</a>
+
+    <!-- Dropdown -->
+    <div class="dropdown">
+      <button class="dropbtn">Services ▾</button>
+      <div class="dropdown-content">
+        <a routerLink="/services/commercial">Commercial Construction</a>
+        <a routerLink="/services/architectural">Architectural Designing</a>
+        <a routerLink="/services/structural">Structural Designing</a>
+        <a routerLink="/services/plan-approval">Building Plan Approval</a>
+      </div>
+    </div>
+
     <a nz-button nzType="link" routerLink="/projects">Projects</a>
-    <!-- <a nz-button nzType="link" routerLink="/careers">Careers</a> -->
-    <!-- <a nz-button nzType="link" routerLink="/blog">Blog</a> -->
     <a nz-button nzType="link" routerLink="/contact">Contact</a>
-  </div>
+  </nav>
 </div>
 
 <div class="background-section">

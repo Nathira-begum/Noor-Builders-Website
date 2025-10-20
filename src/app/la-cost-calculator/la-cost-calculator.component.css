@@ -33,6 +33,7 @@
   text-decoration: none;
   padding: 10px;
   transition: color 0.3s;
+  font-size: 14px;
 }
 
 .nav a:hover {
@@ -45,12 +46,17 @@
 }
 
 .dropbtn {
-  background: transparent;
+  background: transparent !important;
   border: none;
   color: white !important;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px;
+}
+
+.dropbtn:hover,
+.dropdown:hover .dropbtn {
+  color: #f06407 !important;
 }
 
 .dropdown-content {
@@ -81,8 +87,6 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-
 
 .pricing-section {
   text-align: center;
@@ -146,7 +150,6 @@
 .card.basic {
   border-top: 6px solid #ff851b; /* Orange color for basic */
 }
-
 
 .card.standard {
   border-top: 6px solid #ff851b;
@@ -214,7 +217,6 @@ small {
 .summary p {
   margin: 5px 0;
 }
-
 
 .form-section {
   background: rgba(255, 255, 255, 0.1);
@@ -304,8 +306,8 @@ small {
 
 .button-group {
   display: flex;
-  justify-content: flex-start; /* Align buttons to the left */
-  gap: 20px; /* Space between buttons */
+  justify-content: center; /* Align buttons to the left */
+  gap: 24px; /* Space between buttons */
   margin-top: 20px;
 }
 
@@ -330,6 +332,62 @@ button:last-child {
   background-color: #ff851b;
   color: white;
 }
+
+/* ===== SOCIAL SECTION ===== */
+.social-section {
+  text-align: center;
+  padding: 50px 0;
+  background: #fff;
+}
+
+.social-section h2 {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .social-icons a {
+    width: 50px;
+    height: 50px;
+  }
+
+  .social-section h2 {
+    font-size: 1.6rem;
+  }
+}
+
 
 
 /* ---------- Footer ---------- */

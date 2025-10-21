@@ -206,73 +206,122 @@
   color: #f06407;
 }
 
+/* design process container */
 .design-process {
   background: #f6f3ef;
   padding: 60px 5%;
   margin: 60px auto;
   border-radius: 12px;
   max-width: 1200px;
+  text-align: center;
+  box-sizing: border-box;
 }
 
+.design-process h2 {
+  font-size: 2em;
+  color: #d9531e;
+  margin-bottom: 32px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* layout */
 .process-steps {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;   /* center last row when fewer items */
   gap: 30px;
-  margin-top: 30px;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
+/* fixed card size so items never stretch to full width */
 .step {
-  text-align: center;
-  flex: 1 1 300px; /* ✅ consistent width across steps */
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
-
-/* Force uniform height across all step cards and images */
-.step {
+  flex: 0 0 320px;           /* fixed width per card */
+  max-width: 320px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  height: 420px; /* fixed consistent card height */
+  transition: transform .25s ease, box-shadow .25s ease;
   overflow: hidden;
+  height: 340px; /* ↓ Shortened height */
 }
 
+/* ✅ Image Style */
 .step img {
-  flex-shrink: 0;
   width: 100%;
-  height: 200px !important;
+  height: 180px; /* ↓ Reduced image height */
   object-fit: cover;
   border-radius: 8px;
-}
-
-/* Specific fix if Step 07 still misbehaves */
-.step:nth-child(7) img {
-  height: 200px !important;
-  width: 100% !important;
-  object-fit: cover !important;
-  aspect-ratio: 16 / 9 !important;
-}
-
-
-
-.step:hover {
-  transform: translateY(-5px);
-}
-
-.step h3 {
-  font-size: 1.5em;
   margin-bottom: 10px;
+}
+
+/* ✅ Fix for tick.jpeg (Step 07) */
+.step:nth-child(7) img {
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: none;
+  padding: 0;
+}
+
+/* image wrapper ensures different aspect ratios behave same */
+.img-wrap {
+  width: 100%;
+  height: 220px;             /* same visible height for all */
+  overflow: hidden;
+  border-radius: 8px;
+  display: block;
+  background: #fff;
+  margin-bottom: 15px;
+}
+
+/* the image itself fills the wrapper, cropping with cover */
+.img-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* cover crops to fill and match others */
+  object-position: center;
+}
+
+/* hover */
+.step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+/* heading + text */
+.step h3 {
+  font-size: 1.4em;
   color: #f06407;
+  margin: 8px 0 6px;
 }
 
 .step p {
-  font-size: 1em;
-  color: #555;
+  color: #444;
+  font-size: 0.98rem;
+  margin: 0;
+  text-align: center;
+  padding: 0 6px;
 }
+
+/* responsive: make cards smaller on narrow screens */
+@media (max-width: 880px) {
+  .step { flex: 0 0 45%; max-width: 45%; min-height: 380px; }
+  .img-wrap { height: 180px; }
+}
+
+@media (max-width: 520px) {
+  .step { flex: 0 0 100%; max-width: 100%; min-height: auto; }
+  .img-wrap { height: 200px; }
+}
+
 
 .structural-samples {
   padding: 60px 5%;

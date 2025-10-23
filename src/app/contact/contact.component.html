@@ -1,7 +1,8 @@
 <!-- ===== HEADER ===== -->
+<!-- ===== HEADER ===== -->
 <div class="header">
   <div class="logo">
-    <img src="assets/logo.jpeg" alt="Logo" />
+    <img src="assets/logo1.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
 
@@ -24,6 +25,7 @@
     <a nz-button nzType="link" routerLink="/contact">Contact</a>
   </nav>
 </div>
+
 <!-- ===== HERO SECTION ===== -->
 <section class="hero"></section>
 <!-- ===== INTRO SECTION (Below Header) ===== -->
@@ -47,14 +49,20 @@
   <div class="contact-card">
     <div class="icon">✉️</div>
     <h3>Email Us</h3>
-    <p><a href="mailto:abc@gmail.com">abc@gmail.com</a></p>
+    <p>
+      <a
+        href="noorbuilders0786@gmail.com
+"
+        >noorbuilders0786@gmail.com
+      </a>
+    </p>
     <span>We’ll respond within 24 hours</span>
   </div>
 
   <div class="contact-card">
     <div class="icon">📍</div>
     <h3>Visit Us</h3>
-    <p>8th Floor, Noor Towers,<br />Business Park, Gurugram-122102</p>
+    <p>Collectorate opp,<br />Settinayakanpatti road, Dindigul - 624001</p>
     <span>Schedule an appointment</span>
   </div>
 </section>
@@ -79,10 +87,10 @@
 
       <select formControlName="location">
         <option value="">Location *</option>
+        <option>Dindigul</option>
         <option>Pollachi</option>
         <option>Coimbatore</option>
         <option>Karur</option>
-        <option>Dindigul</option>
       </select>
 
       <input
@@ -107,7 +115,7 @@
     <h2>Find Us Here</h2>
     <p>
       Visit our office to discuss your project in person. We’re conveniently
-      located in Gurugram and always ready to welcome you.
+      located in Dindigul and always ready to welcome you.
     </p>
     <iframe src="https://www.google.com/maps/embed?..."></iframe>
 
@@ -143,7 +151,7 @@
 <div class="footer">
   <div class="footer-section footer-logo">
     <img
-      src="assets/logo.jpeg"
+      src="assets/logo1.jpeg"
       alt="Noor Builders Logo"
       class="footer-logo-img"
     />
@@ -151,35 +159,49 @@
   </div>
   <div class="footer-section contact-info">
     <h3>For Enquiries</h3>
-    <span
-      nz-icon
-      nzType="phone"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span>+91 83441 94892</span>
-    <p>+91 85080 56990</p>
-    <span
-      nz-icon
-      nzType="mail"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span><a href="mailto:abc@gmail.com">abc@gmail.com</a></span>
+
+    <div class="contact-line">
+      <span nz-icon nzType="phone" nzTheme="outline"></span>
+      <span class="contact-text">+91 83441 94892</span>
+    </div>
+
+    <div class="contact-line second-number">
+      <span class="contact-text">+91 85080 56990</span>
+    </div>
+
+    <div class="contact-line">
+      <span nz-icon nzType="mail" nzTheme="outline"></span>
+      <span class="contact-text">noorbuilders0786@gmail.com</span>
+    </div>
   </div>
+
   <div class="footer-section social-media">
     <h3>Follow Us</h3>
-    <span nz-icon nzType="facebook" nzTheme="outline"></span>
-    <span nz-icon nzType="instagram" nzTheme="outline"></span>
-    <span nz-icon nzType="youtube" nzTheme="outline"></span>
-    <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+    <div class="icon-row">
+      <span nz-icon nzType="facebook" nzTheme="outline"></span>
+      <span nz-icon nzType="instagram" nzTheme="outline"></span>
+      <span nz-icon nzType="youtube" nzTheme="outline"></span>
+      <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+    </div>
   </div>
+
   <div class="footer-section navigation-links">
     <h3>Navigation Links</h3>
     <ul>
       <li><a href="">Home</a></li>
       <li><a href="/about-us">About Us</a></li>
-      <li><a href="/career">Career</a></li>
+       <!-- Services Dropdown -->
+    <li class="footer-dropdown">
+      <button class="dropbtn">Services ▸</button>
+      <div class="dropdown-content">
+        <a routerLink="/services/commercial">Commercial Construction</a>
+        <a routerLink="/services/architectural">Architectural Designing</a>
+        <a routerLink="/services/structural">Structural Designing</a>
+        <a routerLink="/services/building-plan">Building Plan Approval</a>
+      </div>
+    </li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
       <li><a href="/lacostcalculator">Cost Calculator</a></li>
     </ul>
   </div>

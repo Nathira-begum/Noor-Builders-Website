@@ -4,21 +4,29 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 5%;
-  background: #1c1c1c;
-  color: white;
+  background: #e2ecf6; /* Deep navy blue */
+  color: rgb(12, 12, 12);
 }
 
+/* LOGO SECTION */
 .logo {
   display: flex;
   align-items: center;
-  font-size: 20px;
-  font-weight: 600;
+  gap: 12px;
 }
 
 .logo img {
-  width: 50px;
+  width: 180px; /* ✅ Increase logo size */
   height: auto;
-  margin-right: 10px;
+  object-fit: contain; /* Keeps logo clear and not stretched */
+  filter: brightness(1.2) contrast(1.2); /* ✅ Make it more visible */
+}
+
+.logo span {
+  font-size: 1.6rem; /* ✅ Make text bigger */
+  font-weight: 700;
+  color: rgb(15, 15, 15);
+  letter-spacing: 1px;
 }
 
 /* NAVIGATION */
@@ -29,64 +37,80 @@
 }
 
 .nav a {
-  color: white;
+  color: black;
   text-decoration: none;
   padding: 10px;
   transition: color 0.3s;
   font-size: 14px;
+  font-weight: 600; /* makes text bold */
 }
 
 .nav a:hover {
-  color: #f06407;
+  color: #004aad;
 }
 
-/* DROPDOWN */
+/* ===== CLEAN DROPDOWN MENU ===== */
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 
 .dropbtn {
   background: transparent !important;
   border: none;
-  color: white !important;
+  color: black !important;
   cursor: pointer;
   font-size: 14px;
-  padding: 10px;
+  padding: 10px 16px;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
+/* Remove blue box and make it look like other links */
 .dropbtn:hover,
 .dropdown:hover .dropbtn {
-  color: #f06407 !important;
+  color: #004aad;
+  background: transparent !important; /* removes blue background */
 }
 
+/* Dropdown menu box */
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 42px;
-  left: 0;
-  background: white;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
   min-width: 220px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
-  z-index: 999;
+  overflow: hidden;
+  z-index: 1000;
 }
 
+/* Dropdown links */
 .dropdown-content a {
-  color: #222;
+  color: #0e0d0d;
   padding: 10px 16px;
   display: block;
   text-decoration: none;
   font-size: 15px;
+  transition: all 0.2s ease;
 }
 
+/* Hover effects for links */
 .dropdown-content a:hover {
-  background: #f5f5f5;
-  color: #f06407;
+  background: #f0f5ff;
+  color: #004aad;
+  padding-left: 22px;
 }
 
+/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+
 
 .pricing-section {
   text-align: center;
@@ -121,6 +145,58 @@
   transform: scale(1.05);
 }
 
+/* ===== Strong override for feature bullet styling (place at end of CSS) ===== */
+/* Target the feature list only inside pricing cards for safety */
+.pricing-cards .card .feature-list,
+.card .feature-list {
+  display: block !important;
+  list-style-type: disc !important;        /* ensure bullets */
+  list-style-position: outside !important; /* bullet outside text */
+  padding-left: 18px !important;           /* distance from left edge */
+  margin: 10px 0 !important;
+}
+
+/* Each list item: tighten spacing and align multi-line text */
+.pricing-cards .card .feature-list li,
+.card .feature-list li {
+  margin: 8px 0 !important;    /* vertical spacing between items */
+  padding-left: 0 !important;  /* remove extra left padding */
+  color: #222 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  text-align: left !important; /* keep text aligned under first word */
+}
+
+/* Make marker (bullet) closer to text and styled */
+.pricing-cards .card .feature-list li::marker,
+.card .feature-list li::marker {
+  font-size: 14px !important;
+  color: #0a0a0a !important; /* theme color, change if needed */
+  /* you cannot control exact marker-to-text gap precisely in all browsers,
+     but reducing padding-left on ul and removing li padding helps a lot */
+}
+
+/* If some reset set list-style on all ul elements, explicitly re-enable for feature-list */
+.card ul.feature-list,
+.card > ul.feature-list {
+  list-style: disc !important;
+}
+
+/* If your .card rule removed bullets via .card ul { list-style: none; padding:0; margin:0; }
+   reintroduce padding only for feature-list so other uls remain unaffected */
+.card ul:not(.feature-list) {
+  /* keep other lists as they are */
+}
+
+/* Mobile tweak (if needed) */
+@media (max-width: 768px) {
+  .pricing-cards .card .feature-list,
+  .card .feature-list {
+    padding-left: 16px !important;
+  }
+}
+
+
 .card h3 {
   color: #1c1c1c;
   font-size: 22px;
@@ -130,7 +206,7 @@
 .card .price {
   font-size: 26px;
   font-weight: bold;
-  color: #ff6f00;
+  color: #004aad;
   margin-bottom: 15px;
 }
 
@@ -148,15 +224,15 @@
 
 /* Highlighted cards */
 .card.basic {
-  border-top: 6px solid #ff851b; /* Orange color for basic */
-}
-
-.card.standard {
-  border-top: 6px solid #ff851b;
+  border-top: 6px solid #004aad; /* Orange color for basic */
 }
 
 .card.premium {
-  border-top: 6px solid #ff851b;
+  border-top: 6px solid #004aad;
+}
+
+.card.elite {
+  border-top: 6px solid #004aad;
 }
 
 /* ================= CALCULATOR SECTION ================= */
@@ -245,7 +321,7 @@ small {
 }
 
 .form-section button {
-  background: #ff851b;
+  background: #004aad;
   border: none;
   padding: 10px 15px;
   margin-top: 20px;
@@ -258,7 +334,7 @@ small {
 }
 
 .form-section button:hover {
-  background: #e67e22;
+  background: #7bb0f0;
 }
 
 .result-section {
@@ -276,7 +352,7 @@ small {
 
 .result-section .result {
   font-size: 30px;
-  color: #ffae42;
+  color: #004aad;
   font-weight: bold;
 }
 
@@ -295,7 +371,7 @@ small {
 }
 
 .feature-title:hover {
-  color: #ff6f00;
+  color: #7bb0f0;
 }
 
 .card ul li {
@@ -324,12 +400,12 @@ button:hover {
 }
 
 button:first-child {
-  background-color: #ff851b;
+  background-color: #004aad;
   color: white;
 }
 
 button:last-child {
-  background-color: #ff851b;
+  background-color: #004aad;
   color: white;
 }
 
@@ -388,86 +464,132 @@ button:last-child {
   }
 }
 
-
-
-/* ---------- Footer ---------- */
-.footer {
-  padding: 20px;
-  background: #1c1c1c;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  text-align: left;
+.feature-list {
+  list-style-type: disc;
+  list-style-position: outside; /* makes bullets line up neatly */
+  padding-left: 16px; /* tighter bullet distance */
+  margin: 10px 0;
 }
 
-.footer-logo {
+.feature-list li {
+  margin-bottom: 6px;
+  color: #222;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left; /* keeps lines aligned under first word */
+  padding-left: 4px; /* tiny nudge for perfect alignment */
+}
+
+.feature-list li::marker {
+  color: #030303; /* theme bullet color */
+  font-size: 16px;
+}
+
+
+/* FOOTER */
+.footer {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* center horizontally */
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 40px 8%;
+  background: #e2ecf6; /* Light blue background */
+  color: #0f0f0f; /* Dark text for contrast */
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+}
+
+/* FOOTER LOGO SECTION */
+.footer-logo {
   text-align: center;
 }
 
 .footer-logo-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-bottom: 8px;
-}
-
-.footer-logo h3 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: bold;
-  color: #ffd700;
-  letter-spacing: 0.5px;
-  line-height: 1.2;
-}
-
-.footer-section {
-  flex: 1;
-  min-width: 100px;
-  margin: 10px;
-}
-
-.footer-section h3 {
-  font-size: 18px;
+  width: 220px; /* increased from 140px to make it bigger */
+  height: auto;
+  object-fit: contain;
   margin-bottom: 10px;
-  color: white;
+  filter: brightness(1.1) contrast(1.1); /* makes logo pop */
 }
 
-.footer-section ul {
-  list-style: none;
-  padding: 0;
+.footer h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0b0b0b;
+  margin-bottom: 15px;
 }
 
-.footer-section ul li {
-  margin: 5px 0;
-}
-
-.footer-section ul li a {
-  color: white;
+.footer p,
+.footer a {
+  color: #080808;
+  font-size: 1rem;
   text-decoration: none;
+  transition: 0.3s ease;
 }
 
-.footer-section ul li a:hover {
-  text-decoration: underline;
+.footer a:hover {
+  color: #004aad;
 }
 
-.footer-section a img {
-  width: 24px;
-  height: 24px;
-  margin: 0 5px;
-}
-
-.footer-section.social-media span {
+/* ICONS (generic) */
+.footer i {
+  color: #0f0f0f;
   margin-right: 10px;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
 }
 
-.footer-section.social-media span:last-child {
-  margin-right: 0;
+.footer i:hover {
+  color: #004aad;
 }
+
+/* ===== Social Media Section ===== */
+.footer-section.social-media {
+  display: flex;
+  flex-direction: column; /* stack heading on top, icons below */
+  align-items: flex-start; /* left align; use center if you want centered icons */
+}
+
+.footer-section.social-media h3 {
+  margin-bottom: 15px; /* space below heading */
+}
+
+/* Icon row */
+.footer-section.social-media .icon-row {
+  display: flex;
+  flex-direction: row;
+  gap: 18px; /* even space between icons */
+}
+
+/* Style for each icon */
+.footer-section.social-media span[nz-icon] {
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-section.social-media span[nz-icon]:hover {
+  color: #004aad;
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .footer-logo-img {
+    width: 180px;
+  }
+
+  .footer-section.social-media {
+    align-items: center; /* center heading and icons on mobile */
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 900px) {
   .form-row {

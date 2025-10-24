@@ -1,14 +1,15 @@
 <!-- ===== HEADER ===== -->
 <div class="header">
   <div class="logo">
-    <img src="assets/logo.jpeg" alt="Logo" />
+    <img src="assets/logo1.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
 
   <nav class="nav">
-    <a routerLink="/">Home</a>
-    <a routerLink="/about-us">About Us</a>
+    <a nz-button nzType="link" routerLink="/">Home</a>
+    <a nz-button nzType="link" routerLink="/about-us">About Us</a>
 
+    <!-- Dropdown -->
     <div class="dropdown">
       <button class="dropbtn">Services ▾</button>
       <div class="dropdown-content">
@@ -19,29 +20,32 @@
       </div>
     </div>
 
-    <a routerLink="/projects">Projects</a>
-    <a routerLink="/contact">Contact</a>
+    <a nz-button nzType="link" routerLink="/projects">Projects</a>
+    <a nz-button nzType="link" routerLink="/contact">Contact</a>
   </nav>
 </div>
 
 <!-- HERO SECTION -->
 <section class="hero-section">
   <h1>Comprehensive Building Plans</h1>
-  <p>We create precise, safe, and optimized building plans for residential and commercial projects.</p>
+  <p>
+    We create precise, safe, and optimized building plans for residential and
+    commercial projects.
+  </p>
 </section>
 
 <!-- ABOUT BUILDING PLANS -->
 <section class="about-structural">
   <h2>Why Building Plans are Important</h2>
   <p>
-    A well-drafted building plan ensures your project is safe, functional, and compliant with regulations.
-    It covers architectural layout, structural requirements, plumbing, electrical, and material specifications.
+    A well-drafted building plan ensures your project is safe, functional, and
+    compliant with regulations. It covers architectural layout, structural
+    requirements, plumbing, electrical, and material specifications.
   </p>
   <p>
-    At <strong>Noor Builders & Associates</strong>, we turn your ideas into detailed blueprints ready for construction.
+    At <strong>Noor Builders & Associates</strong>, we turn your ideas into
+    detailed blueprints ready for construction.
   </p>
-
-  
 </section>
 
 <!-- DESIGN PROCESS -->
@@ -105,7 +109,7 @@
 <div class="footer">
   <div class="footer-section footer-logo">
     <img
-      src="assets/logo.jpeg"
+      src="assets/logo1.jpeg"
       alt="Noor Builders Logo"
       class="footer-logo-img"
     />
@@ -113,35 +117,49 @@
   </div>
   <div class="footer-section contact-info">
     <h3>For Enquiries</h3>
-    <span
-      nz-icon
-      nzType="phone"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span>+91 83441 94892</span>
-    <p>+91 85080 56990</p>
-    <span
-      nz-icon
-      nzType="mail"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span><a href="mailto:abc@gmail.com">abc@gmail.com</a></span>
+
+    <div class="contact-line">
+      <span nz-icon nzType="phone" nzTheme="outline"></span>
+      <span class="contact-text">+91 83441 94892</span>
+    </div>
+
+    <div class="contact-line second-number">
+      <span class="contact-text">+91 85080 56990</span>
+    </div>
+
+    <div class="contact-line">
+      <span nz-icon nzType="mail" nzTheme="outline"></span>
+      <span class="contact-text">noorbuilders0786@gmail.com</span>
+    </div>
   </div>
+
   <div class="footer-section social-media">
     <h3>Follow Us</h3>
-    <span nz-icon nzType="facebook" nzTheme="outline"></span>
-    <span nz-icon nzType="instagram" nzTheme="outline"></span>
-    <span nz-icon nzType="youtube" nzTheme="outline"></span>
-    <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+    <div class="icon-row">
+      <span nz-icon nzType="facebook" nzTheme="outline"></span>
+      <span nz-icon nzType="instagram" nzTheme="outline"></span>
+      <span nz-icon nzType="youtube" nzTheme="outline"></span>
+      <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+    </div>
   </div>
+
   <div class="footer-section navigation-links">
     <h3>Navigation Links</h3>
     <ul>
       <li><a href="">Home</a></li>
       <li><a href="/about-us">About Us</a></li>
-      <li><a href="/career">Career</a></li>
+      <!-- Services Dropdown -->
+      <li class="footer-dropdown">
+        <button class="dropbtn">Services ▸</button>
+        <div class="dropdown-content">
+          <a routerLink="/services/commercial">Commercial Construction</a>
+          <a routerLink="/services/architectural">Architectural Designing</a>
+          <a routerLink="/services/structural">Structural Designing</a>
+          <a routerLink="/services/building-plan">Building Plan Approval</a>
+        </div>
+      </li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
       <li><a href="/lacostcalculator">Cost Calculator</a></li>
     </ul>
   </div>

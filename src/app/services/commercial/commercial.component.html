@@ -1,7 +1,7 @@
 <!-- ===== HEADER ===== -->
 <div class="header">
   <div class="logo">
-    <img src="assets/logo.jpeg" alt="Logo" />
+    <img src="assets/logo1.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
 
@@ -30,22 +30,28 @@
   <section class="hero-section">
     <div class="overlay">
       <h1>Commercial Construction</h1>
-      <p>Where innovation meets reliability — crafting spaces that empower your business.</p>
+      <p>
+        Where innovation meets reliability — crafting spaces that empower your
+        business.
+      </p>
     </div>
   </section>
 
   <section class="about-commercial">
     <h2>What is Commercial Construction?</h2>
     <p>
-      Commercial construction involves the design, development, and building of facilities for business purposes
-      such as offices, malls, hotels, educational institutions, hospitals, and warehouses. Unlike residential
-      construction, it focuses on functionality, safety, durability, and efficient space utilization for
-      business operations.
+      Commercial construction involves the design, development, and building of
+      facilities for business purposes such as offices, malls, hotels,
+      educational institutions, hospitals, and warehouses. Unlike residential
+      construction, it focuses on functionality, safety, durability, and
+      efficient space utilization for business operations.
     </p>
     <p>
-      At <strong>Noor Builders & Associates</strong>, we deliver customized commercial projects that balance
-      aesthetics, performance, and cost-effectiveness. From blueprint to finishing touches, our experienced team
-      ensures that every structure reflects your brand’s identity and operational needs.
+      At <strong>Noor Builders & Associates</strong>, we deliver customized
+      commercial projects that balance aesthetics, performance, and
+      cost-effectiveness. From blueprint to finishing touches, our experienced
+      team ensures that every structure reflects your brand’s identity and
+      operational needs.
     </p>
   </section>
 
@@ -53,8 +59,10 @@
     <div class="info-text">
       <h3>Modern Office Spaces</h3>
       <p>
-        We design and construct office environments that boost productivity, enhance collaboration, and embody your
-        corporate values. Our layouts combine elegance and practicality for maximum employee comfort and efficiency.
+        We design and construct office environments that boost productivity,
+        enhance collaboration, and embody your corporate values. Our layouts
+        combine elegance and practicality for maximum employee comfort and
+        efficiency.
       </p>
     </div>
     <div class="info-image">
@@ -69,8 +77,9 @@
     <div class="info-content">
       <h2>Retail Complex</h2>
       <p>
-        From small showrooms to large malls, we build attractive and functional retail spaces that attract foot
-        traffic and enhance customer experience — creating a strong brand impression.
+        From small showrooms to large malls, we build attractive and functional
+        retail spaces that attract foot traffic and enhance customer experience
+        — creating a strong brand impression.
       </p>
     </div>
   </section>
@@ -79,8 +88,9 @@
     <div class="info-text">
       <h3>Industrial & Corporate Structures</h3>
       <p>
-        Our industrial projects are engineered with precision to handle heavy operations, meet safety standards,
-        and allow future scalability. We prioritize strong foundations and modern architectural excellence.
+        Our industrial projects are engineered with precision to handle heavy
+        operations, meet safety standards, and allow future scalability. We
+        prioritize strong foundations and modern architectural excellence.
       </p>
     </div>
     <div class="info-image">
@@ -111,7 +121,7 @@
 <div class="footer">
   <div class="footer-section footer-logo">
     <img
-      src="assets/logo.jpeg"
+      src="assets/logo1.jpeg"
       alt="Noor Builders Logo"
       class="footer-logo-img"
     />
@@ -119,37 +129,50 @@
   </div>
   <div class="footer-section contact-info">
     <h3>For Enquiries</h3>
-    <span
-      nz-icon
-      nzType="phone"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span>+91 83441 94892</span>
-    <p>+91 85080 56990</p>
-    <span
-      nz-icon
-      nzType="mail"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span><a href="mailto:abc@gmail.com">abc@gmail.com</a></span>
+
+    <div class="contact-line">
+      <span nz-icon nzType="phone" nzTheme="outline"></span>
+      <span class="contact-text">+91 83441 94892</span>
+    </div>
+
+    <div class="contact-line second-number">
+      <span class="contact-text">+91 85080 56990</span>
+    </div>
+
+    <div class="contact-line">
+      <span nz-icon nzType="mail" nzTheme="outline"></span>
+      <span class="contact-text">noorbuilders0786@gmail.com</span>
+    </div>
   </div>
+
   <div class="footer-section social-media">
     <h3>Follow Us</h3>
-    <span nz-icon nzType="facebook" nzTheme="outline"></span>
-    <span nz-icon nzType="instagram" nzTheme="outline"></span>
-    <span nz-icon nzType="youtube" nzTheme="outline"></span>
-    <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+    <div class="icon-row">
+      <span nz-icon nzType="facebook" nzTheme="outline"></span>
+      <span nz-icon nzType="instagram" nzTheme="outline"></span>
+      <span nz-icon nzType="youtube" nzTheme="outline"></span>
+      <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+    </div>
   </div>
+
   <div class="footer-section navigation-links">
     <h3>Navigation Links</h3>
     <ul>
       <li><a href="">Home</a></li>
       <li><a href="/about-us">About Us</a></li>
-      <li><a href="/career">Career</a></li>
+      <!-- Services Dropdown -->
+      <li class="footer-dropdown">
+        <button class="dropbtn">Services ▸</button>
+        <div class="dropdown-content">
+          <a routerLink="/services/commercial">Commercial Construction</a>
+          <a routerLink="/services/architectural">Architectural Designing</a>
+          <a routerLink="/services/structural">Structural Designing</a>
+          <a routerLink="/services/building-plan">Building Plan Approval</a>
+        </div>
+      </li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
       <li><a href="/lacostcalculator">Cost Calculator</a></li>
     </ul>
   </div>
 </div>
-

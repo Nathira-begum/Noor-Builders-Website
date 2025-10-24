@@ -471,15 +471,12 @@ textarea.ng-touched.ng-invalid {
   color: #0e0e0e;
   transform: scale(1.1);
 }
-.footer-section.navigation-links h3{
+.footer-section.navigation-links h3 {
   margin-bottom: 15px;
   font-size: 20px;
   font-weight: 600; /* makes it bold */
   color: #000; /* optional - keeps it readable if it was light */
 }
-
-
-
 
 /* Navigation Links Styling */
 .footer-section.navigation-links ul {
@@ -522,7 +519,7 @@ textarea.ng-touched.ng-invalid {
   position: absolute;
   background-color: #ffffff;
   min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-radius: 5px;
   left: 100%; /* make it open to the right */

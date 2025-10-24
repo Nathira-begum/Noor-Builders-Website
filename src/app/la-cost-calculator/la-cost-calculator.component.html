@@ -29,14 +29,18 @@
 <section class="pricing-section">
   <h2>Our Pricing Package</h2>
   <div class="pricing-cards">
-    <div class="card" *ngFor="let pkg of packages; let i = index" [ngClass]="pkg.name.toLowerCase()">
+    <div
+      class="card"
+      *ngFor="let pkg of packages; let i = index"
+      [ngClass]="pkg.name.toLowerCase()"
+    >
       <h3>{{ pkg.name }}</h3>
       <p class="price">₹{{ pkg.price }}/sq.ft</p>
 
       <div *ngFor="let feature of pkg.features; let j = index">
-        <div class="feature-title" (click)="toggleFeature(i,j)">
+        <div class="feature-title" (click)="toggleFeature(i, j)">
           {{ feature.title }}
-          <span>{{ feature.expanded ? '-' : '+' }}</span>
+          <span>{{ feature.expanded ? "-" : "+" }}</span>
         </div>
         <ul *ngIf="feature.expanded" class="feature-list">
           <li *ngFor="let item of feature.features">{{ item }}</li>
@@ -83,16 +87,24 @@
 
   <!-- Waste Water Tank -->
   <div class="form-group">
-    <label>How many person waste water recycling tank required? (optional)</label>
+    <label
+      >How many person waste water recycling tank required? (optional)</label
+    >
     <input type="number" [(ngModel)]="wasteWaterTank" min="0" max="10" />
-    <small>Waste water recycling tank is an alternative to septic tank. It's not required if you have a drainage connection.</small>
+    <small
+      >Waste water recycling tank is an alternative to septic tank. It's not
+      required if you have a drainage connection.</small
+    >
   </div>
 
   <!-- Compound Wall -->
   <div class="form-group">
     <label>How much feet length compound wall do you require? (optional)</label>
     <input type="number" [(ngModel)]="compoundWall" min="0" max="1000" />
-    <small>If plot size is 40x30, compound wall length will be 40+40+30+30 = 140 feet</small>
+    <small
+      >If plot size is 40x30, compound wall length will be 40+40+30+30 = 140
+      feet</small
+    >
   </div>
 
   <!-- Solar Power -->
@@ -110,13 +122,21 @@
   <!-- Total Summary -->
   <div class="summary" *ngIf="submitted">
     <h3>Total Summary</h3>
-    <p>Construction Area: {{constructionArea}} x {{packageCost}} = ₹{{constructionArea * packageCost}}</p>
-    <p>Car Parking: {{carParking}} x 1800 = ₹{{carParking * 1800}}</p>
-    <p>Underground Sump: {{sumpLitres}} x 25 = ₹{{sumpLitres * 25}}</p>
-    <p>Waste Water Tank: {{wasteWaterTank}} x 30000 = ₹{{wasteWaterTank * 30000}}</p>
-    <p>Compound Wall: {{compoundWall}} x 2000 = ₹{{compoundWall * 2000}}</p>
-    <p>Solar Power: {{solarPower}} x 75000 = ₹{{solarPower * 75000}}</p>
-    <h3>Total Cost: ₹{{getTotalCost()}}</h3>
+    <p>
+      Construction Area: {{ constructionArea }} x {{ packageCost }} = ₹{{
+        constructionArea * packageCost
+      }}
+    </p>
+    <p>Car Parking: {{ carParking }} x 1800 = ₹{{ carParking * 1800 }}</p>
+    <p>Underground Sump: {{ sumpLitres }} x 25 = ₹{{ sumpLitres * 25 }}</p>
+    <p>
+      Waste Water Tank: {{ wasteWaterTank }} x 30000 = ₹{{
+        wasteWaterTank * 30000
+      }}
+    </p>
+    <p>Compound Wall: {{ compoundWall }} x 2000 = ₹{{ compoundWall * 2000 }}</p>
+    <p>Solar Power: {{ solarPower }} x 75000 = ₹{{ solarPower * 75000 }}</p>
+    <h3>Total Cost: ₹{{ getTotalCost() }}</h3>
   </div>
 </div>
 
@@ -138,7 +158,7 @@
     </a>
   </div>
 </section>
-<!-- Footer -->
+<!-- ===== FOOTER ===== -->
 <div class="footer">
   <div class="footer-section footer-logo">
     <img
@@ -150,22 +170,22 @@
   </div>
   <div class="footer-section contact-info">
     <h3>For Enquiries</h3>
-    <span
-      nz-icon
-      nzType="phone"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span>+91 83441 94892</span>
-    <p>+91 85080 56990</p>
-    <span
-      nz-icon
-      nzType="mail"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span><a href="mailto:abc@gmail.com">abc@gmail.com</a></span>
+
+    <div class="contact-line">
+      <span nz-icon nzType="phone" nzTheme="outline"></span>
+      <span class="contact-text">+91 83441 94892</span>
+    </div>
+
+    <div class="contact-line second-number">
+      <span class="contact-text">+91 85080 56990</span>
+    </div>
+
+    <div class="contact-line">
+      <span nz-icon nzType="mail" nzTheme="outline"></span>
+      <span class="contact-text">noorbuilders0786@gmail.com</span>
+    </div>
   </div>
+
   <div class="footer-section social-media">
     <h3>Follow Us</h3>
     <div class="icon-row">
@@ -181,7 +201,18 @@
     <ul>
       <li><a href="">Home</a></li>
       <li><a href="/about-us">About Us</a></li>
-      <li><a href="/career">Career</a></li>
+      <!-- Services Dropdown -->
+      <li class="footer-dropdown">
+        <button class="dropbtn">Services ▸</button>
+        <div class="dropdown-content">
+          <a routerLink="/services/commercial">Commercial Construction</a>
+          <a routerLink="/services/architectural">Architectural Designing</a>
+          <a routerLink="/services/structural">Structural Designing</a>
+          <a routerLink="/services/building-plan">Building Plan Approval</a>
+        </div>
+      </li>
+      <li><a href="/projects">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
       <li><a href="/lacostcalculator">Cost Calculator</a></li>
     </ul>
   </div>

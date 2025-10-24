@@ -307,73 +307,86 @@
       </div>
     </div>
 
-<!-- ==== SOCIAL MEDIA SECTION (Before Footer) ==== -->
-<section class="social-section">
-  <h2>Connect With Us</h2>
-  <div class="social-icons">
-    <a href="https://www.facebook.com" target="_blank">
-      <img src="assets/facebook.jpeg" alt="Facebook" />
-    </a>
-    <a href="https://www.instagram.com" target="_blank">
-      <img src="assets/instagram.jpeg" alt="Instagram" />
-    </a>
-    <a href="https://www.youtube.com" target="_blank">
-      <img src="assets/youtube.jpeg" alt="YouTube" />
-    </a>
-    <a href="https://www.linkedin.com" target="_blank">
-      <img src="assets/linkedin.jpeg" alt="LinkedIn" />
-    </a>
-  </div>
-</section>
+    <!-- ==== SOCIAL MEDIA SECTION (Before Footer) ==== -->
+    <section class="social-section">
+      <h2>Connect With Us</h2>
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <img src="assets/facebook.jpeg" alt="Facebook" />
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+          <img src="assets/instagram.jpeg" alt="Instagram" />
+        </a>
+        <a href="https://www.youtube.com" target="_blank">
+          <img src="assets/youtube.jpeg" alt="YouTube" />
+        </a>
+        <a href="https://www.linkedin.com" target="_blank">
+          <img src="assets/linkedin.jpeg" alt="LinkedIn" />
+        </a>
+      </div>
+    </section>
 
+    <!-- ===== FOOTER ===== -->
     <div class="footer">
-  <div class="footer-section footer-logo">
-    <img
-      src="assets/logo1.jpeg"
-      alt="Noor Builders Logo"
-      class="footer-logo-img"
-    />
-    <h3>NOOR BUILDERS AND ASSOCIATES</h3>
-  </div>
-  <div class="footer-section contact-info">
-    <h3>For Enquiries</h3>
-    <span
-      nz-icon
-      nzType="phone"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span>+91 83441 94892</span>
-    <p>+91 85080 56990</p>
-    <span
-      nz-icon
-      nzType="mail"
-      nzTheme="outline"
-      style="margin-right: 10px"
-    ></span>
-    <span><a href="mailto:abc@gmail.com">abc@gmail.com</a></span>
-  </div>
-  <div class="footer-section social-media">
-    <h3>Follow Us</h3>
-    <div class="icon-row">
-      <span nz-icon nzType="facebook" nzTheme="outline"></span>
-      <span nz-icon nzType="instagram" nzTheme="outline"></span>
-      <span nz-icon nzType="youtube" nzTheme="outline"></span>
-      <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+      <div class="footer-section footer-logo">
+        <img
+          src="assets/logo1.jpeg"
+          alt="Noor Builders Logo"
+          class="footer-logo-img"
+        />
+        <h3>NOOR BUILDERS AND ASSOCIATES</h3>
+      </div>
+      <div class="footer-section contact-info">
+        <h3>For Enquiries</h3>
+
+        <div class="contact-line">
+          <span nz-icon nzType="phone" nzTheme="outline"></span>
+          <span class="contact-text">+91 83441 94892</span>
+        </div>
+
+        <div class="contact-line second-number">
+          <span class="contact-text">+91 85080 56990</span>
+        </div>
+
+        <div class="contact-line">
+          <span nz-icon nzType="mail" nzTheme="outline"></span>
+          <span class="contact-text">noorbuilders0786@gmail.com</span>
+        </div>
+      </div>
+
+      <div class="footer-section social-media">
+        <h3>Follow Us</h3>
+        <div class="icon-row">
+          <span nz-icon nzType="facebook" nzTheme="outline"></span>
+          <span nz-icon nzType="instagram" nzTheme="outline"></span>
+          <span nz-icon nzType="youtube" nzTheme="outline"></span>
+          <span nz-icon nzType="linkedin" nzTheme="outline"></span>
+        </div>
+      </div>
+
+      <div class="footer-section navigation-links">
+        <h3>Navigation Links</h3>
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <!-- Services Dropdown -->
+          <li class="footer-dropdown">
+            <button class="dropbtn">Services ▸</button>
+            <div class="dropdown-content">
+              <a routerLink="/services/commercial">Commercial Construction</a>
+              <a routerLink="/services/architectural"
+                >Architectural Designing</a
+              >
+              <a routerLink="/services/structural">Structural Designing</a>
+              <a routerLink="/services/building-plan">Building Plan Approval</a>
+            </div>
+          </li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/lacostcalculator">Cost Calculator</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-
-  <div class="footer-section navigation-links">
-    <h3>Navigation Links</h3>
-    <ul>
-      <li><a href="">Home</a></li>
-      <li><a href="/about-us">About Us</a></li>
-      <li><a href="/career">Career</a></li>
-      <li><a href="/lacostcalculator">Cost Calculator</a></li>
-    </ul>
-  </div>
-</div>
-
 
     <router-outlet></router-outlet>
   </div>

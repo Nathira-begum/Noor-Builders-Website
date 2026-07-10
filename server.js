@@ -39,14 +39,14 @@ app.post("/api/contact", async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "nathirabegum987@gmail.com",
-        pass: "ubqq syyv fabr bufk", // ⚠️ Use Gmail App Password
+        user: "noorbuildersandassociates2018@gmail.com",
+        pass: "xndk higd fofi evvr", // ⚠️ Use Gmail App Password
       },
     });
 
     const mailOptions = {
-      from: "Noor Builders Website <nathirabegum987@gmail.com>",
-      to: "nathirabegum987@gmail.com",
+      from: "Noor Builders Website <noorbuildersandassociates2018@gmail.com>",
+      to: "noorbuildersandassociates2018@gmail.com",
       subject: "🧱 New Enquiry from Noor Builders Website",
       text: `
 New Enquiry Received:

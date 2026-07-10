@@ -90,7 +90,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       onSameUrlNavigation: 'reload',
       scrollPositionRestoration: 'top', // ✅ Scroll to top on navigation
-      anchorScrolling: 'enabled',       // Optional: allows #anchor links to work
+      anchorScrolling: 'enabled', // Optional: allows #anchor links to work
     }),
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

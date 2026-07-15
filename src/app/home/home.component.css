@@ -4,8 +4,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 5%;
-  background: #f7f9fc;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+ background: linear-gradient(180deg, #edf6ff, #d7e9ff);
+  color: #16375b;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 999;
@@ -19,7 +20,7 @@
 }
 
 .logo img {
-  width: 100px;
+  width: 120px;
 }
 
 .logo span {
@@ -50,7 +51,7 @@
   font-weight: 600;
 }
 .nav a:hover {
-  color: #004aad;
+  color: #ff9800;
 }
 
 /* DROPDOWN */
@@ -70,7 +71,7 @@
 
 .dropbtn:hover,
 .dropdown:hover .dropbtn {
-  color: #004aad !important;
+  color: #ff9800 !important;
 }
 
 .dropdown-content {
@@ -95,7 +96,7 @@
 
 .dropdown-content a:hover {
   background: #f5f5f5;
-  color: #004aad;
+  color: #ff9800;
 }
 
 .dropdown:hover .dropdown-content {
@@ -155,11 +156,11 @@ label {
 }
 
 .quote-btn:hover {
-  background: #7bb0f0;
+  background: #ff9800;
 }
 
 .hero button:hover {
-  background: #004aad;
+  background: #ff9800;
 }
 
 /* ---------- FORM (Moved to Right Side) ---------- */
@@ -207,7 +208,7 @@ label {
 }
 
 .form button:hover {
-  background: #7bb0f0;
+  background: #ff9800;
 }
 
 .error {
@@ -564,7 +565,7 @@ img:hover {
 
 /* Card */
 .vendor-logo-card {
-  background: #fff;
+  background: #d7d6d6e8;
   border-radius: 14px;
   padding: 14px;
   height: 100px;
@@ -609,7 +610,7 @@ img:hover {
 .social-section {
   text-align: center;
   padding: 50px 0;
-  background: #fff;
+  background: #eef8fd;
 }
 
 .social-section h2 {
@@ -690,7 +691,7 @@ img:hover {
 
 .footer-column h2::after {
   content: "";
-  width: 70px;
+  width: 100px;
   height: 4px;
   background: #1f6ed4;
   display: block;
@@ -727,7 +728,7 @@ img:hover {
 /* Logo */
 
 .footer-logo {
-  width: 110px;
+  width: 100px;
   margin-bottom: 18px;
 }
 

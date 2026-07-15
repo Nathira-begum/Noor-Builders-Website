@@ -1,3 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.header,
+.about-hero,
+.about-container,
+.stats-section,
+.mission-content,
+.vision-content,
+.choose-section,
+.background-section,
+.social-section,
+.footer {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /* HEADER */
 .header {
   display: flex;

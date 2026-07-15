@@ -35,7 +35,7 @@ import {
       transition(':enter', [
         animate(
           '0.5s ease-out',
-          style({ transform: 'translateY(0)', opacity: 1 })
+          style({ transform: 'translateY(0)', opacity: 1 }),
         ),
       ]),
     ]),

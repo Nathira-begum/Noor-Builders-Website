@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 interface PackageFeature {
-  title: string;
+  name: string;
+  price: number;
+  className: string;
+  icon: string;
+  popular: boolean;
   features: string[];
-  expanded: boolean;
 }
 
 @Component({
@@ -11,289 +15,401 @@ interface PackageFeature {
   templateUrl: './la-cost-calculator.component.html',
   styleUrls: ['./la-cost-calculator.component.css'],
 })
-export class LaCostCalculatorComponent {
-  area: number = 0;
-  selectedPackage: string = '';
-  totalCost: number | null = null;
-  constructionArea: number = 0;
-  packageCost: number = 0;
-  carParking: number = 0;
+export class LaCostCalculatorComponent implements OnInit {
+  //=====================================================
+  // CUSTOMER DETAILS
+  //=====================================================
+
+  fullName: string = '';
+  phoneNumber: string = '';
+  email: string = '';
+  address: string = '';
+
+  //=====================================================
+  // PROJECT DETAILS
+  //=====================================================
+
+  constructionArea: number | null = null;
+
+  selectedPackage: number | null= null;
+
+  constructionType: string = '';
+
+  floors: string = '';
+
+  //=====================================================
+  // LOCATION DETAILS
+  //=====================================================
+  siteLocation: string = '';
+
+  approvalAuthority: string = '';
+
+
+  //=====================================================
+  // UTILITIES
+  //=====================================================
+  plotArea: number = 0;
   sumpLitres: number = 0;
+
   wasteWaterTank: number = 0;
+
   compoundWall: number = 0;
+
   solarPower: number = 0;
+
+  //=====================================================
+  // BOREWELL
+  //=====================================================
+
+  boreDepth: number = 0;
+
+  boreCost: number = 0;
+
+  //=====================================================
+  // ELECTRICITY
+  //=====================================================
+
+  ebConnection: string = '';
+  ebCost: number = 0;
+
+  expectedEbBill: number = 0;
+
+  //=====================================================
+  // TOTAL
+  //=====================================================
+
+  totalCost: number = 0;
+
   submitted: boolean = false;
+  showEstimate: boolean = false;
+  ebSinglePhaseCost: number = 25000;
+  ebThreePhaseCost: number = 65000;
+  estimatedCost: number = 0;
+  //=====================================================
+  // EXPAND / COLLAPSE
+  //=====================================================
 
-  packages: { name: string; price: number; features: PackageFeature[] }[] = [
+  expandedState: boolean[][] = [];
+
+  //=====================================================
+  // PRICING PACKAGES
+  //=====================================================
+
+  packages: PackageFeature[] = [
     {
-      name: 'Basic',
-      price: 1900,
+      name: 'Standard',
+      price: 2350,
+      className: 'standard',
+      icon: 'fa-solid fa-house',
+      popular: false,
       features: [
-        {
-          title: 'Design',
-          features: ['3D - Basic Elevation'],
-          expanded: false,
-        },
-        {
-          title: 'Structure',
-          features: [
-            'Type: Sttuf Column',
-            'Cement: TNPL',
-            'Brick: Chamber',
-            'Steel: Adithiya (or) Equivalent',
-          ],
-          expanded: false,
-        },
-        {
-          title: 'Doors & Windows',
-          features: [
-            'Maindoor (5" * 7"): Teak Wood(5" * 4")',
-            'Bed Room: Country Wood with Flush Door',
-            'Window & Ventilator: Country Wood Frame & Shutters',
-            'Bathroom: PVC Door',
-            'Hardwares: PowDer Coat',
-            'Staircase Handrail: M.S Handrail & M.S Baluster',
-          ],
-          expanded: false,
-        },
-        {
-          title: 'Tiles & Granite',
-          features: [
-            'Flooring: Rs 45 /Sq.ft (Basic Cost)',
-            'Wall: Rs 35 /Sq.ft (Basic Cost)',
-            'Paving: Rs 35 /Sq.ft (Basic Cost)',
-            'Granite: Rs 100/Sq.ft (Basic Cost)',
-            'Kitchen Table Top: Granite Top with S.S Sink',
-          ],
-          expanded: false,
-        },
-        {
-          title: 'Electrical',
-          features: [
-            'Pipes: ISI Brand',
-            'Wires: ISI Brand',
-            'Switches: Kundan(Fybros)',
-            'Others: UPS Line + 1 AC Point',
-          ],
-          expanded: false,
-        },
-        { title: 'Plumbing', features: ['ISI Brand'], expanded: false },
-
-        {
-          title: 'Painting',
-          features: [
-            'Inner: Two Coat of White Wash',
-            'Outer: Two Coat of White Wash',
-            'Polish: Melamine Polish',
-            'Enamel: Dulux',
-            'Terrace: White Wash with Water Proof Oil',
-          ],
-          expanded: false,
-        },
-
-        {
-          title: 'Extra Charges',
-          features: [
-            'Preliminary Work: Site Cleaning, Appoval, EB Connection, Borewell & Sub Motar, Material Storage Places(Shed).',
-            'Main Building Works: Over Head Tank and Steel Stand, Underground Sump, Septic Tank, Soak Pit, Compound Wall, Gate & Ramp, Outer Flooring, Kerb Wall & Drainage, Washing Stone & Dry Cloth Angle.',
-            'Finishing Works: Electrical Fitting(Material & Labour), Plumping Fittings(Material & Labour), Wall Glading Tiles, Three Phase DB Work, Ground Earth, Sump Motor, Auto Cutter Device,External Gas Pipe Work, Interior Cupboard Work.',
-          ],
-          expanded: false,
-        },
+        'Standard Quality Materials',
+        '2D Floor Plan',
+        'Basic Elevation',
+        'Standard Electrical',
+        'Standard Plumbing',
+        'Vitrified Tiles',
+        'Standard Paint',
+        'Site Supervision',
       ],
     },
+
     {
       name: 'Premium',
-      price: 2000,
+      price: 2550,
+      className: 'premium',
+      icon: 'fa-solid fa-gem',
+      popular: true,
       features: [
-          {
-          title: 'Design',
-          features: ['3D - Engineer Choice'],
-          expanded: false,
-        },
-        {
-          title: 'Structure',
-          features: [
-            'Type: Column Raising',
-            'Cement: Chettinad or Dalmia',
-            'Brick: Chamber',
-            'Steel: Indrola (or) Equivalent',
-          ],
-          expanded: false,
-        },
-        {
-          title: 'Doors & Windows',
-          features: [
-            'Maindoor (5" * 7"): Teak Wood(5" * 4")',
-            'Bed Room: Country Wood with Flush Door',
-            'Window & Ventilator: Country Wood Frame & Shutters',
-            'Bathroom: PVC Door',
-            'Hardwares: S.S Coat',
-            'Staircase Handrail: M.S Handrail & M.S Baluster',
-          ],
-          expanded: false,
-        },
-        {
-          title: 'Tiles & Granite',
-          features: [
-            'Flooring: Rs 50 /Sq.ft (Basic Cost)',
-            'Wall: Rs 35 /Sq.ft (Basic Cost)',
-            'Paving: Rs 35 /Sq.ft (Basic Cost)',
-            'Granite: Rs 140/Sq.ft (Basic Cost)',
-            'Kitchen Table Top: Granite Top with S.S Sink',
-          ],
-          expanded: false,
-        },
-        {
-          title: 'Electrical',
-          features: [
-            'Pipes: ISI Brand',
-            'Wires: Kundan',
-            'Switches: GM-G9',
-            'Others: UPS Line + 2 AC Point',
-          ],
-          expanded: false,
-        },
-        { title: 'Plumbing', features: ['TRUflow'], expanded: false },
-
-        {
-          title: 'Painting',
-          features: [
-            'Inner: Two Coat Putty, Two Coat Emulsion 5- years any Products',
-            'Outer: Two Coat Emulsion 5-Years any Product',
-            'Polish: Melamine Polish',
-            'Enamel: Asian',
-            'Terrace: White Wash with Water Proof Oil',
-          ],
-          expanded: false,
-        },
-
-        {
-          title: 'Extra Charges',
-          features: [
-            'Preliminary Work: Site Cleaning, Appoval, EB Connection, Borewell & Sub Motar, Material Storage Places(Shed).',
-            'Main Building Works: Over Head Tank and Steel Stand, Underground Sump, Septic Tank, Soak Pit, Compound Wall, Gate & Ramp, Outer Flooring, Kerb Wall & Drainage, Washing Stone & Dry Cloth Angle.',
-            'Finishing Works: Electrical Fitting(Material & Labour), Plumping Fittings(Material & Labour), Wall Glading Tiles, Three Phase DB Work, Ground Earth, Sump Motor, Auto Cutter Device,External Gas Pipe Work, Interior Cupboard Work.',
-          ],
-          expanded: false,
-        },
+        'Premium Quality Materials',
+        '3D Elevation',
+        'Premium Tiles',
+        'Premium Electrical',
+        'Premium Plumbing',
+        'UPVC Windows',
+        'False Ceiling',
+        'Structural Warranty',
       ],
     },
+
+    {
+      name: 'Luxury',
+      price: 2800,
+      className: 'luxury',
+      icon: 'fa-solid fa-crown',
+      popular: false,
+      features: [
+        'Luxury Materials',
+        '3D Walkthrough',
+        'Granite Flooring',
+        'Luxury Paint',
+        'Premium Doors',
+        'Designer Ceiling',
+        'Smart Home Ready',
+        'Premium Finishes',
+      ],
+    },
+
     {
       name: 'Elite',
-      price: 2350,
+      price: 3000,
+      className: 'elite',
+      icon: 'fa-solid fa-award',
+      popular: false,
       features: [
-           {
-          title: 'Design',
-          features: ['3D - Client Choice(T&C Apply)'],
-          expanded: false,
-        },
-        {
-          title: 'Structure',
-          features: [
-            'Type: Framed Structure',
-            'Cement: Ramco or Ultra Tech',
-            'Brick: Wirecut',
-            'Steel: Jindal (or) Vizaq',
-          ],
-          expanded: false,
-        },
-        {
-          title: 'Doors & Windows',
-          features: [
-            'Maindoor (5" * 7"): Teak Wood(6" * 4")',
-            'Bed Room: Country Wood with Flush Door',
-            'Window & Ventilator: Country Wood Frame & Teak Shutters',
-            'Bathroom: PVC Door',
-            'Hardwares: Antic Coat',
-            'Staircase Handrail: S.S Handrail & S.S Baluster',
-          ],
-          expanded: false,
-        },
-        {
-          title: 'Tiles & Granite',
-          features: [
-            'Flooring: Rs 60 /Sq.ft (Basic Cost)',
-            'Wall: Rs 40 /Sq.ft (Basic Cost)',
-            'Paving: Rs 40 /Sq.ft (Basic Cost)',
-            'Granite: Rs 160/Sq.ft (Basic Cost)',
-            'Kitchen Table Top: Granite Top with S.S Sink',
-          ],
-          expanded: false,
-        },
-        {
-          title: 'Electrical',
-          features: [
-            'Pipes: Finolex',
-            'Wires: Finolex or Equilant',
-            'Switches: Legrand - Mylic',
-            'Others: UPS Line + 2 AC Point + Home Theatre Line',
-          ],
-          expanded: false,
-        },
-        { title: 'Plumbing', features: ['Finolex / Supreme'], expanded: false },
-
-        {
-          title: 'Painting',
-          features: [
-            'Inner: Two Coat Putty, Two Coat Emulsion 7-Years any Product',
-            'Outer: Two Coat Emulsion 5-Years any Product',
-            'Polish: Melamine Polish',
-            'Enamel: Asian',
-            'Terrace: Cooling Tiles',
-          ],
-          expanded: false,
-        },
-
-        {
-          title: 'Extra Charges',
-          features: [
-            'Preliminary Work: Site Cleaning, Appoval, EB Connection, Borewell & Sub Motar, Material Storage Places(Shed).',
-            'Main Building Works: Over Head Tank and Steel Stand, Underground Sump, Septic Tank, Soak Pit, Compound Wall, Gate & Ramp, Outer Flooring, Kerb Wall & Drainage, Washing Stone & Dry Cloth Angle.',
-            'Finishing Works: Electrical Fitting(Material & Labour), Plumping Fittings(Material & Labour), Wall Glading Tiles, Three Phase DB Work, Ground Earth, Sump Motor, Auto Cutter Device,External Gas Pipe Work, Interior Cupboard Work.',
-          ],
-          expanded: false,
-        },
+        'Ultra Luxury Materials',
+        '3D Walkthrough',
+        'Italian Marble',
+        'Luxury Interiors',
+        'Imported Fittings',
+        'Dedicated Site Engineer',
+        '5 Years Support',
+        'Premium Warranty',
       ],
     },
   ];
 
-  toggleFeature(pkgIndex: number, featureIndex: number) {
-    this.packages[pkgIndex].features[featureIndex].expanded =
-      !this.packages[pkgIndex].features[featureIndex].expanded;
+  //=====================================================
+  // INITIALIZE
+  //=====================================================
+
+  ngOnInit(): void {
+    this.expandedState = this.packages.map((pkg) =>
+      pkg.features.map(() => false),
+    );
+      console.log('Packages:', this.packages);
+
   }
+
+  //=====================================================
+  // SELECT PACKAGE
+  //=====================================================
+
+  selectPackage(price: number): void {
+    this.selectedPackage = price;
+  }
+  //=====================================================
+  // TOGGLE FEATURE
+  //=====================================================
+
+  toggleFeature(cardIndex: number, featureIndex: number): void {
+    this.expandedState[cardIndex][featureIndex] =
+      !this.expandedState[cardIndex][featureIndex];
+  }
+
+calculateEstimate(form: NgForm): void {
+
+  // Show validation messages
+  this.submitted = true;
+
+  console.log('Calculate button clicked');
+  console.log('Form valid:', form.valid);
+
+  // Mark every field as touched
+  Object.keys(form.controls).forEach((field) => {
+    form.controls[field].markAsTouched();
+  });
+
+  // ==========================================
+  // CHECK REQUIRED FIELDS
+  // ==========================================
+
+  if (
+    form.invalid ||
+    !this.fullName.trim() ||
+    !this.phoneNumber.trim() ||
+    !this.email.trim() ||
+    !this.address.trim() ||
+    !this.siteLocation.trim() ||
+    !this.approvalAuthority ||
+    !this.constructionType ||
+    !this.floors ||
+    !this.ebConnection ||
+    Number(this.plotArea) < 100 ||
+    !this.selectedPackage ||
+    Number(this.wasteWaterTank) <= 0
+  ) {
+
+    // DO NOT CALCULATE
+    this.totalCost = 0;
+    this.estimatedCost = 0;
+    this.ebCost = 0;
+    this.boreCost = 0;
+
+    console.log('Validation failed - calculation stopped');
+
+    return;
+  }
+
+  // ==========================================
+  // CALCULATION STARTS ONLY AFTER VALIDATION
+  // ==========================================
+
+  let total = 0;
+
+  // Construction Cost
+  const constructionCost =
+    Number(this.plotArea) * Number(this.selectedPackage);
+
+  total += constructionCost;
+
+  // Borewell
+  this.boreCost = this.getBorewellCost();
+  total += this.boreCost;
+
+  // Sump
+  total += Number(this.sumpLitres) * 25;
+
+  // Waste Water Tank
+  total += Number(this.wasteWaterTank) * 30000;
+
+  // Compound Wall
+  total += Number(this.compoundWall) * 2000;
+
+  // Solar
+  total += Number(this.solarPower) * 75000;
+
+  // Approval
+  // total += this.getApprovalCharge();
+
+  // EB
+  this.ebCost = this.getEbConnectionCost();
+  total += this.ebCost;
+
+  // ==========================================
+  // FINAL RESULT
+  // ==========================================
+
+  this.totalCost = total;
+  this.estimatedCost = total;
+
+  console.log('Construction Cost:', constructionCost);
+  console.log('Borewell Cost:', this.boreCost);
+  // console.log('Approval Cost:', this.getApprovalCharge());
+  console.log('EB Cost:', this.ebCost);
+  console.log('TOTAL:', this.totalCost);
+}
+  //=====================================================
+  // GET TOTAL COST
+  //=====================================================
 
   getTotalCost(): number {
-    const constructionTotal = this.constructionArea * this.packageCost;
-    const carParkingTotal = this.carParking * 1800;
-    const sumpTotal = this.sumpLitres * 25;
-    const wasteWaterTotal = this.wasteWaterTank * 30000;
-    const compoundWallTotal = this.compoundWall * 2000;
-    const solarTotal = this.solarPower * 75000;
-
-    return (
-      constructionTotal +
-      carParkingTotal +
-      sumpTotal +
-      wasteWaterTotal +
-      compoundWallTotal +
-      solarTotal
-    );
+    return this.totalCost;
   }
 
-  submitCalculator() {
-    this.submitted = true;
-    alert('Total Cost: ₹' + this.getTotalCost());
+  //=====================================================
+  // SUBMIT
+  //=====================================================
+submitCalculator(): void {
+  if (!this.showEstimate) {
+    return;
   }
 
-  resetCalculator() {
-    this.constructionArea = 0;
-    this.packageCost = 0;
-    this.carParking = 0;
+  alert(
+    'Estimated Construction Cost : ₹' +
+      this.totalCost.toLocaleString('en-IN')
+  );
+}
+  resetCalculator(): void {
+    console.log('Reset clicked');
+
+    this.fullName = '';
+    this.phoneNumber = '';
+    this.email = '';
+    this.address = '';
+
+    this.constructionArea = null;
+    this.selectedPackage = null;
+    this.constructionType = '';
+    this.floors = '';
+
+    // this.clientArea = '';
+    this.siteLocation = '';
+    // this.approvalAuthority = '';
+
     this.sumpLitres = 0;
     this.wasteWaterTank = 0;
     this.compoundWall = 0;
     this.solarPower = 0;
+
+    this.boreDepth = 0;
+    this.boreCost = 0;
+
+    this.ebConnection = 'Single Phase';
+    this.ebCost = 0;
+    this.expectedEbBill = 0;
+
+    this.totalCost = 0;
+    this.estimatedCost = 0;
     this.submitted = false;
+
+    // reset package selection
+    this.selectedPackage = 0;
+
+    console.log('Calculator Reset Completed');
+  }
+
+  //=====================================================
+  // PACKAGE NAME
+  //=====================================================
+
+  getSelectedPackageName(): string {
+    const pkg = this.packages.find((x) => x.price === this.selectedPackage);
+
+    return pkg ? pkg.name : '';
+  }
+
+  //=====================================================
+  // APPROVAL CHARGE
+  //=====================================================
+
+
+
+  //=====================================================
+  // EB COST
+  //=====================================================
+
+  getEbConnectionCost(): number {
+    if (this.ebConnection === 'Single Phase') {
+      return 25000;
+    }
+
+    return 65000;
+  }
+
+  //=====================================================
+  // BOREWELL COST
+  //=====================================================
+
+  getBorewellCost(): number {
+    if (this.boreDepth === 400) {
+      return 105000;
+    }
+
+    if (this.boreDepth === 600) {
+      return 160000;
+    }
+
+    if (this.boreDepth === 800) {
+      return 200000;
+    }
+
+    return 0;
+  }
+
+  //=====================================================
+  // PRINT ESTIMATE
+  //=====================================================
+
+  printEstimate(): void {
+    window.print();
+  }
+
+  //=====================================================
+  // DOWNLOAD PDF
+  //=====================================================
+
+  downloadEstimate(): void {
+    alert('PDF Download feature can be added later.');
   }
 }

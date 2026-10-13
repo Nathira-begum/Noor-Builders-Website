@@ -1,11 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.header,
+.about-hero,
+.about-container,
+.stats-section,
+.mission-content,
+.vision-content,
+.choose-section,
+.background-section,
+.social-section,
+.footer {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /* HEADER */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 5%;
-  background: #e2ecf6; /* Deep navy blue */
-  color: rgb(12, 12, 12);
+  padding: 8px 5%;
+  background: linear-gradient(180deg, #edf6ff, #d7e9ff);
+  color: #16375b;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  overflow: visible;
 }
 
 /* LOGO SECTION */
@@ -16,17 +47,13 @@
 }
 
 .logo img {
-  width: 180px; /* ✅ Increase logo size */
-  height: auto;
-  object-fit: contain; /* Keeps logo clear and not stretched */
-  filter: brightness(1.2) contrast(1.2); /* ✅ Make it more visible */
+  width: 120px;
 }
 
 .logo span {
-  font-size: 1.6rem; /* ✅ Make text bigger */
+  font-size: 24px;
   font-weight: 700;
-  color: rgb(15, 15, 15);
-  letter-spacing: 1px;
+  color: #004aad;
 }
 
 /* NAVIGATION */
@@ -45,69 +72,70 @@
   font-weight: 600; /* makes text bold */
 }
 
+.nav a,
+.dropbtn {
+  font-size: 15px;
+  font-weight: 600;
+}
 .nav a:hover {
-  color: #004aad;
+  color: #ff9800;
 }
 
-/* ===== CLEAN DROPDOWN MENU ===== */
+/* DROPDOWN */
 .dropdown {
   position: relative;
-  display: inline-block;
 }
 
 .dropbtn {
-  background: transparent !important;
+  background: transparent;
   border: none;
-  color: black !important;
+  color: black;
   cursor: pointer;
-  font-size: 14px;
-  padding: 10px 16px;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  /* font-size: 14px; */
+  padding: 10px;
 }
 
-/* Remove blue box and make it look like other links */
 .dropbtn:hover,
 .dropdown:hover .dropbtn {
-  color: #004aad !important;
-  background: transparent !important; /* removes blue background */
+  color: #ff9800 !important;
 }
 
-/* Dropdown menu box */
 .dropdown-content {
   display: none;
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  min-width: 240px;
   background: #fff;
-  min-width: 220px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
-  overflow: hidden;
-  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
 }
 
-/* Dropdown links */
 .dropdown-content a {
-  color: #0e0d0d;
+  color: #222;
   padding: 10px 16px;
   display: block;
   text-decoration: none;
   font-size: 15px;
-  transition: all 0.2s ease;
 }
 
-/* Hover effects for links */
 .dropdown-content a:hover {
-  background: #f0f5ff;
-  color: #004aad;
-  padding-left: 22px;
+  background: #f5f5f5;
+  color: #ff9800;
 }
 
-/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+label {
+  color: rgb(251, 249, 249);
+}
+
+.required {
+  color: red;
+  margin-left: 2px;
 }
 
 /* General Section Spacing */
@@ -288,27 +316,11 @@ section {
   transition: all 0.3s ease;
 }
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.social-icons img {
-  width: 36px;
-  height: 36px;
-  transition: transform 0.3s;
-}
-
-.social-icons img:hover {
-  transform: scale(1.1);
-}
-
 /* ===== SOCIAL SECTION ===== */
 .social-section {
   text-align: center;
   padding: 50px 0;
-  background: #fff;
+  background: #eef8fd;
 }
 
 .social-section h2 {
@@ -333,7 +345,9 @@ section {
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .social-icons a img {
@@ -359,215 +373,214 @@ section {
   }
 }
 
-/* ===== FOOTER ===== */
+/* =====================================================
+                    MODERN FOOTER
+===================================================== */
+
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  width: 100%;
+  background: linear-gradient(135deg, #f5faff, #d9e8fa);
+  border-top: 4px solid #0b5ed7;
+  padding: 0;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 45px 4%;
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
   gap: 40px;
-  padding: 50px 8%;
-  background: #e2ecf6;
-  color: #0f0f0f;
+  align-items: flex-start;
+}
+/* Columns */
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0d47a1;
+  margin-bottom: 25px;
+  position: relative;
   font-family: "Poppins", sans-serif;
 }
 
-/* ===== LOGO SECTION ===== */
+.footer-column h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 60px;
+  height: 4px;
+  background: #ff9800; /* Orange */
+  border-radius: 20px;
+}
+/* Logo */
+
 .footer-logo {
-  text-align: center;
-  flex: 1 1 250px;
-}
-
-.footer-logo-img {
-  width: 220px;
-  height: auto;
-  margin-bottom: 10px;
-  object-fit: contain;
-  filter: brightness(1.1) contrast(1.1);
-}
-
-.footer-logo h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #0b0b0b;
-  margin-top: 5px;
-}
-
-/* ===== CONTACT INFO ===== */
-.footer-section.contact-info {
-  flex: 1 1 250px;
-}
-
-.footer-section.contact-info h3 {
+  width: 200px;
   margin-bottom: 15px;
-  font-size: 20px;
-  font-weight: 600; /* makes it bold */
-  color: #000; /* optional - keeps it readable if it was light */
 }
 
-/* Each contact line grouped properly */
-.footer-section.contact-info .contact-line {
-  display: flex;
-  align-items: center;
-  margin: 6px 0;
-}
-
-.footer-section.contact-info .contact-line i,
-.footer-section.contact-info span[nz-icon] {
-  color: #004aad;
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-.footer-section.contact-info .contact-text {
-  font-size: 1rem;
-  color: #080808;
-  line-height: 1.4;
-}
-
-/* Align 2nd phone number with first */
-.footer-section.contact-info .second-number {
-  margin-left: 30px; /* adjust this value if needed */
-}
-
-/* ===== SOCIAL MEDIA ===== */
-.footer-section.social-media {
-  flex: 1 1 200px;
-}
-
-.footer-section.social-media h3 {
+.footer-title {
+  font-size: 28px;
+  line-height: 38px;
   margin-bottom: 15px;
-  font-size: 20px;
-  font-weight: 600; /* makes it bold */
-  color: #000; /* optional - keeps it readable if it was light */
 }
 
-.footer-section.social-media .icon-row {
-  display: flex;
-  gap: 16px;
+.footer-desc {
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 20px;
+}
+/* Service Grid */
+
+.footer-services {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 
-.footer-section.social-media span[nz-icon] {
-  font-size: 1.6rem;
-  color: #004aad;
-  transition: transform 0.3s ease, color 0.3s ease;
-  cursor: pointer;
+.footer-services span {
+  color: #21496d;
+  font-size: 15px;
 }
 
-.footer-section.social-media span[nz-icon]:hover {
-  color: #0e0e0e;
-  transform: scale(1.1);
-}
-.footer-section.navigation-links h3 {
-  margin-bottom: 15px;
-  font-size: 20px;
-  font-weight: 600; /* makes it bold */
-  color: #000; /* optional - keeps it readable if it was light */
-}
-
-/* Navigation Links Styling */
-.footer-section.navigation-links ul {
+/* Links */
+.footer-links {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-.footer-section.navigation-links li {
-  margin-bottom: 8px;
+.footer-links li {
+  margin: 12px 0;
 }
 
-.footer-section.navigation-links a,
-.footer-section.navigation-links .dropbtn {
-  font-size: 1rem;
-  font-family: "Poppins", sans-serif;
-  color: #080808;
+.footer-links a {
   text-decoration: none;
-  transition: color 0.3s ease;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.footer-section.navigation-links a:hover,
-.footer-section.navigation-links .dropbtn:hover {
-  color: #004aad;
-}
-
-/* Footer Dropdown */
-.footer-dropdown {
-  position: relative;
+  color: #0f0f0f;
+  font-size: 17px;
+  transition: 0.3s;
   display: inline-block;
-  z-index: 10; /* keeps dropdown above other sections */
 }
 
-.footer-dropdown .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #ffffff;
-  min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 999; /* ensures it's on top of everything */
-  border-radius: 5px;
-
-  /* 👇 Controls direction and spacing */
-  right: calc(100% + 10px); /* opens to the left with some space */
-  top: 0;
-
-  /* Optional smooth animation */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.25s ease;
+.footer-links a:hover {
+  color: #ff9800;
+  transform: translateX(8px);
 }
 
-.footer-dropdown:hover .dropdown-content {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+.footer-links a,
+.footer-links li {
+  font-size: 17px;
+}
+/* Contact */
+
+.footer-contact p {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  color: #0b0b0b;
+  font-size: 17px;
+  margin: 12px 0;
+  line-height: 1.6;
 }
 
-.footer-dropdown .dropdown-content a {
-  color: #080808;
-  padding: 10px 14px;
-  display: block;
-  text-decoration: none;
-  font-size: 0.95rem;
-  white-space: nowrap; /* prevents text wrap */
+.footer-contact i {
+  color: #0056d6;
 }
 
-.footer-dropdown .dropdown-content a:hover {
-  background-color: #e2ecf6;
-  color: #004aad;
+.footer-icon {
+  font-size: 20px;
+  color: #0b5ed7;
+  min-width: 22px;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 900px) {
-  .footer {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+.footer-contact p:hover .footer-icon {
+  color: #ff9800;
+  transition: 0.3s;
+}
 
-  .footer-logo,
-  .footer-section {
-    flex: 1 1 100%;
-    margin-bottom: 25px;
-  }
+/* Newsletter */
 
-  .footer-section.contact-info .contact-line {
-    justify-content: center;
-  }
+.newsletter p {
+  color: #516b84;
+  line-height: 28px;
+  margin-bottom: 18px;
+}
 
-  .footer-section.social-media .icon-row {
-    justify-content: center;
-  }
+.newsletter input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  font-size: 15px;
+}
 
-  .footer-section.navigation-links ul {
-    text-align: center;
-  }
+.newsletter button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #0056d6;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newsletter button:hover {
+  background: #003d96;
+}
+
+/* Bottom */
+
+.footer-bottom {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 22px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-bottom p {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  color: #326ff2;
+}
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-social a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: white;
+  color: #0d6efd;
+  transition: 0.35s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.footer-social a:hover {
+  background: #ff9800;
+  color: white;
+  transform: translateY(-5px);
+}
+.footer-column h2 {
+  font-size: 22px;
+  margin-bottom: 18px;
 }
 
 /* ---------- HERO BANNER ---------- */

@@ -1,8 +1,7 @@
 <!-- ===== HEADER ===== -->
-<!-- ===== HEADER ===== -->
 <div class="header">
   <div class="logo">
-    <img src="assets/logo1.jpeg" alt="Logo" />
+    <img src="assets/logo4.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
 
@@ -14,7 +13,7 @@
     <div class="dropdown">
       <button class="dropbtn">Services ▾</button>
       <div class="dropdown-content">
-        <a routerLink="/services/commercial">Commercial Construction</a>
+        <!-- <a routerLink="/services/commercial">Commercial Construction</a> -->
         <a routerLink="/services/architectural">Architectural Designing</a>
         <a routerLink="/services/structural">Structural Designing</a>
         <a routerLink="/services/building-plan">Building Plan Approval</a>
@@ -22,9 +21,10 @@
     </div>
 
     <a nz-button nzType="link" routerLink="/projects">Projects</a>
-    <a nz-button nzType="link" routerLink="/contact">Contact</a>
+    <a nz-button nzType="link" routerLink="/contactus">Contact</a>
   </nav>
 </div>
+
 
 <!-- ===== HERO SECTION ===== -->
 <section class="hero"></section>
@@ -128,81 +128,144 @@
   </div>
 </section>
 
+<!-- Follow Us Section -->
 <!-- ==== SOCIAL MEDIA SECTION (Before Footer) ==== -->
 <section class="social-section">
   <h2>Connect With Us</h2>
   <div class="social-icons">
-    <a href="https://www.facebook.com" target="_blank">
-      <img src="assets/facebook.jpeg" alt="Facebook" />
+    <a href="https://www.whatsapp.com" target="_blank">
+      <img src="assets/whatsapp.jpeg" alt="whatsapp" />
     </a>
     <a href="https://www.instagram.com" target="_blank">
       <img src="assets/instagram.jpeg" alt="Instagram" />
     </a>
-    <a href="https://www.youtube.com" target="_blank">
-      <img src="assets/youtube.jpeg" alt="YouTube" />
+    <a href="https://www.facebook.com" target="_blank">
+      <img src="assets/facebook.jpeg" alt="Facebook" />
     </a>
-    <a href="https://www.linkedin.com" target="_blank">
-      <img src="assets/linkedin.jpeg" alt="LinkedIn" />
-    </a>
+    <!-- <a href="https://www.linkedin.com" target="_blank">
+            <img src="assets/linkedin.jpeg" alt="LinkedIn" />
+          </a> -->
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<div class="footer">
-  <div class="footer-section footer-logo">
-    <img
-      src="assets/logo1.jpeg"
-      alt="Noor Builders Logo"
-      class="footer-logo-img"
-    />
-    <h3>NOOR BUILDERS AND ASSOCIATES</h3>
-  </div>
-  <div class="footer-section contact-info">
-    <h3>For Enquiries</h3>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Company -->
+    <div class="footer-column">
+      <img src="assets/logo4.jpeg" class="footer-logo" alt="Logo" />
 
-    <div class="contact-line">
-      <span nz-icon nzType="phone" nzTheme="outline"></span>
-      <span class="contact-text">+91 83441 94892</span>
+      <h3 class="footer-title">Building Dreams with Precision</h3>
+
+      <p class="footer-desc">
+        Noor Builders & Associates specializes in premium residential,
+        commercial and architectural construction across Tamil Nadu.
+      </p>
     </div>
 
-    <div class="contact-line second-number">
-      <span class="contact-text">+91 85080 56990</span>
+    <!-- Services -->
+    <div class="footer-column">
+      <h2>Our Services</h2>
+
+      <ul class="footer-links">
+        <!-- <li>
+                <a routerLink="/services/commercial">
+                  Commercial Construction
+                </a>
+              </li> -->
+
+        <li>
+          <a routerLink="/services/architectural"> Architectural Designing </a>
+        </li>
+
+        <li>
+          <a routerLink="/services/structural"> Structural Designing </a>
+        </li>
+
+        <li>
+          <a routerLink="/services/building-plan"> Building Plan Approval </a>
+        </li>
+      </ul>
     </div>
 
-    <div class="contact-line">
-      <span nz-icon nzType="mail" nzTheme="outline"></span>
-      <span class="contact-text">noorbuilders0786@gmail.com</span>
+    <!-- Quick Links -->
+    <div class="footer-column">
+      <h2>Quick Links</h2>
+
+      <ul class="footer-links">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/about-us">About Us</a></li>
+        <li><a routerLink="/projects">Projects</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
+        <li><a routerLink="/lacostcalculator">Cost Calculator</a></li>
+      </ul>
     </div>
+
+    <!-- Contact -->
+    <div class="footer-column footer-contact">
+      <h2>Our Office</h2>
+
+      <div class="footer-contact">
+        <p>
+          <span
+            nz-icon
+            nzType="environment"
+            nzTheme="fill"
+            class="footer-icon"
+          ></span>
+          Pollachi, Tamil Nadu
+        </p>
+
+        <p>
+          <span
+            nz-icon
+            nzType="phone"
+            nzTheme="outline"
+            class="footer-icon"
+          ></span>
+          +91 86674 49092, +91 83441 94892
+        </p>
+
+        <p>
+          <span
+            nz-icon
+            nzType="mail"
+            nzTheme="outline"
+            class="footer-icon"
+          ></span>
+          noorbuildersandassociates2018@gmail.com
+        </p>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <!-- <div class="footer-column newsletter">
+
+      <h2>Newsletter</h2>
+
+      <p>
+        Subscribe to receive our latest construction updates and projects.
+      </p>
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <button>SUBSCRIBE</button>
+
+    </div> -->
   </div>
 
-  <div class="footer-section social-media">
-    <h3>Follow Us</h3>
-    <div class="icon-row">
-      <span nz-icon nzType="facebook" nzTheme="outline"></span>
-      <span nz-icon nzType="instagram" nzTheme="outline"></span>
-      <span nz-icon nzType="youtube" nzTheme="outline"></span>
-      <span nz-icon nzType="linkedin" nzTheme="outline"></span>
-    </div>
-  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Noor Builders & Associates. All Rights Reserved.</p>
 
-  <div class="footer-section navigation-links">
-    <h3>Navigation Links</h3>
-    <ul>
-      <li><a href="">Home</a></li>
-      <li><a href="/about-us">About Us</a></li>
-      <!-- Services Dropdown -->
-      <li class="footer-dropdown">
-        <button class="dropbtn">Services ▸</button>
-        <div class="dropdown-content">
-          <a routerLink="/services/commercial">Commercial Construction</a>
-          <a routerLink="/services/architectural">Architectural Designing</a>
-          <a routerLink="/services/structural">Structural Designing</a>
-          <a routerLink="/services/building-plan">Building Plan Approval</a>
-        </div>
-      </li>
-      <li><a href="/projects">Projects</a></li>
-      <li><a href="/contact">Contact</a></li>
-      <li><a href="/lacostcalculator">Cost Calculator</a></li>
-    </ul>
+    <!-- <div class="footer-social">
+            <a href="#"><i nz-icon nzType="facebook" nzTheme="fill"></i></a>
+
+            <a href="#"><i nz-icon nzType="instagram" nzTheme="fill"></i></a>
+
+            <a href="#"><i nz-icon nzType="youtube" nzTheme="fill"></i></a>
+
+            <a href="#"><i nz-icon nzType="linkedin" nzTheme="fill"></i></a>
+          </div> -->
   </div>
-</div>
+</footer>

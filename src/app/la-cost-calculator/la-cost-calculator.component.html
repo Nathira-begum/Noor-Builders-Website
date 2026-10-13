@@ -1,7 +1,7 @@
 <!-- ===== HEADER ===== -->
 <div class="header">
   <div class="logo">
-    <img src="assets/logo1.jpeg" alt="Logo" />
+    <img src="assets/logo4.jpeg" alt="Logo" />
     <span>NOOR BUILDERS AND ASSOCIATES</span>
   </div>
 
@@ -13,7 +13,7 @@
     <div class="dropdown">
       <button class="dropbtn">Services ▾</button>
       <div class="dropdown-content">
-        <a routerLink="/services/commercial">Commercial Construction</a>
+        <!-- <a routerLink="/services/commercial">Commercial Construction</a> -->
         <a routerLink="/services/architectural">Architectural Designing</a>
         <a routerLink="/services/structural">Structural Designing</a>
         <a routerLink="/services/building-plan">Building Plan Approval</a>
@@ -24,196 +24,764 @@
     <a nz-button nzType="link" routerLink="/contact">Contact</a>
   </nav>
 </div>
+<!-- ===========================
+      PRICING SECTION
+=========================== -->
 
-<!-- Pricing Packages -->
 <section class="pricing-section">
-  <h2>Our Pricing Package</h2>
-  <div class="pricing-cards">
-    <div
-      class="card"
-      *ngFor="let pkg of packages; let i = index"
-      [ngClass]="pkg.name.toLowerCase()"
-    >
-      <h3>{{ pkg.name }}</h3>
-      <p class="price">₹{{ pkg.price }}/sq.ft</p>
+  <div class="section-heading">
+    <div class="heading-line">
+      <span class="line"></span>
 
-      <div *ngFor="let feature of pkg.features; let j = index">
-        <div class="feature-title" (click)="toggleFeature(i, j)">
-          {{ feature.title }}
-          <span>{{ feature.expanded ? "-" : "+" }}</span>
-        </div>
-        <ul *ngIf="feature.expanded" class="feature-list">
-          <li *ngFor="let item of feature.features">{{ item }}</li>
-        </ul>
+      <h2>Our Pricing Packages</h2>
+
+      <span class="line"></span>
+    </div>
+
+    <p>Choose the perfect package that fits your construction needs</p>
+  </div>
+
+  <div class="pricing-container">
+    <!-- =========================
+          PACKAGE CARD
+    ========================== -->
+
+    <div
+      class="pricing-card"
+      *ngFor="let pkg of packages"
+      [ngClass]="[
+        pkg.className,
+        selectedPackage === pkg.price ? 'selected-card' : '',
+      ]"
+    >
+      <!-- Icon -->
+
+      <div class="icon-box">
+        <i [class]="pkg.icon"></i>
       </div>
+
+      <!-- Package -->
+
+      <h3>{{ pkg.name }}</h3>
+
+      <!-- Price -->
+
+      <div class="price">
+        ₹ {{ pkg.price | number }}
+
+        <span>/sq.ft</span>
+      </div>
+
+      <!-- Features -->
+
+      <ul class="feature-list">
+        <li *ngFor="let feature of pkg.features">
+          <i class="fa-solid fa-check"></i>
+
+          {{ feature }}
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- Cost Calculator -->
-<div class="calculator-container">
-  <h2>House Construction Cost Calculator</h2>
+<!-- ======================================================
+        HOUSE CONSTRUCTION COST CALCULATOR
+====================================================== -->
 
-  <!-- Construction Area -->
-  <div class="form-group">
-    <label>Construction area in sq.ft</label>
-    <input type="number" [(ngModel)]="constructionArea" min="0" max="10000" />
-  </div>
+<section class="calculator-section">
+  <!-- HEADER -->
 
-  <!-- Construction Package -->
-  <div class="form-group">
-    <label>Select construction Package</label>
-    <select [(ngModel)]="packageCost">
-      <option [ngValue]="0">Select value</option>
-      <option [ngValue]="1900">Basic Package - Rs.1900/sft</option>
-      <option [ngValue]="2000">Premium Package - Rs.2000/sft</option>
-      <option [ngValue]="2350">Elite Package - Rs.2350/sft</option>
-    </select>
-  </div>
+  <div class="calculator-header">
+    <h2>House Construction Cost Calculator</h2>
 
-  <!-- Car Parking -->
-  <div class="form-group">
-    <label>Car Parking area in square feet (optional)</label>
-    <input type="number" [(ngModel)]="carParking" min="0" max="10000" />
-    <small>Car parking will be charged @ Rs.1800/sft approximately</small>
-  </div>
-
-  <!-- Underground Sump -->
-  <div class="form-group">
-    <label>How many litres of underground sump required? (optional)</label>
-    <input type="number" [(ngModel)]="sumpLitres" min="0" max="20000" />
-    <small>An average family of 4 will require minimum of 10,000 litres</small>
-  </div>
-
-  <!-- Waste Water Tank -->
-  <div class="form-group">
-    <label
-      >How many person waste water recycling tank required? (optional)</label
-    >
-    <input type="number" [(ngModel)]="wasteWaterTank" min="0" max="10" />
-    <small
-      >Waste water recycling tank is an alternative to septic tank. It's not
-      required if you have a drainage connection.</small
-    >
-  </div>
-
-  <!-- Compound Wall -->
-  <div class="form-group">
-    <label>How much feet length compound wall do you require? (optional)</label>
-    <input type="number" [(ngModel)]="compoundWall" min="0" max="1000" />
-    <small
-      >If plot size is 40x30, compound wall length will be 40+40+30+30 = 140
-      feet</small
-    >
-  </div>
-
-  <!-- Solar Power -->
-  <div class="form-group">
-    <label>How much solar power do you require? (optional)</label>
-    <input type="number" [(ngModel)]="solarPower" min="0" max="10" />
-    <small>A 3BHK home will require 2KW solar power for daytime usage</small>
-  </div>
-
-  <div class="button-group">
-    <button (click)="submitCalculator()">Submit</button>
-    <button (click)="resetCalculator()" type="button">Reset</button>
-  </div>
-
-  <!-- Total Summary -->
-  <div class="summary" *ngIf="submitted">
-    <h3>Total Summary</h3>
     <p>
-      Construction Area: {{ constructionArea }} x {{ packageCost }} = ₹{{
-        constructionArea * packageCost
-      }}
+      Fill in the details below to get an accurate estimate for your dream home
+      construction.
     </p>
-    <p>Car Parking: {{ carParking }} x 1800 = ₹{{ carParking * 1800 }}</p>
-    <p>Underground Sump: {{ sumpLitres }} x 25 = ₹{{ sumpLitres * 25 }}</p>
-    <p>
-      Waste Water Tank: {{ wasteWaterTank }} x 30000 = ₹{{
-        wasteWaterTank * 30000
-      }}
-    </p>
-    <p>Compound Wall: {{ compoundWall }} x 2000 = ₹{{ compoundWall * 2000 }}</p>
-    <p>Solar Power: {{ solarPower }} x 75000 = ₹{{ solarPower * 75000 }}</p>
-    <h3>Total Cost: ₹{{ getTotalCost() }}</h3>
   </div>
-</div>
+
+  <!-- ======================================================
+            MAIN CONTAINER
+  ====================================================== -->
+  <!-- <div class="form-container"> -->
+  <form
+    #calculatorForm="ngForm"
+    (ngSubmit)="calculateEstimate(calculatorForm)"
+    novalidate
+  >
+    <div class="calculator-right">
+      <!-- ======================================================
+                    USER DETAILS
+    
+                  ====================================================== -->
+
+      <div class="form-container">
+        <div class="form-card">
+          <h3>
+            <i class="fa-solid fa-user"></i>
+            1. User Details
+          </h3>
+
+          <div class="form-grid">
+            <!-- Full Name -->
+            <div class="form-group">
+              <label>
+                Full Name
+                <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                name="fullName"
+                [(ngModel)]="fullName"
+                #fullNameRef="ngModel"
+                required
+                minlength="3"
+                maxlength="50"
+                placeholder="Enter full name"
+                [class.input-error]="
+                  fullNameRef.invalid && (fullNameRef.touched || submitted)
+                "
+              />
+
+              <small
+                class="validation-error"
+                *ngIf="
+                  fullNameRef.invalid && (fullNameRef.touched || submitted)
+                "
+              >
+                <span *ngIf="fullNameRef.errors?.['required']">
+                  Full name is required.
+                </span>
+
+                <span *ngIf="fullNameRef.errors?.['minlength']">
+                  Name must contain at least 3 characters.
+                </span>
+
+                <span *ngIf="fullNameRef.errors?.['maxlength']">
+                  Name cannot exceed 50 characters.
+                </span>
+              </small>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label>
+                Phone Number
+                <span>*</span>
+              </label>
+
+              <input
+                type="tel"
+                name="phoneNumber"
+                [(ngModel)]="phoneNumber"
+                #phoneRef="ngModel"
+                required
+                pattern="^[6-9][0-9]{9}$"
+                maxlength="10"
+                placeholder="Enter phone number"
+                [class.input-error]="
+                  phoneRef.invalid && (phoneRef.touched || submitted)
+                "
+              />
+
+              <small
+                class="validation-error"
+                *ngIf="phoneRef.invalid && (phoneRef.touched || submitted)"
+              >
+                <span *ngIf="phoneRef.errors?.['required']">
+                  Phone number is required.
+                </span>
+
+                <span *ngIf="phoneRef.errors?.['pattern']">
+                  Enter a valid 10-digit Indian mobile number.
+                </span>
+              </small>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group full-width">
+              <label>
+                Email Address
+                <span>*</span>
+              </label>
+
+              <input
+                type="email"
+                name="email"
+                [(ngModel)]="email"
+                #emailRef="ngModel"
+                required
+                email
+                placeholder="Enter email address"
+                [class.input-error]="
+                  emailRef.invalid && (emailRef.touched || submitted)
+                "
+              />
+
+              <small
+                class="validation-error"
+                *ngIf="emailRef.invalid && (emailRef.touched || submitted)"
+              >
+                <span *ngIf="emailRef.errors?.['required']">
+                  Email address is required.
+                </span>
+
+                <span *ngIf="emailRef.errors?.['email']">
+                  Enter a valid email address.
+                </span>
+              </small>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group full-width">
+              <label>
+                Address
+                <span>*</span>
+              </label>
+
+              <textarea
+                name="address"
+                [(ngModel)]="address"
+                #addressRef="ngModel"
+                required
+                minlength="5"
+                maxlength="250"
+                rows="3"
+                placeholder="Enter your address"
+                [class.input-error]="
+                  addressRef.invalid && (addressRef.touched || submitted)
+                "
+              ></textarea>
+
+              <small
+                class="validation-error"
+                *ngIf="addressRef.invalid && (addressRef.touched || submitted)"
+              >
+                <span *ngIf="addressRef.errors?.['required']">
+                  Address is required.
+                </span>
+
+                <span *ngIf="addressRef.errors?.['minlength']">
+                  Address must contain at least 5 characters.
+                </span>
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================
+                    PROJECT DETAILS
+        ====================================================== -->
+
+        <div class="form-card">
+          <h3>
+            <i class="fa-solid fa-building"></i>
+            2. Project Details
+          </h3>
+
+          <div class="form-grid">
+            <!-- Plot Area -->
+            <div class="form-group">
+              <label>
+                Plot Area / Land Area (Sq.ft)
+                <span>*</span>
+              </label>
+
+              <input
+                type="number"
+                name="plotArea"
+                [(ngModel)]="plotArea"
+                #plotAreaRef="ngModel"
+                required
+                min="100"
+                max="100000"
+                placeholder="Enter plot area"
+                [class.input-error]="
+                  plotAreaRef.invalid && (plotAreaRef.touched || submitted)
+                "
+              />
+
+              <small
+                class="validation-error"
+                *ngIf="
+                  plotAreaRef.invalid && (plotAreaRef.touched || submitted)
+                "
+              >
+                <span *ngIf="plotAreaRef.errors?.['required']">
+                  Plot area is required.
+                </span>
+
+                <span *ngIf="plotAreaRef.errors?.['min']">
+                  Plot area must be at least 100 sq.ft.
+                </span>
+
+                <span *ngIf="plotAreaRef.errors?.['max']">
+                  Plot area cannot exceed 100000 sq.ft.
+                </span>
+              </small>
+            </div>
+
+            <!-- Package -->
+            <div class="form-group">
+              <label>
+                Select Package
+                <span>*</span>
+              </label>
+
+              <select
+                name="selectedPackage"
+                [(ngModel)]="selectedPackage"
+                #packageRef="ngModel"
+                required
+                [class.input-error]="
+                  packageRef.invalid && (packageRef.touched || submitted)
+                "
+              >
+                <option [ngValue]="0">Select Package</option>
+
+                <option *ngFor="let pkg of packages" [ngValue]="pkg.price">
+                  {{ pkg.name }} - ₹{{ pkg.price }} / Sq.ft
+                </option>
+              </select>
+
+              <small
+                class="validation-error"
+                *ngIf="packageRef.invalid && (packageRef.touched || submitted)"
+              >
+                Please select a construction package.
+              </small>
+            </div>
+            <!-- Construction Type -->
+            <div class="form-group">
+              <label>
+                Type of Construction
+                <span>*</span>
+              </label>
+
+              <select
+                name="constructionType"
+                [(ngModel)]="constructionType"
+                #constructionTypeRef="ngModel"
+                required
+                [class.input-error]="
+                  constructionTypeRef.invalid &&
+                  (constructionTypeRef.touched || submitted)
+                "
+              >
+                <option value="">Select Construction Type</option>
+
+                <option value="Residential">Residential</option>
+
+                <option value="Commercial">Commercial</option>
+
+                <option value="Villa">Villa</option>
+
+                <option value="Apartment">Apartment</option>
+              </select>
+
+              <small
+                class="validation-error"
+                *ngIf="
+                  constructionTypeRef.invalid &&
+                  (constructionTypeRef.touched || submitted)
+                "
+              >
+                Please select construction type.
+              </small>
+            </div>
+            <div class="form-group">
+              <label>
+                Site Location / Area Type
+                <span>*</span>
+              </label>
+              <select
+                name="siteLocation"
+                [(ngModel)]="siteLocation"
+                #siteLocationRef="ngModel"
+                required
+                [class.input-error]="
+                  siteLocationRef.invalid &&
+                  (siteLocationRef.touched || submitted)
+                "
+              >
+                <option value="">Select site location</option>
+
+                <option value="Dindigul">Dindigul</option>
+                <option value="Pollachi">Pollachi</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Karur">Karur</option>
+              </select>
+
+              <small
+                class="validation-error"
+                *ngIf="
+                  siteLocationRef.invalid &&
+                  (siteLocationRef.touched || submitted)
+                "
+              >
+                Please select site location.
+              </small>
+            </div>
+          </div>
+        </div>
+        <!-- ======================================================
+                3. Utility & Additional Requirements
+        ====================================================== -->
+
+        <div class="form-card">
+          <h3>
+            <i class="fa-solid fa-toolbox"></i>
+            3. Utility & Additional Requirements
+          </h3>
+
+          <div class="form-grid">
+            <!-- Sump -->
+
+            <div class="form-group">
+              <label> Sump Capacity (Litres) </label>
+
+              <input
+                type="number"
+                name="sumpLitres"
+                [(ngModel)]="sumpLitres"
+                placeholder="Enter capacity"
+              />
+            </div>
+
+            <!-- Waste Water -->
+
+            <div class="form-group">
+              <label>
+                Water Waste Tank (Liters)
+                <span>*</span>
+              </label>
+
+              <input
+                type="number"
+                name="wasteWaterTank"
+                [(ngModel)]="wasteWaterTank"
+                #wasteWaterTankRef="ngModel"
+                required
+                min="1"
+                placeholder="Enter capacity"
+                [class.input-error]="
+                  wasteWaterTankRef.invalid &&
+                  (wasteWaterTankRef.touched || submitted)
+                "
+              />
+
+              <small
+                class="validation-error"
+                *ngIf="
+                  wasteWaterTankRef.invalid &&
+                  (wasteWaterTankRef.touched || submitted)
+                "
+              >
+                <span *ngIf="wasteWaterTankRef.errors?.['required']">
+                  Waste water tank capacity is required.
+                </span>
+
+                <span *ngIf="wasteWaterTankRef.errors?.['min']">
+                  Please enter a valid tank capacity.
+                </span>
+              </small>
+            </div>
+
+            <!-- Compound -->
+
+            <div class="form-group">
+              <label> Compound Wall Length (ft) </label>
+
+              <input
+                type="number"
+                name="compoundWall"
+                [(ngModel)]="compoundWall"
+                placeholder="Enter length"
+              />
+            </div>
+
+            <!-- Solar -->
+
+            <div class="form-group">
+              <label> Solar Power (KW) </label>
+
+              <input
+                type="number"
+                name="solarPower"
+                [(ngModel)]="solarPower"
+                placeholder="Enter capacity"
+              />
+            </div>
+
+            <!-- Borewell -->
+            <!-- <option value="">Select site location</option> -->
+
+            <div class="form-group full-width">
+              <label> Borewell & Submotor </label>
+
+              <select
+                name="boreDepth"
+                [(ngModel)]="boreDepth"
+                class="borewell-select"
+              >
+                <option [ngValue]="">Select Bore Depth</option>
+
+                <option [ngValue]="400">400 ft - ₹1,05,000(Approx)</option>
+
+                <option [ngValue]="600">600 ft - ₹1,60,000(Approx)</option>
+
+                <option [ngValue]="800">800 ft - ₹2,00,000(Approx)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================
+                5. Electrical & EB Details
+      ====================================================== -->
+
+        <div class="form-card">
+          <h3>
+            <i class="fa-solid fa-bolt"></i>
+
+            5. Electrical & EB Details
+          </h3>
+
+          <div class="form-grid">
+            <!-- Connection -->
+
+            <div class="form-group full-width">
+              <label>
+                EB Connection Type
+                <span>*</span>
+              </label>
+
+              <div class="radio-group">
+                <label>
+                  <input
+                    type="radio"
+                    name="ebConnection"
+                    value="Single Phase"
+                    [(ngModel)]="ebConnection"
+                    #ebConnectionRef="ngModel"
+                    required
+                  />
+
+                  Single Phase
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="ebConnection"
+                    value="Three Phase"
+                    [(ngModel)]="ebConnection"
+                    required
+                  />
+
+                  Three Phase
+                </label>
+              </div>
+
+              <small
+                class="validation-error"
+                *ngIf="!ebConnection && submitted"
+              >
+                Please select EB connection type.
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================================================
+                ESTIMATED COST
+      ====================================================== -->
+
+        <div class="estimate-card">
+          <div class="estimate-left">
+            <h3>Estimated Cost</h3>
+
+            <h1>₹ {{ estimatedCost | number }}</h1>
+          </div>
+
+          <div class="estimate-right">
+            <button type="submit" class="calculate-btn">
+              <i class="fa-solid fa-calculator"></i>
+              Calculate Estimate
+            </button>
+            <button type="button" class="reset-btn" (click)="resetCalculator()">
+              <i class="fa-solid fa-rotate-right"></i>
+              Reset All
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- GREEN NOTE -->
+
+      <div class="estimate-note">
+        <i class="fa-solid fa-circle-check"></i>
+
+        This estimate includes material, labour and other construction charges.
+      </div>
+    </div>
+    <!-- </div> -->
+  </form>
+
+  <!-- ======================================================
+                IMPORTANT NOTES
+  ====================================================== -->
+
+  <div class="important-notes">
+    <h3>
+      <i class="fa-solid fa-circle-info"></i>
+
+      Important Notes
+    </h3>
+
+    <ul>
+      <!-- <li> -->
+      The estimated cost may vary by approximately increase or decrease 3%
+      depending on actual site conditions, material prices and design
+      modifications.
+      <!-- </li> -->
+    </ul>
+  </div>
+</section>
 
 <!-- ==== SOCIAL MEDIA SECTION (Before Footer) ==== -->
 <section class="social-section">
   <h2>Connect With Us</h2>
   <div class="social-icons">
-    <a href="https://www.facebook.com" target="_blank">
-      <img src="assets/facebook.jpeg" alt="Facebook" />
+    <a href="https://www.whatsapp.com" target="_blank">
+      <img src="assets/whatsapp.jpeg" alt="whatsapp" />
     </a>
     <a href="https://www.instagram.com" target="_blank">
       <img src="assets/instagram.jpeg" alt="Instagram" />
     </a>
-    <a href="https://www.youtube.com" target="_blank">
-      <img src="assets/youtube.jpeg" alt="YouTube" />
+    <a href="https://www.facebook.com" target="_blank">
+      <img src="assets/facebook.jpeg" alt="Facebook" />
     </a>
-    <a href="https://www.linkedin.com" target="_blank">
-      <img src="assets/linkedin.jpeg" alt="LinkedIn" />
-    </a>
+    <!-- <a href="https://www.linkedin.com" target="_blank">
+            <img src="assets/linkedin.jpeg" alt="LinkedIn" />
+          </a> -->
   </div>
 </section>
-<!-- ===== FOOTER ===== -->
-<div class="footer">
-  <div class="footer-section footer-logo">
-    <img
-      src="assets/logo1.jpeg"
-      alt="Noor Builders Logo"
-      class="footer-logo-img"
-    />
-    <h3>NOOR BUILDERS AND ASSOCIATES</h3>
-  </div>
-  <div class="footer-section contact-info">
-    <h3>For Enquiries</h3>
 
-    <div class="contact-line">
-      <span nz-icon nzType="phone" nzTheme="outline"></span>
-      <span class="contact-text">+91 83441 94892</span>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Company -->
+    <div class="footer-column">
+      <img src="assets/logo4.jpeg" class="footer-logo" alt="Logo" />
+
+      <h3 class="footer-title">Building Dreams with Precision</h3>
+
+      <p class="footer-desc">
+        Noor Builders & Associates specializes in premium residential,
+        commercial and architectural construction across Tamil Nadu.
+      </p>
     </div>
 
-    <div class="contact-line second-number">
-      <span class="contact-text">+91 85080 56990</span>
+    <!-- Services -->
+    <div class="footer-column">
+      <h2>Our Services</h2>
+
+      <ul class="footer-links">
+        <li>
+          <a routerLink="/services/architectural"> Architectural Designing </a>
+        </li>
+
+        <li>
+          <a routerLink="/services/structural"> Structural Designing </a>
+        </li>
+
+        <li>
+          <a routerLink="/services/building-plan"> Building Plan Approval </a>
+        </li>
+      </ul>
     </div>
 
-    <div class="contact-line">
-      <span nz-icon nzType="mail" nzTheme="outline"></span>
-      <span class="contact-text">noorbuilders0786@gmail.com</span>
+    <!-- Quick Links -->
+    <div class="footer-column">
+      <h2>Quick Links</h2>
+
+      <ul class="footer-links">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/about-us">About Us</a></li>
+        <li><a routerLink="/projects">Projects</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
+        <li><a routerLink="/lacostcalculator">Cost Calculator</a></li>
+      </ul>
     </div>
+
+    <!-- Contact -->
+    <div class="footer-column footer-contact">
+      <h2>Our Office</h2>
+
+      <div class="footer-contact">
+        <p>
+          <span
+            nz-icon
+            nzType="environment"
+            nzTheme="fill"
+            class="footer-icon"
+          ></span>
+          Pollachi, Tamil Nadu
+        </p>
+
+        <p>
+          <span
+            nz-icon
+            nzType="phone"
+            nzTheme="outline"
+            class="footer-icon"
+          ></span>
+          +91 86674 49092, +91 83441 94892
+        </p>
+
+        <p>
+          <span
+            nz-icon
+            nzType="mail"
+            nzTheme="outline"
+            class="footer-icon"
+          ></span>
+          noorbuildersandassociates2018@gmail.com
+        </p>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <!-- <div class="footer-column newsletter">
+
+      <h2>Newsletter</h2>
+
+      <p>
+        Subscribe to receive our latest construction updates and projects.
+      </p>
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <button>SUBSCRIBE</button>
+
+    </div> -->
   </div>
 
-  <div class="footer-section social-media">
-    <h3>Follow Us</h3>
-    <div class="icon-row">
-      <span nz-icon nzType="facebook" nzTheme="outline"></span>
-      <span nz-icon nzType="instagram" nzTheme="outline"></span>
-      <span nz-icon nzType="youtube" nzTheme="outline"></span>
-      <span nz-icon nzType="linkedin" nzTheme="outline"></span>
-    </div>
-  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Noor Builders & Associates. All Rights Reserved.</p>
 
-  <div class="footer-section navigation-links">
-    <h3>Navigation Links</h3>
-    <ul>
-      <li><a href="">Home</a></li>
-      <li><a href="/about-us">About Us</a></li>
-      <!-- Services Dropdown -->
-      <li class="footer-dropdown">
-        <button class="dropbtn">Services ▸</button>
-        <div class="dropdown-content">
-          <a routerLink="/services/commercial">Commercial Construction</a>
-          <a routerLink="/services/architectural">Architectural Designing</a>
-          <a routerLink="/services/structural">Structural Designing</a>
-          <a routerLink="/services/building-plan">Building Plan Approval</a>
-        </div>
-      </li>
-      <li><a href="/projects">Projects</a></li>
-      <li><a href="/contact">Contact</a></li>
-      <li><a href="/lacostcalculator">Cost Calculator</a></li>
-    </ul>
+    <!-- <div class="footer-social">
+            <a href="#"><i nz-icon nzType="facebook" nzTheme="fill"></i></a>
+
+            <a href="#"><i nz-icon nzType="instagram" nzTheme="fill"></i></a>
+
+            <a href="#"><i nz-icon nzType="youtube" nzTheme="fill"></i></a>
+
+            <a href="#"><i nz-icon nzType="linkedin" nzTheme="fill"></i></a>
+          </div> -->
   </div>
-</div>
+</footer>

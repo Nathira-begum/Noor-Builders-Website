@@ -1,0 +1,488 @@
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="logo">
+    <img src="assets/logo4.jpeg" alt="Logo" />
+    <span>NOOR BUILDERS AND ASSOCIATES</span>
+  </div>
+
+  <nav class="nav">
+    <a nz-button nzType="link" routerLink="/">Home</a>
+    <a nz-button nzType="link" routerLink="/about-us">About Us</a>
+
+    <!-- Dropdown -->
+    <div class="dropdown">
+      <button class="dropbtn">Services ▾</button>
+      <div class="dropdown-content">
+        <!-- <a routerLink="/services/commercial">Commercial Construction</a> -->
+        <a routerLink="/services/architectural">Architectural Designing</a>
+        <a routerLink="/services/structural">Structural Designing</a>
+        <a routerLink="/services/building-plan">Building Plan Approval</a>
+      </div>
+    </div>
+
+    <a nz-button nzType="link" routerLink="/projects">Projects</a>
+    <a nz-button nzType="link" routerLink="/contact">Contact</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <div class="content">
+    <!-- <h2 style="font-size: 30px;align-content: center;padding:0px;margin-right: 50px;">We are one of the leading constructors</h2> -->
+    <h1>Do you believe in magic? Let’s make it happen!</h1>
+
+    <a nz-button nzType="link" class="quote-btn" routerLink="/lacostcalculator"
+      >Get Free Quote</a
+    >
+  </div>
+  <div class="form">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control>
+          <label for="name">Name <span class="required">*</span></label>
+          <input
+            nz-input
+            id="name"
+            formControlName="name"
+            placeholder="Name"
+            required
+          />
+          <div
+            *ngIf="
+              validateForm.get('name')?.invalid &&
+              (validateForm.get('name')?.dirty ||
+                validateForm.get('name')?.touched)
+            "
+            class="error"
+          >
+            <div *ngIf="validateForm.get('name')?.errors?.['required']">
+              Name is required.
+            </div>
+            <div *ngIf="validateForm.get('name')?.errors?.['pattern']">
+              Name must contain only letters and spaces.
+            </div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <label for="email">Email <span class="required">*</span></label>
+          <input
+            nz-input
+            id="email"
+            formControlName="email"
+            placeholder="Email"
+            required
+          />
+          <div
+            *ngIf="
+              validateForm.get('email')?.invalid &&
+              (validateForm.get('email')?.dirty ||
+                validateForm.get('email')?.touched)
+            "
+            class="error"
+          >
+            <div *ngIf="validateForm.get('email')?.errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="validateForm.get('email')?.errors?.['email']">
+              Email must be valid.
+            </div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <label for="phoneno"
+            >Phone number <span class="required">*</span></label
+          >
+          <input
+            nz-input
+            id="phoneno"
+            formControlName="phoneno"
+            placeholder="Phone number"
+            required
+          />
+          <div
+            *ngIf="
+              validateForm.get('phoneno')?.invalid &&
+              (validateForm.get('phoneno')?.dirty ||
+                validateForm.get('phoneno')?.touched)
+            "
+            class="error"
+          >
+            <div *ngIf="validateForm.get('phoneno')?.errors?.['required']">
+              Phone number is required.
+            </div>
+            <div *ngIf="validateForm.get('phoneno')?.errors?.['pattern']">
+              Phone number must be 10 digits.
+            </div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <label for="location">
+            Location <span class="required">*</span>
+          </label>
+          <nz-select
+            id="location"
+            formControlName="location"
+            placeholder="Select your location"
+          >
+            <nz-option
+              *ngFor="let loc of locations"
+              [nzValue]="loc"
+              [nzLabel]="loc"
+            ></nz-option>
+          </nz-select>
+          <div
+            *ngIf="
+              validateForm.get('location')?.invalid &&
+              (validateForm.get('location')?.dirty ||
+                validateForm.get('location')?.touched)
+            "
+            class="error"
+          >
+            <div *ngIf="validateForm.get('location')?.errors?.['required']">
+              Location is required.
+            </div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <label for="landAreaInput"
+            >Enter your land area in sq.ft.
+            <span class="required">*</span></label
+          >
+          <input
+            nz-input
+            id="landAreaInput"
+            formControlName="landAreaInput"
+            required
+          />
+          <div
+            *ngIf="
+              validateForm.get('landAreaInput')?.invalid &&
+              (validateForm.get('landAreaInput')?.dirty ||
+                validateForm.get('landAreaInput')?.touched)
+            "
+            class="error"
+          >
+            <div
+              *ngIf="validateForm.get('landAreaInput')?.errors?.['required']"
+            >
+              Land area is required.
+            </div>
+            <div *ngIf="validateForm.get('landAreaInput')?.errors?.['pattern']">
+              Land area must be a number.
+            </div>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <label for="requirement">Please enter your requirement</label>
+          <input nz-input id="requirement" formControlName="requirement" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <div class="button-container">
+            <button nz-button nzType="primary" type="submit">Submit</button>
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+  -->
+</div>
+<!-- Animated Image Section -->
+<div class="animated-gallery">
+  <h2 class="gallery-title">Building Dreams with Precision</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="assets/background8.jpeg" alt="Construction animation 1" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/elevation.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/background.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/bg3.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/background7.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/background1.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/background3.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/background4.jpeg" alt="Construction animation 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="assets/background6.jpeg" alt="Construction animation 2" />
+    </div>
+  </div>
+</div>
+
+<!-- <div class="page">
+  <span nz-icon nzType="build" nzTheme="outline" style="color: rgb(93, 95, 95);"></span>
+  <span nz-icon nzType="user" nzTheme="outline" style="color: rgb(93, 95, 95);"></span>
+<h3>687987</h3>
+</div> -->
+<div class="items">
+  <div class="metrics-container">
+    <div class="metric-item">
+      <i class="fa-solid fa-arrow-trend-up"></i>
+      <h2>8+</h2>
+      <p>Experience</p>
+    </div>
+
+    <div class="metric-item">
+      <i class="fa-solid fa-building metric-icon"></i>
+      <h2>20+</h2>
+      <p>Projects</p>
+    </div>
+
+    <div class="metric-item">
+      <i class="fa-solid fa-building-shield"></i>
+      <h2>150+</h2>
+      <p>Quality Checks</p>
+    </div>
+
+    <div class="metric-item">
+      <i class="fa-solid fa-users metric-icon"></i>
+      <h2>20+</h2>
+      <p>Clients</p>
+    </div>
+
+    <div class="metric-item">
+      <i class="fa-solid fa-helmet-safety"></i>
+      <h2>100+</h2>
+      <p>Labour Force</p>
+    </div>
+
+    <!-- </div> -->
+  </div>
+
+  <div class="projects-section">
+    <h2 class="projects-title">Our Signature Projects</h2>
+
+    <div class="carousel">
+      <!-- <button class="arrow prev" (click)="prevImage()">
+    &#10094;
+  </button> -->
+
+      <div
+        class="carousel"
+        #carousel
+        (mousedown)="startDrag($event)"
+        (mousemove)="onDrag($event)"
+        (mouseup)="stopDrag()"
+        (mouseleave)="stopDrag()"
+      >
+        <div class="carousel-track">
+          <div class="project-card" *ngFor="let image of images">
+            <img [src]="image" />
+          </div>
+        </div>
+      </div>
+
+      <section class="videos-section">
+        <h2 class="videos-title">Virtual Project Tour</h2>
+
+        <div
+          #videoCarousel
+          class="video-carousel"
+          (mousedown)="startVideoDrag($event)"
+          (mousemove)="onVideoDrag($event)"
+          (mouseup)="stopVideoDrag()"
+          (mouseleave)="stopVideoDrag()"
+        >
+          <div class="video-card" *ngFor="let video of videos">
+            <video controls preload="metadata">
+              <source [src]="video" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <div class="vendors-section">
+        <h2>Using Materials</h2>
+
+        <p>We work with India's most trusted construction material brands.</p>
+
+        <div class="vendors-grid">
+          <div
+            class="vendor-logo-card"
+            *ngFor="
+              let vendor of showAllVendors
+                ? vendors
+                : (vendors | slice: 0 : initialVendorCount)
+            "
+          >
+            <img [src]="vendor.img" [alt]="vendor.name" />
+          </div>
+        </div>
+
+        <div class="vendor-btn-wrapper">
+          <button class="show-more-btn" (click)="toggleVendors()">
+            {{ showAllVendors ? "Show Less ▲" : "Show More ▼" }}
+          </button>
+        </div>
+      </div>
+      <!-- ==== SOCIAL MEDIA SECTION (Before Footer) ==== -->
+      <section class="social-section">
+        <h2>Connect With Us</h2>
+        <div class="social-icons">
+          <a href="https://www.whatsapp.com" target="_blank">
+            <img src="assets/whatsapp.jpeg" alt="whatsapp" />
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <img src="assets/instagram.jpeg" alt="Instagram" />
+          </a>
+          <a href="https://www.facebook.com" target="_blank">
+            <img src="assets/facebook.jpeg" alt="Facebook" />
+          </a>
+          <!-- <a href="https://www.linkedin.com" target="_blank">
+            <img src="assets/linkedin.jpeg" alt="LinkedIn" />
+          </a> -->
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-container">
+          <!-- Company -->
+          <div class="footer-column">
+            <img src="assets/logo4.jpeg" class="footer-logo" alt="Logo" />
+
+            <h3 class="footer-title">Building Dreams with Precision</h3>
+
+            <p class="footer-desc">
+              Noor Builders & Associates specializes in premium residential,
+              commercial and architectural construction across Tamil Nadu.
+            </p>
+          </div>
+
+          <!-- Services -->
+          <div class="footer-column">
+            <h2>Our Services</h2>
+
+            <ul class="footer-links">
+              <li>
+                <a routerLink="/services/architectural">
+                  Architectural Designing
+                </a>
+              </li>
+
+              <li>
+                <a routerLink="/services/structural"> Structural Designing </a>
+              </li>
+
+              <li>
+                <a routerLink="/services/building-plan">
+                  Building Plan Approval
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-column">
+            <h2>Quick Links</h2>
+
+            <ul class="footer-links">
+              <li><a routerLink="/">Home</a></li>
+              <li><a routerLink="/about-us">About Us</a></li>
+              <li><a routerLink="/projects">Projects</a></li>
+              <li><a routerLink="/contact">Contact</a></li>
+              <li><a routerLink="/lacostcalculator">Cost Calculator</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="footer-column footer-contact">
+            <h2>Our Office</h2>
+
+            <div class="footer-contact">
+              <p>
+                <span
+                  nz-icon
+                  nzType="environment"
+                  nzTheme="fill"
+                  class="footer-icon"
+                ></span>
+                Pollachi, Tamil Nadu
+              </p>
+
+              <p>
+                <span
+                  nz-icon
+                  nzType="phone"
+                  nzTheme="outline"
+                  class="footer-icon"
+                ></span>
+                +91 86674 49092, +91 83441 94892
+              </p>
+
+              <p>
+                <span
+                  nz-icon
+                  nzType="mail"
+                  nzTheme="outline"
+                  class="footer-icon"
+                ></span>
+                noorbuildersandassociates2018@gmail.com
+              </p>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <!-- <div class="footer-column newsletter">
+
+      <h2>Newsletter</h2>
+
+      <p>
+        Subscribe to receive our latest construction updates and projects.
+      </p>
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <button>SUBSCRIBE</button>
+
+    </div> -->
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 Noor Builders & Associates. All Rights Reserved.</p>
+
+          <!-- <div class="footer-social">
+            <a href="#"><i nz-icon nzType="facebook" nzTheme="fill"></i></a>
+
+            <a href="#"><i nz-icon nzType="instagram" nzTheme="fill"></i></a>
+
+            <a href="#"><i nz-icon nzType="youtube" nzTheme="fill"></i></a>
+
+            <a href="#"><i nz-icon nzType="linkedin" nzTheme="fill"></i></a>
+          </div> -->
+        </div>
+      </footer>
+
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

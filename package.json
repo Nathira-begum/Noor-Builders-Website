@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "noor-builders-api",
   "version": "1.0.0",
   "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
@@ -17,7 +16,7 @@
     "mongoose": "^8.19.1",
     "nodemailer": "^7.0.9",
     "type": "module"
-=======
+  },
   "name": "noorbuilders",
   "version": "0.0.0",
   "scripts": {
